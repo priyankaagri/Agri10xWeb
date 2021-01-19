@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#f4f1f1"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_about"
+        android:minHeight="?attr/actionBarSize"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:titleTextColor="@android:color/white"
+        app:theme="@style/ThemeOverlay.AppCompat"
+        android:background="?attr/colorPrimary"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <androidx.cardview.widget.CardView
+            android:layout_gravity="left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            android:paddingLeft="25dp"
+            >
+            <FrameLayout
+                android:background="@drawable/address_cardview_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="30dp"
+                    android:paddingTop="10dp"
+                    android:paddingRight="30dp"
+                    android:paddingBottom="10dp"
+                    android:text="About Us"
+                    android:textStyle="bold" />
+            </FrameLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="26dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/termsconditions1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="30dp"
+                    android:paddingBottom="10dp"
+                    android:paddingRight="30dp"
+                    android:paddingTop="10dp"
+                    android:text="Our goal is to serve the highest standards for secure transactions and customer information privacy.\n\nAgri10x is an innovative global agriculture platform that uses high-end technology to connect the farmers with traders.\n\nIt is an e-marketplace for agriculture produce with integrated post-harvest management system that supports Quality Assaying and Warehousing.\n\nThe platform is enabled with emerging technologies like Blockchain and AI to provide a transparent and secure platform to the users.\n\nThe platform ensures to provide high-quality produce from trusted stakeholders at competitive prices.\n\nAgri10X envisions to transform the roots of global rural economy by integrating the entire Agri-value chain through the digital cooperative platform and become a one-stop farming solution."/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
+    <!--android:background="#f4f1f1"-->
+
+

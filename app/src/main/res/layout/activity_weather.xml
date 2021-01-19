@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Weather"
+    android:orientation="vertical"
+    android:background="@drawable/weather_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="38dp"
+            android:id="@+id/wet_back"
+            android:layout_height="match_parent"
+            android:layout_marginRight="26dp"
+            android:background="@drawable/ic_white_arrow_back"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/roboto"
+            android:text="Weather"
+            android:textAllCaps="true"
+            android:textColor="#ffffff"
+            android:textSize="26sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/et_city_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:drawablePadding="16dp"
+            android:background="@drawable/rounded_corner"
+            android:hint="@string/search"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:paddingBottom="8dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="15dp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#00000000">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/temperature"
+            android:textColor="@color/quantum_white_100"
+            android:id="@+id/tv_info"
+            android:textStyle="bold"
+            android:fontFamily="sans-serif-thin"
+            android:textSize="24sp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/city"
+            android:id="@+id/tv_city"
+            android:textColor="@color/quantum_white_100"
+            android:fontFamily="sans-serif"
+            android:textSize="20sp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/country"
+            android:textColor="@color/quantum_white_100"
+            android:id="@+id/tv_country"
+            android:fontFamily="sans-serif"
+            android:textSize="20sp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:id="@+id/iv_weather_icon"
+                android:layout_marginTop="6dp"
+                android:layout_marginStart="15dp"
+
+                android:contentDescription="@string/todo" />
+
+            <Button
+                android:id="@+id/btn_get_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="#00000000"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textAllCaps="false"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-thin"
+                android:layout_marginStart="60dp"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <Button
+            android:id="@+id/btn_get_5_days_weather"
+            android:layout_width="210dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="2dp"
+            android:background="@color/quantum_white_100"
+            android:fontFamily="sans-serif"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:text="@string/five_days_forecast"
+            android:textAllCaps="false"
+            android:textColor="#25bde2"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:id="@+id/rv_weather_data"
+
+
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

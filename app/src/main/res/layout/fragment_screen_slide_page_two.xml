@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/agree_next"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingTop="30dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:layout_marginBottom="20sp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingRight="20sp"
+            android:paddingLeft="20sp"
+            android:textAlignment="gravity"
+            android:text="@string/agrprv"
+            android:textSize="14sp"
+            android:fontFamily="@font/roboto"
+            android:textDirection="firstStrongRtl"
+            android:textColor="@color/quantum_white_100"/>
+
+        <CheckBox
+            android:id="@+id/checkP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:buttonTint="#FFFFFF"
+            android:layout_marginTop="10dp"
+            android:text="@string/termandconditiontitle"
+            android:textColor="#ffffff"
+            android:onClick="buttonClick"
+            android:textStyle="bold"
+            android:textSize="12sp"/>
+
+
+    <Button
+        android:id="@+id/agreePrivacyPolicy"
+        android:layout_width="210dp"
+        android:layout_height="30dp"
+        android:onClick="buttonClick"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="14sp"
+        android:background="@drawable/roundlines"
+        android:elevation="5sp"
+        android:fontFamily="@font/font_product_sans"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="Agree"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center"
+        android:enabled="false"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    </LinearLayout>
+</LinearLayout>

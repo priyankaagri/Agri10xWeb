@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.panayotis:javaplot:0.5.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.panayotis/javaplot/0.5.0/89f2435015ce2c21d9d478b55afa68e0ddf01c15/javaplot-0.5.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.panayotis/javaplot/0.5.0/a5ffb9a453fdd40e194650df3ef60a29d88d64/javaplot-0.5.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.panayotis/javaplot/0.5.0/b330b542bc4abed57522aa34fb4915dce1eea012/javaplot-0.5.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

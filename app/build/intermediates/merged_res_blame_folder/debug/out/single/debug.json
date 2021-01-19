@@ -1,0 +1,910 @@
+[
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_unvrified.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_unvrified.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_action_name.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-mdpi\\ic_action_name.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_profile_final.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\profile_final.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_menu_slideshow.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-v24\\ic_menu_slideshow.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_wallet.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xxhdpi\\wallet.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_row_suggestions.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\row_suggestions.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_ic_menu_camera.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-v21\\ic_menu_camera.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_document_upload.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_document_upload.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_menu_send.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-v24\\ic_menu_send.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_action_name.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-hdpi\\ic_action_name.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_email_light_blue_24dp.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\ic_email_light_blue_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_my_stock.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-mdpi\\ic_my_stock.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_add_stock.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xhdpi\\add_stock.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_action_name.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xhdpi\\ic_action_name.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_agri10x_leaf.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_agri10x_leaf.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_ic_menu_share.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-v21\\ic_menu_share.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_newsplash.jpg.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\newsplash.jpg"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_layout_products.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\layout_products.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_indicator_selected.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\indicator_selected.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_employee.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_employee.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_asset_add_stock.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\ic_asset_add_stock.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_cursor.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xxhdpi\\cursor.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_ic_menu_manage.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-v21\\ic_menu_manage.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_person.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xhdpi\\ic_person.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_info_24.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\ic_baseline_info_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\menu_activity_trader_drawer.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\menu\\activity_trader_drawer.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_buttonshape.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\buttonshape.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_my_interest.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_my_interest.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_agrixnewsplash.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\agrixnewsplash.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_kyc_not_done.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-mdpi\\kyc_not_done.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_stock_list_card.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\stock_list_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_unvrified.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\content_unvrified.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_touch_app_white_24dp.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\ic_touch_app_white_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_main.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\content_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_person_placeholder.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-mdpi\\person_placeholder.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\menu_activity_unvrified_drawer.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\menu\\activity_unvrified_drawer.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_refresh_icon.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xxhdpi\\refresh_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\font_googlesans_regular.ttf.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\font\\googlesans_regular.ttf"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_wallet.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-hdpi\\wallet.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_email_icon.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-hdpi\\email_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\menu_notification_page.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\menu\\notification_page.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_agri10x_logo_image.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\agri10x_logo_image.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_trader.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\content_trader.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_app_bar_trader.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\app_bar_trader.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_profile_page.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_profile_page.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_menu_camera.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-v24\\ic_menu_camera.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\font_calibri.ttf.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\font\\calibri.ttf"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_roundlines.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\roundlines.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_weather.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xhdpi\\ic_weather.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\menu_farmer.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\menu\\farmer.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_alert_progress_spinning.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\alert_progress_spinning.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_active_trade_list_item.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\active_trade_list_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_screen_slide_page_two.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\fragment_screen_slide_page_two.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_stock_list2.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_stock_list2.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_about.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_about.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_my_interest.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-xhdpi\\ic_my_interest.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_white_arrow_back.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\ic_white_arrow_back.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\menu_main.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\menu\\main.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_request_stock.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-hdpi\\ic_request_stock.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rounded_corner.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\rounded_corner.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_settings_activity.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\settings_activity.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_farmer1.jpg.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\farmer1.jpg"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_kyc_not_done.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xhdpi\\kyc_not_done.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\menu_unvrified.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\menu\\unvrified.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\anim_anim_slide_in_right.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\anim\\anim_slide_in_right.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_notification.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_notification.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_weather.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xxhdpi\\ic_weather.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_app_bar_main.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\app_bar_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_agri10x_leaf.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-mdpi\\ic_agri10x_leaf.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_indicator_default.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\indicator_default.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_menu_share.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-v24\\ic_menu_share.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_menu_gallery.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-v24\\ic_menu_gallery.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_nav_header_trader.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\nav_header_trader.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_refresh_icon.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-mdpi\\refresh_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_weather.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_weather.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_lock_light_blue_24dp.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\ic_lock_light_blue_24dp.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_kyc_not_done.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-anydpi\\kyc_not_done.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp_activity_unvrified.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout-sw600dp\\activity_unvrified.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_phone_icon.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xhdpi\\phone_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_email_icon.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xhdpi\\email_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_app_bar_unvrified.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\app_bar_unvrified.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout-land_activity_unvrified.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout-land\\activity_unvrified.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_ic_my_stock.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-anydpi\\ic_my_stock.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\menu_trader.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\menu\\trader.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_agree_next.jpg.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\agree_next.jpg"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_request_stock.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xxhdpi\\ic_request_stock.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_wallet.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-mdpi\\wallet.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_kyc_not_done.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xxhdpi\\kyc_not_done.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_nav_header_unvrified.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\nav_header_unvrified.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_forgot_password.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_forgot_password.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_quality_check.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_quality_check.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_my_stock.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xhdpi\\ic_my_stock.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_trending_up_24.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\ic_baseline_trending_up_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_add_stock_imageupload.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xxhdpi\\ic_add_stock_imageupload.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout-land_content_unvrified.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout-land\\content_unvrified.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_kyc.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\ic_kyc.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_phone_icon.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-anydpi\\phone_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_ic_menu_gallery.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-v21\\ic_menu_gallery.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_setting.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\ic_setting.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_app_bar_quality_check.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\app_bar_quality_check.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_my_interest.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_my_interest.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_person.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xxhdpi\\ic_person.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_app_bar_farmer.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\app_bar_farmer.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_agri10x_leaf.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-xhdpi\\ic_agri10x_leaf.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_address_cardview_layout.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\address_cardview_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_date.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\ic_date.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_request_stock.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_request_stock.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_wallet.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xhdpi\\wallet.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_rounded_corner_trans.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\rounded_corner_trans.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_mystock.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\ic_mystock.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_add_stock.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_add_stock.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_kyc_not_done.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-hdpi\\kyc_not_done.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_notification_simple.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-hdpi\\ic_notification_simple.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_notification_simple.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_notification_simple.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_screen_slide_page.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\fragment_screen_slide_page.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_farmer2.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_farmer2.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_splash_screen.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_splash_screen.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_agri10x_leaf.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_agri10x_leaf.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_ic_person.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-anydpi\\ic_person.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\font_roboto_medium.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\font\\roboto_medium.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_farmer.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\content_farmer.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_action_name.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xxhdpi\\ic_action_name.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_email_icon.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-anydpi\\email_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_web_page.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_web_page.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_person_placeholder.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-anydpi\\person_placeholder.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_nav_header_farmer.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\nav_header_farmer.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_add_stock.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-hdpi\\add_stock.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_trader.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_trader.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_add_stock.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-mdpi\\add_stock.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_ic_my_stock.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xxhdpi\\ic_my_stock.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_my_interest.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-hdpi\\ic_my_interest.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_quality_check.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\content_quality_check.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_notification_simple.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_notification_simple.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_add_stock.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-anydpi\\add_stock.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_agri10x_leaf.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-hdpi\\ic_agri10x_leaf.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_weather.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-hdpi\\ic_weather.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_add_stock.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xxhdpi\\add_stock.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_rounded_for_spinner.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-v21\\rounded_for_spinner.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_weather.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-mdpi\\ic_weather.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_my_interest.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-mdpi\\ic_my_interest.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_wallet.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-anydpi\\wallet.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_request_stock.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-mdpi\\ic_request_stock.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_my_interest.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_my_interest.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_refresh_icon.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xhdpi\\refresh_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_person_placeholder.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-hdpi\\person_placeholder.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_ic_weather.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-anydpi\\ic_weather.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_profile.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\profile.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_code_alert.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\code_alert.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout-sw600dp_content_unvrified.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout-sw600dp\\content_unvrified.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_refresh_icon.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-hdpi\\refresh_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\font_font_product_sans.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\font\\font_product_sans.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_indicator_selector.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\indicator_selector.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_nav_header_main.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\nav_header_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_user_image_placeholder.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\user_image_placeholder.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_ic_menu_send.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-v21\\ic_menu_send.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_information_card.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\information_card.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_side_nav_bar.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\side_nav_bar.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\menu_activity_quality_check_drawer.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\menu\\activity_quality_check_drawer.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\menu_activity_main_drawer.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\menu\\activity_main_drawer.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\menu_quality_check.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\menu\\quality_check.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_test.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_test.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_terms_and_conditions.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_terms_and_conditions.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_person_placeholder.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xxhdpi\\person_placeholder.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_baseline_fingerprint_24.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\ic_baseline_fingerprint_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_aboutusicon.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\aboutusicon.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_wther_grid.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\ic_wther_grid.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_email_icon.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-mdpi\\email_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\menu_login.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\menu\\login.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_screen.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\screen.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout-land_content_farmer.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout-land\\content_farmer.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_fragment__user.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\fragment_fragment__user.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_menu_manage.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-v24\\ic_menu_manage.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_active_trade.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_active_trade.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_change_ip.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\change_ip.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_sign_up.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_sign_up.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_person.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-mdpi\\ic_person.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_image_upload_signup.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\ic_image_upload_signup.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_row_recycler.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\row_recycler.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_phone_icon.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-mdpi\\phone_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_wallet.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\wallet.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_farmer2.jpg.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\farmer2.jpg"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v21_ic_menu_slideshow.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-v21\\ic_menu_slideshow.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_ic_action_name.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-anydpi\\ic_action_name.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_my_stock.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-hdpi\\ic_my_stock.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_to_pdf.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_to_pdf.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_phone_icon.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-hdpi\\phone_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_colapsing.jpg.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\colapsing.jpg"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\font_roboto.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\font\\roboto.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_request_stock.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xhdpi\\ic_request_stock.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_person_placeholder.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xhdpi\\person_placeholder.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_rounded_for_spinner.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-v24\\rounded_for_spinner.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_phone_icon.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xxhdpi\\phone_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\menu_activity_farmer2_drawer.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\menu\\activity_farmer2_drawer.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_splash_screen.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xxhdpi\\splash_screen.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_my_stock_list.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\my_stock_list.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_wallet.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_wallet.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_request.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\ic_request.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_main_.jpg.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\main_.jpg"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_refresh_icon.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-anydpi\\refresh_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\xml_root_preferences.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\xml\\root_preferences.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_nav_header_quality_check.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\nav_header_quality_check.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_screen_slide.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_screen_slide.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_notification_simple.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-mdpi\\ic_notification_simple.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_upload_document.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_upload_document.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_weather_background.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xxhdpi\\weather_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\menu_weblogin.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\menu\\weblogin.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_farmer.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\farmer.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_guest.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\layout\\activity_guest.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_person.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-hdpi\\ic_person.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable_termsnco.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable\\termsnco.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_notification_simple.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-xhdpi\\ic_notification_simple.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_email_icon.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-xxhdpi\\email_icon.png"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi_ic_request_stock.xml.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\drawable-anydpi\\ic_request_stock.xml"
+    },
+    {
+        "merged": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "C:\\Users\\admin\\Desktop\\Agri10xWeb\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+    }
+]

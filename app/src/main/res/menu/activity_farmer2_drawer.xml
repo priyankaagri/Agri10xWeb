@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group>
+        <item
+            android:id="@+id/mystockfarmer"
+            android:icon="@drawable/ic_my_stock"
+            android:title="My Stocks" />
+
+        <item
+            android:id="@+id/addStock"
+            android:icon="@drawable/add_stock"
+            android:title="Add Stock" />
+        <item
+            android:id="@+id/request_stock_farmer"
+            android:icon="@drawable/ic_request_stock"
+            android:title="Request"
+            />
+        <item
+            android:id="@+id/weather"
+            android:icon="@drawable/ic_weather"
+            android:title="Weather" />
+        <item
+            android:id="@+id/atrade"
+            android:icon="@drawable/ic_baseline_trending_up_24"
+            android:title="Active Trade" />
+        <item
+            android:id="@+id/farmer_upload_documents"
+            android:icon="@drawable/ic_baseline_fingerprint_24"
+            android:title="KYC" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/about_farmer"
+                android:icon="@drawable/ic_baseline_info_24"
+                android:title="About" />
+            <item
+                android:id="@+id/tnc_farmer"
+                android:icon="@drawable/termsnco"
+                android:title="Terms and Conditions" />
+        </menu>
+    </item>
+
+</menu>

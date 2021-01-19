@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "714719256360",
+    "firebase_url": "https://magri10x.firebaseio.com",
+    "project_id": "magri10x",
+    "storage_bucket": "magri10x.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:714719256360:android:67bc0d872b582d4e727a1d",
+        "android_client_info": {
+          "package_name": "com.mobile.agri10x"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "714719256360-0u4gp0eu03jtrptcjinu1odmbp6aodh7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobile.agri10x",
+            "certificate_hash": "7f7602f5016851365d4e7d19ac8184959c522b89"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTzMWdCKj5ryYBhyBKCQAmh4GvVGsIQXI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

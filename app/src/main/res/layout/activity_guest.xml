@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="#FFFFFF">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            android:windowSoftInputMode="adjustPan"
+            tools:context=".LoginActivity"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:layout_marginStart="15dp"
+                android:gravity="start"
+                android:paddingTop="60dp"
+                android:fontFamily="@font/font_product_sans"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:text="Guest Account"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5sp"
+                android:background="@drawable/rounded_corner">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10sp">
+
+                    <com.rilixtech.CountryCodePicker
+                        android:id="@+id/guest_ccp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center" />
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/guest_contact_no"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Phone Number"
+                        android:inputType="phone"/>
+
+                </LinearLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_corner_trans">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/guest_otp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="OTP"
+                    android:maxLines="1"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="end"
+                android:layout_marginEnd="20dp">
+                <TextView
+                    android:id="@+id/timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_gravity="end"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
+                    android:gravity="end"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:fontFamily="@font/font_product_sans"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:text=""/>
+                <TextView
+                    android:id="@+id/resend_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:layout_marginEnd="20dp"
+                    android:gravity="right"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:fontFamily="@font/font_product_sans"
+                    android:textStyle="bold"
+                    android:textColor="#000000"
+                    android:text="Resend OTP"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/guest_login"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/font_product_sans"
+                android:background="@android:color/black"
+                android:text="Login"
+                android:textAllCaps="true"
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

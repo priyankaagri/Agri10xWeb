@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.panayotis.javaplot:svg:0.5.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.panayotis.javaplot/svg/0.5.0/8387bcbdcd7ae059b421cebd4751d5e95cf1d9d9/svg-0.5.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.panayotis.javaplot/svg/0.5.0/ad55933301fbf47fe234f5354638539849c82af9/svg-0.5.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.panayotis.javaplot/svg/0.5.0/a16b0bbc5c1bded9324e8e3ac6cdafc51004671a/svg-0.5.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

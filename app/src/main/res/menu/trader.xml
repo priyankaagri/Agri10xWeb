@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--<item-->
+        <!--android:id="@+id/action_settings"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="@string/action_settings"-->
+        <!--app:showAsAction="never" />-->
+    <item
+        android:id="@+id/notification_button_farmer"
+        android:orderInCategory="100"
+        android:icon="@mipmap/ic_notification_simple"
+        android:title="Notification"
+        app:showAsAction="always"
+        />
+    <!--<item-->
+        <!--android:id="@+id/change_ip"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="Change IP"-->
+        <!--app:showAsAction="never"/>-->
+    <item
+        android:id="@+id/log_out"
+        android:orderInCategory="100"
+        android:title="Log Out"
+        app:showAsAction="never"/>
+
+</menu>

@@ -1,0 +1,117 @@
+package com.mobile.agri10x;
+
+import android.content.DialogInterface;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.mobile.agri10x.Connection.GETRequest;
+import com.mobile.agri10x.Model.Main;
+import com.mobile.agri10x.Model.SecurityData;
+
+import org.json.JSONObject;
+
+public class Wallet extends AppCompatActivity {
+
+    TextView withdrawableBalance,ClosingBalance;
+    Toolbar toolbar;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_wallet);
+
+        //toolbar
+        toolbar = findViewById(R.id.toolbar1);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_action_name );
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        withdrawableBalance = findViewById(R.id.wallet_balance_withdrawable);
+        ClosingBalance = findViewById(R.id.wallet_balance_closing);
+        if(SecurityData.getWithdthrawBalance()==null) {
+            new LoadWalletBalance().execute(Main.getIp() + "/getBalance");
+        }
+        else{
+            withdrawableBalance.setText("Withdrawable Balance: "+Main.getIndian_currency()+" "+SecurityData.getWithdthrawBalance());
+            ClosingBalance.setText("Closing Balance: "+Main.getIndian_currency()+" "+SecurityData.getWithdthrawBalance());
+        }
+    }
+
+    class LoadWalletBalance extends AsyncTask<String, Integer, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            if(s!=null) {
+                if (s.equals("network")) {
+                    new Alert().alert("Network !!!", getResources().getString(R.string.network_error_message));
+                } else if (s != null) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(s);
+                        SecurityData.setClosingBalance(jsonObject.getString("Closing"));
+                        SecurityData.setWithdthrawBalance(jsonObject.getString("Widthraw"));
+                        SecurityData.setPendingBalance(jsonObject.getString("Pending"));
+                        withdrawableBalance.setText("Withdrawable Balance: "+Main.getIndian_currency()+" "+SecurityData.getWithdthrawBalance());
+                        ClosingBalance.setText("Closing Balance: "+Main.getIndian_currency()+" "+SecurityData.getWithdthrawBalance());
+                    }catch (Exception e){
+                        SecurityData.setWithdthrawBalance("0");
+                        SecurityData.setClosingBalance("0");
+                        withdrawableBalance.setText("Withdrawable Balance: "+Main.getIndian_currency()+" "+SecurityData.getWithdthrawBalance());
+                        ClosingBalance.setText("Closing Balance: "+Main.getIndian_currency()+" "+SecurityData.getWithdthrawBalance());
+                    }
+                }
+                else{
+                    SecurityData.setWithdthrawBalance("0");
+                    SecurityData.setClosingBalance("0");
+                    withdrawableBalance.setText("Withdrawable Balance: "+Main.getIndian_currency()+" "+SecurityData.getWithdthrawBalance());
+                    ClosingBalance.setText("Closing Balance: "+Main.getIndian_currency()+" "+SecurityData.getWithdthrawBalance());
+                }
+            }
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String str;
+            try {
+                str = GETRequest.fetchUserData(strings[0], Wallet.this);
+            } catch (Exception e) {
+                return "network";
+            }
+            return str;
+        }
+    }
+
+
+    public class Alert {
+        public void alert( String title, String body) {
+            final AlertDialog.Builder Alert = new AlertDialog.Builder(Wallet.this);
+            Alert.setCancelable(false)
+                    .setTitle(title)
+                    .setMessage(body);
+            Alert.setNegativeButton("Okey", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                }
+            });
+            Alert.create().show();
+        }
+
+    }
+}
+

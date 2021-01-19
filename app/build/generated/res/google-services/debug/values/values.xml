@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="firebase_database_url" translatable="false">https://magri10x.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">714719256360</string>
+    <string name="google_api_key" translatable="false">AIzaSyBTzMWdCKj5ryYBhyBKCQAmh4GvVGsIQXI</string>
+    <string name="google_app_id" translatable="false">1:714719256360:android:67bc0d872b582d4e727a1d</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBTzMWdCKj5ryYBhyBKCQAmh4GvVGsIQXI</string>
+    <string name="google_storage_bucket" translatable="false">magri10x.appspot.com</string>
+    <string name="project_id" translatable="false">magri10x</string>
+</resources>

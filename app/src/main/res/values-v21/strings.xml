@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="city">City</string>
+    <string name="country">Country</string>
+    <string name="five_days_forecast">Five Days Forecast</string>
+    <string name="todo">TODO</string>
+
+    <string name="app_name">Agri10x</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_farmer">Farmer</string>
+    <string name="title_activity_quality_check">QualityCheck</string>
+    <string name="title_activity_trader">Trader</string>
+    <string name="network_error_message">Check Your Connection and Try Again</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="termandconditiontitle"><![CDATA[Terms & Condition Applies]]></string>
+    <string name="DeviceName">Android</string>
+    <string name="title_activity_unvrified">Unverified User</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="name_of_user">Name of User</string>
+    <string name="search">Search</string>
+    <string name="temperature">Temperature</string>
+    <string name="title_activity_weather">Weather</string>
+    <string name="title_activity_upload_document">UploadDocument</string>
+    <string name="prv">• The platform ensures to provide high-quality produce from trusted stakeholders at competitive prices.\n\n• Our goal is to serve the highest standards for secure transactions and customer information privacy.</string>
+    <string name="headprv">Agri10x is an innovative global agriculture platform.</string>
+    <string name="agrprv">Agri10X envisions transforming the roots of global rural economy by integrating the entire Agri-value chain through the digital cooperative platform and becoming a one-stop farming solution.</string>
+</resources>

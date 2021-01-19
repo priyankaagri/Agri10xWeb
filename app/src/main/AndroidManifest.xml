@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.mobile.agri10x">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+
+    <application
+        android:allowBackup="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_agri10x_leaf"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".WebPage"
+            ></activity>
+        <activity android:name=".ActiveTrade" />
+        <activity android:name=".ToPdf" />
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings" />
+        <activity android:name=".GuestActivity" />
+        <activity
+            android:name=".UploadDocument"
+            android:label="@string/title_activity_upload_document"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".DocumentUpload" />
+        <activity
+            android:name=".Weather"
+            android:label="@string/title_activity_weather"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MyInterest"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Unvrified"
+            android:label="@string/title_activity_unvrified"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AllStockList"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".About"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TermsAndConditions"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Notification"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RequestStock"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <service
+            android:name=".Model.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity
+            android:name=".ProfilePage"
+            android:label="Profile Page"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Sign_up"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AddStock"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ScreenSlidePagerActivity" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.com.vansuita.pickimage.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" />
+        </provider>
+
+        <activity
+            android:name=".Wallet"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Trader"
+            android:label="@string/title_activity_trader"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".QualityCheck"
+            android:label="@string/title_activity_quality_check"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Farmer"
+            android:label="@string/title_activity_farmer"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Father"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
+        <activity
+            android:name=".TestActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ForgotPassword"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Employee"
+            android:label="Employee"
+            android:theme="@style/AppTheme.NoActionBar" />
+    </application>
+
+</manifest>

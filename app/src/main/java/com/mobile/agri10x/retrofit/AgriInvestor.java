@@ -1,0 +1,32 @@
+package com.mobile.agri10x.retrofit;
+
+import com.mobile.agri10x.models.GetRequestedCommodity;
+import com.mobile.agri10x.models.GetRequestedVariety;
+import com.mobile.agri10x.models.GetTradeCommodity;
+import com.mobile.agri10x.models.GetTradeVariety;
+
+import java.util.List;
+
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.Header;
+import retrofit2.http.POST;
+
+public interface AgriInvestor {
+
+
+    @GET("getTradeCommodity")
+    Call<List<GetTradeCommodity>> wsgetTradeCommodity(@Header("x-auth-token") String token);
+
+
+    @POST("getTradeVariety")
+    Call<List<GetTradeVariety>> wsgetTradeVariety(@Header("x-auth-token") String token, @Body RequestBody params);
+
+    @GET("getRequestedCommodity")
+    Call<List<GetRequestedCommodity>> wsgetRequestedCommodity(@Header("x-auth-token") String token);
+
+    @POST("getRequestedVariety")
+    Call<List<GetRequestedVariety>> wsgetRequestedVariety(@Header("x-auth-token") String token, @Body RequestBody params);
+}

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    android:background="@drawable/screen"
+    tools:context=".Trader"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentScrim="@color/appgreen"
+            app:layout_scrollFlags="scroll|snap|enterAlwaysCollapsed"
+            app:title="@string/titlename">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="250sp"
+                android:src="@drawable/colapsing"
+                android:scaleType="centerCrop"/>
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"/>
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="15sp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10sp" />
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="1"
+                android:useDefaultMargins="true"
+                android:layout_gravity="center">
+
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/ucard_request"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginEnd="15sp"
+                    android:background="@drawable/ic_request"
+                    android:padding="30dp" />
+
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/ucard_kyc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_kyc"
+                    android:padding="30dp"
+                    android:layout_marginTop="10sp"/>
+
+            </GridLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30sp"
+                android:fontFamily="@font/roboto"
+                android:paddingLeft="10sp"
+                android:paddingRight="10sp"
+                android:text="@string/string2"
+                android:textAlignment="gravity"
+                android:textColor="#ffffff"
+                android:textDirection="firstStrong"
+                android:textSize="22sp"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

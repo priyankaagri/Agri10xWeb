@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.vincan:rotatecircleimageview:1.0.0@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/907fc3ba9ccbb3aad15a10d203f46630/jetified-rotatecircleimageview-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/907fc3ba9ccbb3aad15a10d203f46630/jetified-rotatecircleimageview-1.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/907fc3ba9ccbb3aad15a10d203f46630/jetified-rotatecircleimageview-1.0.0/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vincan/rotatecircleimageview/1.0.0/fe372f12831257b6c2cf8e312ae9e144d9d506c3/rotatecircleimageview-1.0.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.vincan/rotatecircleimageview/1.0.0/17d740e9bd2c1310943692366d1b2cfac8f1255e/rotatecircleimageview-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000000</color>
+    <color name="colorPrimaryDark">#052910</color>
+    <color name="colorAccent">#166521</color>
+    <color name="colourGreen">#052910</color>
+    <color name="colourBlack">#000000</color>
+    <color name="colourWhite">#ffffff</color>
+    <color name="appgreen">#A2C92C</color>
+    <color name="tab_indicator_gray">#c0c0c0</color>
+
+</resources>
