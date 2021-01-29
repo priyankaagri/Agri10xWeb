@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+   "/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -17,15 +18,18 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_agri10x_leaf"
+        android:icon="@drawable/applogo"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@drawable/applogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".WebPage"
-            ></activity>
+        <activity android:name=".OTP"
+            android:label="OTP Verification"
+            android:windowSoftInputMode="stateHidden"></activity>
+        <activity android:name=".WebPage" />
         <activity android:name=".ActiveTrade" />
         <activity android:name=".ToPdf" />
         <activity
@@ -55,7 +59,8 @@
         <activity
             android:name=".Weather"
             android:label="@string/title_activity_weather"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".MyInterest"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -81,6 +86,7 @@
 
         <service
             android:name=".Model.MyFirebaseMessagingService"
+            android:enabled="true"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

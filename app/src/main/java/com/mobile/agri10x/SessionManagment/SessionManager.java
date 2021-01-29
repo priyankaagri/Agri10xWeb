@@ -11,6 +11,7 @@ import com.mobile.agri10x.Model.KYC_data;
 import com.mobile.agri10x.Model.Main;
 import com.mobile.agri10x.Model.SecurityData;
 import com.mobile.agri10x.Model.User;
+import com.mobile.agri10x.WebPage;
 
 
 public class SessionManager {
@@ -188,7 +189,7 @@ public class SessionManager {
     public static void logoutUser() {
         editor.clear();
         editor.commit();
-        Intent i = new Intent(_context, LoginActivity.class);
+        Intent i = new Intent(_context, WebPage.class);
         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         SecurityData.setClosingBalance(null);
         SecurityData.setWithdthrawBalance(null);

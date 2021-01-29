@@ -48,6 +48,7 @@ import com.mobile.agri10x.Model.User;
 import com.mobile.agri10x.Model.UserId;
 import com.mobile.agri10x.Model.registrationToken;
 import com.mobile.agri10x.SessionManagment.SessionManager;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -366,8 +367,9 @@ public class Trader extends AppCompatActivity
                         ErrorLog errorLog = new ErrorLog(Main.getIp()+"/UserInfo","Firstname","String",null,"Trader.LoadEntitiyData->onPostExecute()",getResources().getString(R.string.DeviceName),getClass().getSimpleName());
                         Main.addErrorReportRequest(errorLog,Trader.this);
                     }
+                    Picasso.with(Trader.this).load(Main.getBaseUrl()+u.getImgUrl()).into(nav_image);
                     //new Trader.downloadImage().execute(Main.getBaseUrl()+u.getImgUrl());
-                    new Trader.DownloadImageTask(nav_image).execute(Main.getBaseUrl()+u.getImgUrl());
+                  //  new Trader.DownloadImageTask(nav_image).execute(Main.getBaseUrl()+u.getImgUrl());
                     //CreateNewSession(u);
                 }
             }
@@ -751,6 +753,7 @@ public class Trader extends AppCompatActivity
         }
         if (id == R.id.weather) {
             Intent i = new Intent(Trader.this, Weather.class);
+            Log.d("params",city_name+" "+user_data_intent.get_id());
             i.putExtra("cityname",city_name);
             i.putExtra("Userid",user_data_intent.get_id());
             startActivity(i);
@@ -768,6 +771,16 @@ public class Trader extends AppCompatActivity
             Intent i = new Intent(Trader.this,UploadDocument.class);
             i.putExtra("Userid",user_data_intent.get_id());
             startActivity(i);
+        }
+
+        else  if(id == R.id.logout){
+            if(SessionManager.getKEY_regToken_bool()) {
+                LogOut out = new LogOut(Main.id(Trader.this));
+                new Trader.deleteToken().execute(Main.getIp() + "/deleteToken", new Gson().toJson(out));
+            }else
+            {
+                SessionManager.logoutUser();
+            }
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

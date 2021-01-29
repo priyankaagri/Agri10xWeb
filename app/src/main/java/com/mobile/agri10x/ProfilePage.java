@@ -25,6 +25,7 @@ import com.mobile.agri10x.Model.ErrorLog;
 import com.mobile.agri10x.Model.Main;
 import com.mobile.agri10x.Model.SecurityData;
 import com.mobile.agri10x.Model.User;
+import com.squareup.picasso.Picasso;
 
 import java.io.InputStream;
 
@@ -32,9 +33,9 @@ import java.io.InputStream;
 public class ProfilePage extends AppCompatActivity {
 
     Toolbar toolbar;
-    ImageView role_image,kyc_status_image;
+    ImageView kyc_status_image;
     //    RatingBar user_rating;
-    TextView email,phone_no,Address,user_Name,entryDate;
+    TextView email,phone_no,Address,user_Name,entryDate,role_image;
     ImageView userImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,9 @@ public class ProfilePage extends AppCompatActivity {
 
         //new LoadEntitiyData().execute(Main.getIp()+"/UserInfo");
         //Profile image
-        new ProfilePage.DownloadImageTask(userImage).execute(Main.getBaseUrl()+u.getImgUrl());
+
+        Picasso.with(ProfilePage.this).load(Main.getBaseUrl()+u.getImgUrl()).into(userImage);
+       // new ProfilePage.DownloadImageTask(userImage).execute(Main.getBaseUrl()+u.getImgUrl());
         //new ProfilePage.downloadImage().execute(Main.getBaseUrl()+u.getImgUrl());
         //Username
         if(u.getFirstname()!=null )
@@ -73,24 +76,36 @@ public class ProfilePage extends AppCompatActivity {
             if(u.getLastname()!=null)
                 name +=u.getLastname();
             if(name!=null)
-                user_Name.setText(name);
+                user_Name.setText(u.getFirstname() + " "+u.getLastname());
         }
         //Date Created
         if(u.getDateCreated()!=null)
             entryDate.setText(u.getDateCreated());
         //KYC status
+        if (u.getRole() != null){
+            if(u.getRole().equals("PTrader")){
+                role_image.setText("Trader");
+            }else{
+                role_image.setText(u.getRole());
+            }
+
+        }else{
+            role_image.setText("");
+        }
         String kyc_status = u.getKyc();
         if (kyc_status != null && kyc_status.equals("Verified")) {
             //verified
-            String uri = "@drawable/kyc_status_placeholder";
-            int imageResource = getResources().getIdentifier(uri, null, getPackageName());
-            Drawable res = getResources().getDrawable(imageResource);
-            kyc_status_image.setImageDrawable(res);
+//            String uri = "@drawable/kyc_status_placeholder";
+//            int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+//            Drawable res = getResources().getDrawable(imageResource);
+//            kyc_status_image.setImageDrawable(res);
+            kyc_status_image.setBackgroundResource(R.drawable.kyc_done);
         } else {   //not verified
-            String uri = "@drawable/kyc_not_done";
-            int imageResource = getResources().getIdentifier(uri, null, getPackageName());
-            Drawable res = getResources().getDrawable(imageResource);
-            kyc_status_image.setImageDrawable(res);
+//            String uri = "@drawable/kyc_not_done";
+//            int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+//            Drawable res = getResources().getDrawable(imageResource);
+//            kyc_status_image.setImageDrawable(res);
+            kyc_status_image.setBackgroundResource(R.drawable.kyc_not_done);
         }
         //Email
         email.setText(u.getEmail());

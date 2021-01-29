@@ -1,9 +1,12 @@
 package com.mobile.agri10x.retrofit;
 
+import com.mobile.agri10x.models.GetOTP;
 import com.mobile.agri10x.models.GetRequestedCommodity;
 import com.mobile.agri10x.models.GetRequestedVariety;
 import com.mobile.agri10x.models.GetTradeCommodity;
 import com.mobile.agri10x.models.GetTradeVariety;
+import com.mobile.agri10x.models.resendOTP;
+import com.mobile.agri10x.models.verfyOTP;
 
 import java.util.List;
 
@@ -29,4 +32,14 @@ public interface AgriInvestor {
 
     @POST("getRequestedVariety")
     Call<List<GetRequestedVariety>> wsgetRequestedVariety(@Header("x-auth-token") String token, @Body RequestBody params);
+
+    @GET("getOTP")
+    Call<GetOTP> wsgetOTP(@Header("x-auth-token") String token, @Body RequestBody params);
+
+
+    @POST("verifyOTP")
+    Call<verfyOTP> wsverifyOTP(@Header("x-auth-token") String token, @Body RequestBody params);
+
+    @POST("resendOTP")
+    Call<resendOTP> wsResendOTP(@Header("x-auth-token") String token, @Body RequestBody params);
 }

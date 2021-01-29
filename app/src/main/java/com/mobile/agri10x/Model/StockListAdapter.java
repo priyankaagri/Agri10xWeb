@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mobile.agri10x.Connection.LoadImage;
@@ -43,7 +44,7 @@ public class StockListAdapter extends RecyclerView.Adapter<StockListAdapter.Stoc
     public StockListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflating and returning our view holder
         LayoutInflater inflater = LayoutInflater.from(mCtx);
-        View view = inflater.inflate(R.layout.my_stock_list, null);//stock_list_card
+        View view = inflater.inflate(R.layout.stock_list_card, null);//stock_list_card   my_stock_list
         return new StockListViewHolder(view);
     }
 
@@ -52,6 +53,8 @@ public class StockListAdapter extends RecyclerView.Adapter<StockListAdapter.Stoc
         //getting the product of the specified position
 
         StockList product = productList.get(position);
+
+holder.cardview.setBackgroundResource(R.drawable.card_view_border);
         if(product.getCommodityname()!=null)
             holder.Commodityname.setText(product.getCommodityname());
         else{
@@ -210,12 +213,16 @@ public class StockListAdapter extends RecyclerView.Adapter<StockListAdapter.Stoc
      class StockListViewHolder extends RecyclerView.ViewHolder {
 LinearLayout hari;
         TextView Unit, Quality, Quantity,Commodityname,Blockquantity,Perishable,ColdStorage,Entrytime;
-         ImageView imageView;
+         ImageView imageView,arrowdown,arrowup;
+         CardView cardview;
 
         public StockListViewHolder(View itemView) {
             super(itemView);
 
 
+            cardview = itemView.findViewById(R.id.cardview);
+            arrowup = itemView.findViewById(R.id.arrowup);
+            arrowdown = itemView.findViewById(R.id.arrowdown);
             Commodityname= itemView.findViewById(R.id.commoditynamestocklist);
             Quality = itemView.findViewById(R.id.qualitystocklist);
             Quantity = itemView.findViewById(R.id.quantitystocklist);

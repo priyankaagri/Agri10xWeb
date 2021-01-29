@@ -44,6 +44,9 @@ public class WeatherConditions {
                 if(response.code() == 404){
                     listener.getWeatherData(null, false, "");
                 }
+                if( response.code() == 400){
+                    listener.getWeatherData(null, false, "");
+                }
                 if (response.body() != null) {
                     if (listener != null)
                         listener.getWeatherData(response.body(), true, "");

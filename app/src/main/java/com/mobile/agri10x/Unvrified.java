@@ -39,6 +39,7 @@ import com.mobile.agri10x.Connection.LoadImage;
 import com.mobile.agri10x.Connection.POSTRequest;
 import com.mobile.agri10x.Model.ErrorLog;
 import com.mobile.agri10x.Model.GetBidStatus;
+import com.mobile.agri10x.Model.LogOut;
 import com.mobile.agri10x.Model.Main;
 import com.mobile.agri10x.Model.SecurityData;
 import com.mobile.agri10x.Model.UnverifiedUserModels.DemoFragmentCollectionAdapter;
@@ -46,6 +47,8 @@ import com.mobile.agri10x.Model.UnverifiedUserModels.Information;
 import com.mobile.agri10x.Model.UnverifiedUserModels.Information_Adapter;
 import com.mobile.agri10x.Model.User;
 import com.mobile.agri10x.Model.UserId;
+import com.mobile.agri10x.SessionManagment.SessionManager;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -77,6 +80,7 @@ public class Unvrified extends AppCompatActivity
     private DemoFragmentCollectionAdapter adapter;
     DrawerLayout drawer;
     User user_data_intent,profile;
+    public String city_name;
     public AppCompatImageButton ucard_request,ucard_kyc;
 
     @Override
@@ -106,7 +110,7 @@ public class Unvrified extends AppCompatActivity
         user_data_intent = (User) getIntent().getSerializableExtra("User_data");
         UserId userId=new UserId();
         userId.setUserid(user_data_intent.get_id());
-
+        city_name = user_data_intent.getCity();
         ucard_kyc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -120,15 +124,15 @@ public class Unvrified extends AppCompatActivity
         ucard_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(SecurityData.getCommodity()==null) {
-                    new Unvrified.getComodity().execute(Main.getOldUrl()+"/getComm",new Gson().toJson(userId));
-                    //new getComodity().execute(Main.getOldUrl()+"/getComm");
-                }else{
+//                if(SecurityData.getCommodity()==null) {
+//                    new Unvrified.getComodity().execute(Main.getOldUrl()+"/getComm",new Gson().toJson(userId));
+//                    //new getComodity().execute(Main.getOldUrl()+"/getComm");
+//                }else{
                     Intent i = new Intent(Unvrified.this,RequestStock.class);
                     i.putExtra("Userid",user_data_intent.get_id());
                     i.putExtra("user_type",user_data_intent.getRole());
                     startActivity(i);
-                }
+               // }
             }
         });
 
@@ -261,7 +265,8 @@ public class Unvrified extends AppCompatActivity
                     if(name!=null)
                         nav_username.setText(name);
                     if(u.getImgUrl().length()>5){
-                        new DownloadImageTask(nav_image).execute(Main.getBaseUrl()+u.getImgUrl());
+                        Picasso.with(Unvrified.this).load(Main.getBaseUrl()+u.getImgUrl()).into(nav_image);
+                       // new DownloadImageTask(nav_image).execute(Main.getBaseUrl()+u.getImgUrl());
                     }
 
                     //new downloadImage().execute(Main.getImageUrl()+u.getImgUrl());
@@ -383,7 +388,7 @@ public class Unvrified extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.nav_logout_unverified) {
-            Intent i = new Intent(Unvrified.this,LoginActivity.class);
+            Intent i = new Intent(Unvrified.this,WebPage.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
             return true;
@@ -402,7 +407,12 @@ public class Unvrified extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_unverified_weather) {
-            startActivity(new Intent(Unvrified.this,Weather.class));
+//            startActivity(new Intent(Unvrified.this,Weather.class));
+            Intent intent = new Intent(Unvrified.this,Weather.class);
+            Log.d("getparams",city_name+" "+user_data_intent.get_id());
+            intent.putExtra("cityname",city_name);
+            intent.putExtra("Userid",user_data_intent.get_id());
+            startActivity(intent);
         } else if (id == R.id.nav_about) {
             startActivity(new Intent(Unvrified.this,About.class));
         } else if (id == R.id.nav_tnc) {
@@ -410,7 +420,11 @@ public class Unvrified extends AppCompatActivity
         } else if(id==R.id.unverified_upload_documents) {
             startActivity(new Intent(Unvrified.this,UploadDocument.class));
         }
-
+        else  if(id == R.id.logout){
+            Intent i = new Intent(Unvrified.this,WebPage.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
+        }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -509,6 +523,7 @@ public class Unvrified extends AppCompatActivity
                         SecurityData.setCommodity(Commodity);
                         Intent i = new Intent(Unvrified.this, RequestStock.class);
                         i.putExtra("Userid",user_data_intent.get_id());
+                        i.putExtra("user_type",user_data_intent.getRole());
                         startActivity(i);
                     } catch (JSONException e) {
                         e.printStackTrace();

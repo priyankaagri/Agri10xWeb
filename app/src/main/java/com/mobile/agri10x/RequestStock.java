@@ -53,6 +53,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner;
+import gr.escsoft.michaelprimez.searchablespinner.interfaces.OnItemSelectedListener;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -71,14 +73,15 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
     private static final String[] comm = new String[]{
             "wheat","almond","potato","onion"
     };
-
+    SimpleListAdapter1 mSimpleListAdapter;
     String Comm="",unit="",Quan="",vlfrom="",vlTill="",qual="",role="",Organic="",ResidueFree="",UserType="",variety="",commid,strcomname,varietyid;
     List<GetRequestedCommodity> getRequestedCommodityArrayList = new ArrayList<>();
     List<GetRequestedVariety> getRequestedVarietyArrayList = new ArrayList<>();
     ArrayList<String> ReqCommoditycategory = new ArrayList<>();
     ArrayList<String> ReqVarietycategory = new ArrayList<>();;
     SessionManager session;
-    MaterialBetterSpinner commodity,Variety;
+    SearchableSpinner commodity;
+    MaterialBetterSpinner Variety;
     MaterialBetterSpinner commodityunit;
     EditText quantity,quality;
     Button btn,back;
@@ -98,17 +101,25 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_stock);
-
-
+        commodityunit =(MaterialBetterSpinner) findViewById(R.id.CommodityUnit);
+        quality_spinner=(Spinner) findViewById(R.id.quality_spinner);
+        Variety = (MaterialBetterSpinner) findViewById(R.id.Variety);
+        commodity =  findViewById(R.id.Commodity);
+        quantity = (EditText) findViewById(R.id.comm_quantity);
+        btn =(Button) findViewById(R.id.addrequest_button);
         //toolbar = findViewById(R.id.toolbar_request_code);
-
+        velidFrom = (TextView) findViewById(R.id.validFrom);
+        velidTill =  (TextView) findViewById(R.id.validTill);
+        request_group= (RadioGroup) findViewById(R.id.request_group);
+        organic_group = (RadioGroup) findViewById(R.id.organic_group);
+        residue_group =(RadioGroup)  findViewById(R.id.residue_group);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             userId=new UserId();
             userId.setUserid(extras.getString("Userid"));
             UserType=extras.getString("user_type");
         }
-        quality_spinner=findViewById(R.id.quality_spinner);
+
 
 
         List<String> type = new ArrayList<String>();
@@ -133,10 +144,7 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
                 finish();
             }
         });*/
-        Variety = findViewById(R.id.Variety);
-        commodity = findViewById(R.id.Commodity);
-        quantity = findViewById(R.id.comm_quantity);
-        btn = findViewById(R.id.addrequest_button);
+
 
 
 //        ArrayAdapter<String> commodity_adapter = new ArrayAdapter<String>(this,
@@ -152,21 +160,17 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
 
         ArrayAdapter<String> comm_unit = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, Unit);
-        commodityunit = findViewById(R.id.CommodityUnit);
+
         commodityunit.setAdapter(comm_unit);
 
-        velidFrom = findViewById(R.id.validFrom);
-        velidTill = findViewById(R.id.validTill);
-        request_group=findViewById(R.id.request_group);
-        organic_group = findViewById(R.id.organic_group);
-        residue_group = findViewById(R.id.residue_group);
+
         request_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 MaterialRadioButton rb = (MaterialRadioButton) group.findViewById(checkedId);
                 if (rb.isChecked()) {
                     role = rb.getText().toString();
-                   // Toast.makeText(RequestStock.this, rb.getText(), Toast.LENGTH_SHORT).show();
+                    // Toast.makeText(RequestStock.this, rb.getText(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -177,11 +181,11 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
                 MaterialRadioButton rb = (MaterialRadioButton) group.findViewById(checkedId);
                 if (rb.getText().equals("Yes")) {
                     ResidueFree = "true";
-                 //   Toast.makeText(RequestStock.this, rb.getText().toString(), Toast.LENGTH_SHORT).show();
+                    //   Toast.makeText(RequestStock.this, rb.getText().toString(), Toast.LENGTH_SHORT).show();
                 }
                 else {
                     ResidueFree = "false";
-                 //   Toast.makeText(RequestStock.this, rb.getText().toString(), Toast.LENGTH_SHORT).show();
+                    //   Toast.makeText(RequestStock.this, rb.getText().toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -192,11 +196,11 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
                 MaterialRadioButton rb = (MaterialRadioButton) group.findViewById(checkedId);
                 if (rb.getText().equals("Yes")) {
                     Organic="true";
-                  //  Toast.makeText(RequestStock.this, rb.getText().toString(), Toast.LENGTH_SHORT).show();
+                    //  Toast.makeText(RequestStock.this, rb.getText().toString(), Toast.LENGTH_SHORT).show();
                 }
                 else {
                     Organic = "false";
-                 //   Toast.makeText(RequestStock.this, rb.getText().toString(), Toast.LENGTH_SHORT).show();
+                    //   Toast.makeText(RequestStock.this, rb.getText().toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -323,27 +327,52 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
                 }
             }
         });
-        commodity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        commodity.setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("commodityval", String.valueOf(i));
-
-                String selectedItem = adapterView.getItemAtPosition(i).toString();
-
-                Log.d("kjjjjjkkjkjjk", selectedItem);
-                if (selectedItem.equals("Select")) {
-                    commid = "";
-                } else {
-
-                    commid = getComId(i);
-                    strcomname = getComName(i);
-
-                    callvariety(commid);
+            public void onItemSelected(View view, int position, long id) {
+                //   Toast.makeText(AddStock.this, "Item on position " + position + " : " + mSimpleListAdapter.getItem(position) + " Selected", Toast.LENGTH_SHORT).show();
+                String pos = commodity.getSelectedItem().toString();
+                Log.d("selectedcommo",pos);
+                for(int i= 0 ;i < getRequestedCommodityArrayList.size() ; i++){
+                    if(pos.equals(getRequestedCommodityArrayList.get(i).getCommodity())){
+                        commid = getRequestedCommodityArrayList.get(i).getId();
+                        strcomname = getRequestedCommodityArrayList.get(i).getCommodity();
+                    }
                 }
+//                    commid = getComId(position);
+//                    strcomname = getComName(position);
 
-                Log.d("checkcommid",commid);
+
+                Log.d("getcommidnname",commid+" "+strcomname);
+                callvariety(commid);
+            }
+
+            @Override
+            public void onNothingSelected() {
+
             }
         });
+//        commodity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Log.d("commodityval", String.valueOf(i));
+//
+//                String selectedItem = adapterView.getItemAtPosition(i).toString();
+//
+//                Log.d("kjjjjjkkjkjjk", selectedItem);
+//                if (selectedItem.equals("Select")) {
+//                    commid = "";
+//                } else {
+//
+//                    commid = getComId(i);
+//                    strcomname = getComName(i);
+//
+//                    callvariety(commid);
+//                }
+//
+//                Log.d("checkcommid",commid);
+//            }
+//        });
 
         Variety.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -462,13 +491,27 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
                     Log.d("getresponsereq", String.valueOf(getRequestedCommodityArrayList.size()));
 
 
-                    for(int i=0; i < getRequestedCommodityArrayList.size();i++){
-                        ReqCommoditycategory.add(getRequestedCommodityArrayList.get(i).getCommodity());
+
+
+                    if(!getRequestedCommodityArrayList.isEmpty()){
+
+                        commodity.setClickable(true);
+                        commodity.setFocusable(true);
+                        //                    Commoditycategory.add("Select");
+                        for(int i=0; i < getRequestedCommodityArrayList.size();i++){
+                            ReqCommoditycategory.add(getRequestedCommodityArrayList.get(i).getCommodity());
+                        }
+                        Log.d("ReqCommoditycategory", String.valueOf(ReqCommoditycategory.size()));
+
+                        commodity.setAdapter(new ArrayAdapter<String>(RequestStock.this, android.R.layout.simple_dropdown_item_1line, ReqCommoditycategory));
+
+
+                    }else{
+
+                        ReqCommoditycategory.add("No Data");
+                        mSimpleListAdapter = new SimpleListAdapter1(RequestStock.this, ReqCommoditycategory);
+                        commodity.setAdapter(new ArrayAdapter<String>(RequestStock.this, android.R.layout.simple_dropdown_item_1line, ReqCommoditycategory));
                     }
-                    Log.d("ReqCommoditycategory", String.valueOf(ReqCommoditycategory.size()));
-
-                    commodity.setAdapter(new ArrayAdapter<String>(RequestStock.this, android.R.layout.simple_dropdown_item_1line, ReqCommoditycategory));
-
                 }
             }
 
@@ -526,7 +569,7 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-    qual = parent.getItemAtPosition(position).toString();
+        qual = parent.getItemAtPosition(position).toString();
     }
 
     @Override
@@ -547,7 +590,8 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
                 } else {
                     quantity.setText("");
                     //quality.setText("");
-                    commodity.setText("");
+                    commodity.setSelectedItem(0);
+                 //   commodity.setText("");
                     commodityunit.setText("");
                     velidFrom.setText("");
                     velidTill.setText("");

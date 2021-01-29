@@ -3,6 +3,7 @@ package com.mobile.agri10x;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,6 +20,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -51,6 +54,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner;
+import gr.escsoft.michaelprimez.searchablespinner.interfaces.OnItemSelectedListener;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -60,6 +65,7 @@ public class AddStock extends AppCompatActivity {
     List<GetTradeCommodity> getTradeCommodityArrayList = new ArrayList<>();
     List<GetTradeVariety> getTradeVarietyArrayList = new ArrayList<>();
     ArrayList<String> Commoditycategory = new ArrayList<>();
+    SimpleListAdapter mSimpleListAdapter;
     ArrayList<String> Varietycategory = new ArrayList<>();;
     private static final String[] Value = new String[]{
             "Yes", "No"
@@ -71,7 +77,8 @@ public class AddStock extends AppCompatActivity {
 
     ImageView stock_image;
     EditText quantity;
-    MaterialBetterSpinner commodity, commodityunit, perishable, coldstorage,Variety;
+    SearchableSpinner commodity;
+    MaterialBetterSpinner commodityunit, perishable, coldstorage,Variety;
     String Quan, Cold, Comm, Peri, unit;
     Bitmap stockbitmap;
     private Button back;
@@ -138,6 +145,31 @@ callapi();
 //                android.R.layout.simple_dropdown_item_1line, getTradeCommodityArrayList);
 //        commodity.setAdapter(adapter);
 
+commodity.setOnItemSelectedListener(new OnItemSelectedListener() {
+    @Override
+    public void onItemSelected(View view, int position, long id) {
+     //   Toast.makeText(AddStock.this, "Item on position " + position + " : " + mSimpleListAdapter.getItem(position) + " Selected", Toast.LENGTH_SHORT).show();
+String pos = commodity.getSelectedItem().toString();
+Log.d("selectedcommo",pos);
+for(int i= 0 ;i < getTradeCommodityArrayList.size() ; i++){
+    if(pos.equals(getTradeCommodityArrayList.get(i).getCommodity())){
+        commid = getTradeCommodityArrayList.get(i).getId();
+        strcomname = getTradeCommodityArrayList.get(i).getCommodity();
+    }
+}
+//                    commid = getComId(position);
+//                    strcomname = getComName(position);
+
+
+                    Log.d("getcommidnname",commid+" "+strcomname);
+                    callvariety(commid);
+    }
+
+    @Override
+    public void onNothingSelected() {
+
+    }
+});
 
 //        commodity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 //            @Override
@@ -162,27 +194,58 @@ callapi();
 //
 //            }
 //        });
-        commodity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Log.d("commodityval", String.valueOf(i));
 
-                String selectedItem = adapterView.getItemAtPosition(i).toString();
-
-                Log.d("kjjjjjkkjkjjk", selectedItem);
-                if (selectedItem.equals("Select")) {
-                    commid = "";
-                } else {
-
-                    commid = getComId(i);
-                    strcomname = getComName(i);
-
-                    callvariety(commid);
-                }
-
-                Log.d("checkcommid",commid);
-            }
-        });
+//        commodity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//
+//            @Override
+//            public void onItemSelected(AdapterView<?> adapter, View v, int position, long id) {
+//                // On selecting a spinner item
+//                ((TextView) adapter.getChildAt(0)).setTextColor(Color.BLACK);
+//                Log.d("commodityval", String.valueOf(position));
+//
+//                String selectedItem = adapter.getItemAtPosition(position).toString();
+//
+//                Log.d("kjjjjjkkjkjjk", selectedItem);
+//                if (selectedItem.equals("Select")) {
+//                    commid = "";
+//                } else {
+//
+//                    commid = getComId(position);
+//                    strcomname = getComName(position);
+//
+//                    callvariety(commid);
+//                }
+//
+//                Log.d("checkcommid",commid);
+//
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> arg0) {
+//                // TODO Auto-generated method stub
+//            }
+//        });
+//        commodity.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Log.d("commodityval", String.valueOf(i));
+//
+//                String selectedItem = adapterView.getItemAtPosition(i).toString();
+//
+//                Log.d("kjjjjjkkjkjjk", selectedItem);
+//                if (selectedItem.equals("Select")) {
+//                    commid = "";
+//                } else {
+//
+//                    commid = getComId(i);
+//                    strcomname = getComName(i);
+//
+//                    callvariety(commid);
+//                }
+//
+//                Log.d("checkcommid",commid);
+//            }
+//        });
         Variety.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -233,7 +296,7 @@ callapi();
             public void onClick(View v) {
                 unit = commodityunit.getText().toString().trim();
                 Cold = coldstorage.getText().toString().trim();
-                Comm = strcomname;
+                Comm = commid;
                 Peri = perishable.getText().toString().trim();
                 Quan = quantity.getText().toString().trim();
 
@@ -354,14 +417,30 @@ Log.d("checkid",Ccomid);
                     getTradeCommodityArrayList = response.body();
                     Log.d("getresponse", String.valueOf(getTradeCommodityArrayList.size()));
 
-//                    Commoditycategory.add("Select");
-                    for(int i=0; i < getTradeCommodityArrayList.size();i++){
-                        Commoditycategory.add(getTradeCommodityArrayList.get(i).getCommodity());
+
+
+
+
+                    if(!getTradeCommodityArrayList.isEmpty()){
+
+                        commodity.setClickable(true);
+                        commodity.setFocusable(true);
+                        //                    Commoditycategory.add("Select");
+                        for(int i=0; i < getTradeCommodityArrayList.size();i++){
+                            Commoditycategory.add(getTradeCommodityArrayList.get(i).getCommodity());
+                        }
+                        Log.d("Commoditycategory", String.valueOf(Commoditycategory.size()));
+
+                        mSimpleListAdapter = new SimpleListAdapter(AddStock.this, Commoditycategory);
+                        commodity.setAdapter(new ArrayAdapter<String>(AddStock.this, android.R.layout.simple_dropdown_item_1line, Commoditycategory));
+//commodity.setAdapter(mSimpleListAdapter);
+
+                    }else{
+
+                        Commoditycategory.add("No Data");
+                        mSimpleListAdapter = new SimpleListAdapter(AddStock.this, Commoditycategory);
+                        commodity.setAdapter(new ArrayAdapter<String>(AddStock.this, android.R.layout.simple_dropdown_item_1line, Commoditycategory));
                     }
-Log.d("Commoditycategory", String.valueOf(Commoditycategory.size()));
-
-                    commodity.setAdapter(new ArrayAdapter<String>(AddStock.this, android.R.layout.simple_dropdown_item_1line, Commoditycategory));
-
                 }
             }
 
@@ -453,7 +532,8 @@ Log.d("Commoditycategory", String.valueOf(Commoditycategory.size()));
                    new Alert().alert("Network !!!", getResources().getString(R.string.network_error_message));
                 } else {
 //                  Toast.makeText(AddStock.this, s, Toast.LENGTH_LONG).show();
-                    commodity.setText("");
+                   // commodity.setText("");
+                    commodity.setSelectedItem(0);
                     Variety.setText("");
                     commodityunit.setText("");
                     perishable.setText("");
@@ -508,4 +588,7 @@ Log.d("Commoditycategory", String.valueOf(Commoditycategory.size()));
         }
 
     }
+
+
+
 }

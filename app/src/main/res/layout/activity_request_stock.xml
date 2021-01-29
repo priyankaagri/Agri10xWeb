@@ -42,21 +42,22 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#c51a2d"
-                app:cardCornerRadius="4dp"
-                android:layout_marginTop="16dp"
-                app:cardElevation="8dp"
-                app:cardUseCompatPadding="true">
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="#c51a2d"-->
+<!--                app:cardCornerRadius="4dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                app:cardElevation="8dp"-->
+<!--                app:cardUseCompatPadding="true">-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:background="#c51a2d"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginLeft="15dp"
                     android:orientation="vertical">
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -64,16 +65,19 @@
                         android:layout_height="wrap_content"
                         android:textColorHint="@color/quantum_white_100">
 
-                        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
                             android:id="@+id/Commodity"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Commodity"
-                            android:textColorHighlight="@color/quantum_white_100"
-                            android:textColorHint="@color/quantum_white_100"
-                            android:textColorLink="@color/quantum_white_100"
-                            android:textCursorDrawable="@drawable/cursor"
-                      />
+                            android:focusable="false"
+                            android:clickable="false"
+                            app:RevealViewBackgroundColor="#c51a2d"
+                            app:SearchHintText="Commodity"
+                            app:SearchViewTextColor="@color/black"
+                            app:DoneSearchTintColor="#c51a2d"
+                            app:ShowBorders="false"
+                            app:RevealEmptyText="  Commodity"
+                            app:SpinnerExpandHeight="300dp"/>
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -82,6 +86,8 @@
                         android:textColorHint="@color/quantum_white_100">
 
                         <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
                             android:id="@+id/Variety"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -92,7 +98,7 @@
                             android:textColorHint="@color/quantum_white_100"
                             android:textColorLink="@color/quantum_white_100"
                             android:textCursorDrawable="@drawable/cursor"
-                           />
+                            />
                     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -102,6 +108,8 @@
                         android:textColorHint="@color/quantum_white_100">
 
                         <EditText
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
                             android:id="@+id/comm_quantity"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -119,6 +127,8 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <LinearLayout
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="40sp">
 
@@ -151,6 +161,8 @@
                         android:textColorHint="@color/quantum_white_100">
 
                         <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
                             android:id="@+id/CommodityUnit"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -160,10 +172,12 @@
                             android:textColorHint="@color/quantum_white_100"
                             android:textColorLink="@color/quantum_white_100"
                             android:textCursorDrawable="@drawable/cursor"
-                   />
+                            />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <LinearLayout
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:orientation="horizontal"
@@ -178,7 +192,7 @@
                             android:drawablePadding="16dp"
                             android:elevation="30dp"
                             android:drawableRight="@drawable/ic_date"
-                            
+
                             android:paddingEnd="10dp"
                             android:gravity="center"
                             android:hint="Valid From"
@@ -188,7 +202,7 @@
                             android:textColorHint="@color/quantum_white_100"
                             android:textColorLink="@color/quantum_white_100"
                             android:textCursorDrawable="@drawable/cursor"
-                            android:textSize="16sp" />
+                            android:textSize="12sp" />
                         <View
                             android:layout_width="20dp"
                             android:layout_height="match_parent"/>
@@ -201,7 +215,7 @@
                             android:background="@color/quantum_black_100"
                             android:drawablePadding="16dp"
                             android:gravity="center"
-                            
+
                             android:paddingEnd="10dp"
                             android:hint="Valid Till"
                             android:inputType="number"
@@ -212,15 +226,18 @@
                             android:textColorHint="@color/quantum_white_100"
                             android:textColorLink="@color/quantum_white_100"
                             android:textCursorDrawable="@drawable/cursor"
-                            android:textSize="16sp" />
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <LinearLayout
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
                         android:paddingTop="10dp">
                         <TextView
+
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="2"
@@ -238,43 +255,45 @@
                             android:orientation="horizontal"
                             android:layout_weight="1.2"
                             android:id="@+id/request_group">
-                        <com.google.android.material.radiobutton.MaterialRadioButton
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Buy"
-                            android:textColor="@color/quantum_white_text"
-                            android:layout_weight="2"/>
-                        <com.google.android.material.radiobutton.MaterialRadioButton
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Sell"
-                            android:textColor="@color/quantum_white_text"
-                            android:layout_weight="2" />
+                            <com.google.android.material.radiobutton.MaterialRadioButton
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Buy"
+                                android:textColor="@color/quantum_white_text"
+                                android:layout_weight="2"/>
+                            <com.google.android.material.radiobutton.MaterialRadioButton
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Sell"
+                                android:textColor="@color/quantum_white_text"
+                                android:layout_weight="2" />
                         </RadioGroup>
                     </LinearLayout>
-                        <LinearLayout
+                    <LinearLayout
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="10dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:gravity="start|center"
+                            android:text="Organic"
+                            android:textColor="@color/quantum_white_100"
+                            android:textColorHighlight="@color/quantum_white_100"
+                            android:textColorHint="@color/quantum_white_100"
+                            android:textColorLink="@color/quantum_white_100"
+                            android:textCursorDrawable="@drawable/cursor"
+                            android:textSize="18sp" />
+                        <RadioGroup
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:paddingTop="10dp">
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="2"
-                                android:gravity="start|center"
-                                android:text="Organic"
-                                android:textColor="@color/quantum_white_100"
-                                android:textColorHighlight="@color/quantum_white_100"
-                                android:textColorHint="@color/quantum_white_100"
-                                android:textColorLink="@color/quantum_white_100"
-                                android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="18sp" />
-                            <RadioGroup
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_weight="1.2"
-                                android:id="@+id/organic_group">
+                            android:layout_weight="1.2"
+                            android:id="@+id/organic_group">
                             <com.google.android.material.radiobutton.MaterialRadioButton
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -287,33 +306,35 @@
                                 android:text="No"
                                 android:textColor="@color/quantum_white_text"
                                 android:layout_weight="2"/>
-                            </RadioGroup>
+                        </RadioGroup>
 
-                        </LinearLayout>
-                        <LinearLayout
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:paddingTop="10dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="2"
+                            android:gravity="start|center"
+                            android:text="Residue free"
+                            android:textColor="@color/quantum_white_100"
+                            android:textColorHighlight="@color/quantum_white_100"
+                            android:textColorHint="@color/quantum_white_100"
+                            android:textColorLink="@color/quantum_white_100"
+                            android:textCursorDrawable="@drawable/cursor"
+                            android:textSize="18sp" />
+
+                        <RadioGroup
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
-                            android:paddingTop="10dp">
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="2"
-                                android:gravity="start|center"
-                                android:text="Residue free"
-                                android:textColor="@color/quantum_white_100"
-                                android:textColorHighlight="@color/quantum_white_100"
-                                android:textColorHint="@color/quantum_white_100"
-                                android:textColorLink="@color/quantum_white_100"
-                                android:textCursorDrawable="@drawable/cursor"
-                                android:textSize="18sp" />
-
-                            <RadioGroup
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal"
-                                android:layout_weight="1.2"
-                                android:id="@+id/residue_group">
+                            android:layout_weight="1.2"
+                            android:id="@+id/residue_group">
                             <com.google.android.material.radiobutton.MaterialRadioButton
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -326,8 +347,8 @@
                                 android:text="No"
                                 android:textColor="@color/quantum_white_text"
                                 android:layout_weight="2"/>
-                            </RadioGroup>
-                        </LinearLayout>
+                        </RadioGroup>
+                    </LinearLayout>
 
                     <Button
                         android:id="@+id/addrequest_button"
@@ -347,7 +368,7 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+<!--            </androidx.cardview.widget.CardView>-->
         </RelativeLayout>
     </ScrollView>
 </LinearLayout>

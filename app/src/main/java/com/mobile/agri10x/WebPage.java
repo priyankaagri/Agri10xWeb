@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.webkit.WebSettings;
@@ -32,7 +33,8 @@ public class WebPage extends AppCompatActivity {
         WebViewClientImpl webViewClient = new WebViewClientImpl(this);
         webView.setWebViewClient(webViewClient);
 
-        webView.loadUrl("https://www.emarket.agri10x.com/");
+        webView.loadUrl("https://www.agri10x.com/");
+        Log.d("url","https://www.agri10x.com/");
 
     }
     @Override

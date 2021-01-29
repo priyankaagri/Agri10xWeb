@@ -159,18 +159,18 @@ public class Sign_up extends AppCompatActivity {
                     else if(!radioButton.isChecked()){
                         Toast.makeText(Sign_up.this,"Check the Terms & Conditions !!!",Toast.LENGTH_LONG).show();
                     }
-                    else{
-                        if (confirm_passwod_string.equals(password_string)) {
-
-                            //sent_sms();
-                            //inflateEnterOTP();
-                            contact_no_string = cpp_string + contact_no_string;
-                            new networkPOST().execute(Main.getOldUrl()+"/CreateUser");
-
-
-                        } else {
-                            Toast.makeText(Sign_up.this, "password does not match!!", Toast.LENGTH_LONG).show();
-                        }
+                   else{
+//                        if (confirm_passwod_string.equals(password_string)) {
+//
+//                            //sent_sms();
+//                            //inflateEnterOTP();
+//                            contact_no_string = cpp_string + contact_no_string;
+                           new networkPOST().execute(Main.getOldUrl()+"/CreateUser");
+//
+//
+//                        } else {
+//                            Toast.makeText(Sign_up.this, "password does not match!!", Toast.LENGTH_LONG).show();
+//                        }
                     }
                 }
                 else{
@@ -265,8 +265,8 @@ public class Sign_up extends AppCompatActivity {
                         password.setText("");
                         confirm_passwod.setText("");
                         role_spinner.setText("");
-                        wallet_password.setText("");
-                        confirm_wallet_password.setText("");
+                     //   wallet_password.setText("");
+                        //confirm_wallet_password.setText("");
                         String uri = "@drawable/profile_final";
                         int imageResource = getResources().getIdentifier(uri, null, getPackageName());
                         Drawable res = getResources().getDrawable(imageResource);
@@ -288,7 +288,7 @@ public class Sign_up extends AppCompatActivity {
                 if(role_string.equals("Quality Check")){
                     role_string = "QC";
                 }
-                SignUpUser newUser = new SignUpUser(confirm_passwod_string,email_string,first_name_string,last_name_string,encoded,"P"+role_string,contact_no_string,confirm_wallet_password_string);
+                SignUpUser newUser = new SignUpUser(email_string,first_name_string,last_name_string,encoded,"P"+role_string,contact_no_string);
                 str = POSTRequest.fetchUserData(strings[0],new Gson().toJson(newUser),Sign_up.this);
             } catch (Exception e) {
                 return "network";

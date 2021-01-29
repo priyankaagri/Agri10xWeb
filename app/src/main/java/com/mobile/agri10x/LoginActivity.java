@@ -121,13 +121,13 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
                 super.onAuthenticationSucceeded(result);
                 Toast.makeText(getApplicationContext(),
                         "Authentication succeeded!", Toast.LENGTH_SHORT).show();
-                        SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
-                        String pu = pref.getString("username","defaultValue");
-                        String pp = pref.getString("password","defaultValue");
-                        LoginUser user = new LoginUser();
-                        user.setUser(pu);
-                        user.setPwd(pp);
-                        new LoginActivity.networkPOST().execute(Main.getIp()+"/login", gson.toJson(user));
+                SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
+                String pu = pref.getString("username","defaultValue");
+                String pp = pref.getString("password","defaultValue");
+                LoginUser user = new LoginUser();
+                user.setUser(pu);
+                user.setPwd(pp);
+                new LoginActivity.networkPOST().execute(Main.getIp()+"/login", gson.toJson(user));
                 //restorePrefData();
                 try {
                     encryptSecretInformation();
@@ -356,34 +356,34 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
                     } catch (Exception e) {
                         //didnt found the data in the json string
                     }
-                        Log.e("usersession",new Gson().toJson(u));
-                        if(u.getRole().equals("Farmer") || u.getRole().equals("Admin")) {
-                            Intent i = new Intent(LoginActivity.this, Farmer.class);
-                            i.putExtra("User_data", u);
+                    Log.e("usersession",new Gson().toJson(u));
+                    if(u.getRole().equals("Farmer") || u.getRole().equals("Admin")) {
+                        Intent i = new Intent(LoginActivity.this, Farmer.class);
+                        i.putExtra("User_data", u);
 //                            i.putExtra("notification data",notification_data);
 //                            Log.e("notification","Going to Notification");
-                            startActivity(i);
-                            finish();
-                        } else if (u.getRole().equals("Trader")) {
-                            Intent i = new Intent(LoginActivity.this, Trader.class);
-                            i.putExtra("User_data", u);
+                        startActivity(i);
+                        finish();
+                    } else if (u.getRole().equals("Trader")) {
+                        Intent i = new Intent(LoginActivity.this, Trader.class);
+                        i.putExtra("User_data", u);
 //                            i.putExtra("notification data",notification_data);
-                            startActivity(i);
-                            finish();
-                        } else if (u.getRole().equals("QC")) {
-                            Intent i = new Intent(LoginActivity.this, QualityCheck.class);
-                            i.putExtra("User_data", u);
+                        startActivity(i);
+                        finish();
+                    } else if (u.getRole().equals("QC")) {
+                        Intent i = new Intent(LoginActivity.this, QualityCheck.class);
+                        i.putExtra("User_data", u);
 //                            i.putExtra("notification data",notification_data);
+                        startActivity(i);
+                        finish();
+                    } else {
+                        if(u.getRole()!=null){
+                            Intent i = new Intent(LoginActivity.this,Unvrified.class);
+                            i.putExtra("User_data", u);
                             startActivity(i);
                             finish();
-                        } else {
-                            if(u.getRole()!=null){
-                                Intent i = new Intent(LoginActivity.this,Unvrified.class);
-                                i.putExtra("User_data", u);
-                                startActivity(i);
-                                finish();
-                            }
                         }
+                    }
                 }
                 else {
                     new Alert().SignUp("UnRegistered User!!","First Register Yourself For Our Service");
@@ -398,6 +398,7 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
             try {
                 str = POSTRequest.fetchUserData(strings[0],strings[1],LoginActivity.this);
             } catch (Exception e) {
+                Log.d("exception",e.getMessage());
                 return "network";
             }
             return str;

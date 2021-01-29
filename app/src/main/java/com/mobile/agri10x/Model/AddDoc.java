@@ -5,6 +5,7 @@ public class AddDoc{
     String Ent;
     String KycType;
     String file;
+    String ext;
 
     public String getD1() {
         return D1;
@@ -12,6 +13,14 @@ public class AddDoc{
 
     public void setD1(String d1) {
         D1 = d1;
+    }
+
+    public String getExt() {
+        return ext;
+    }
+
+    public void setExt(String ext) {
+        this.ext = ext;
     }
 
     String D1;

@@ -1,10 +1,12 @@
 package com.mobile.agri10x;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -125,6 +127,9 @@ public class Weather extends AppCompatActivity implements IWeatherCallbackListen
                 //Toast.makeText(Weather.this,mLocationSearchModel.toString(),Toast.LENGTH_LONG).show();
                 WeatherConditions.getAccuWeatherData(mLocationSearchModel.getKey(), ACCU_WEATHER_APP_ID, Weather.this, true);
                 WeatherConditions.getAccuWeatherData5Days(mLocationSearchModel.getKey(), ACCU_WEATHER_APP_ID, Weather.this, true);
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
+                imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
             }
 
         });

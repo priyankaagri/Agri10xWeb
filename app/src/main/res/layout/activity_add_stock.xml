@@ -20,15 +20,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#ff3a20"
-            android:paddingRight="8dp"
-            android:paddingLeft="8dp">
+         >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#ff3a20"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_margin="15dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -55,6 +54,7 @@
 
 
                 <ImageView
+                    android:visibility="gone"
                     android:id="@+id/Stock_Image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -64,6 +64,7 @@
                     android:src="@drawable/ic_add_stock_imageupload"/>
 
                 <TextView
+                    android:visibility="gone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
@@ -73,31 +74,48 @@
                     android:gravity="center"/>
 
                 <com.google.android.material.textfield.TextInputLayout
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/quantum_white_100">
-
-                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                    android:textColor="@color/quantum_white_100">
+                    <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
                         android:id="@+id/Commodity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Commodity"
-                        android:textColor="@color/colourWhite"
-                        android:textColorHighlight="#FFFFFF"
-                        android:textColorHint="@color/quantum_white_100"
-                        android:textColorLink="@color/colourWhite"
-                        android:textCursorDrawable="@drawable/cursor"
-                         />
+                        android:focusable="false"
+                        android:clickable="false"
+                        app:RevealViewBackgroundColor="#ff3a20"
+                        app:SearchHintText="Commodity"
+                        app:SearchViewTextColor="@color/black"
+                        app:DoneSearchTintColor="#ff3a20"
+                        app:ShowBorders="false"
+                        app:RevealEmptyText="  Commodity"
+                        app:SpinnerExpandHeight="300dp"/>
+<!--                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner-->
+<!--                        android:id="@+id/Commodity"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:hint="Commodity"-->
+<!--                        android:accessibilityPaneTitle="Commodity"-->
+<!--                        android:textColor="@color/colourWhite"-->
+<!--                        android:textColorHighlight="#FFFFFF"-->
+<!--                        android:textColorHint="@color/quantum_white_100"-->
+<!--                        android:textColorLink="@color/colourWhite"-->
+
+<!--                         />-->
                 </com.google.android.material.textfield.TextInputLayout>
 
 
 
                 <com.google.android.material.textfield.TextInputLayout
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/quantum_white_100">
 
                     <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:id="@+id/Variety"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -120,6 +138,8 @@ android:focusable="false"
                     android:layout_marginTop="16dp">
 
                     <EditText
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:id="@+id/comm_quattity"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -165,6 +185,8 @@ android:focusable="false"
                     android:textColorHint="@color/quantum_white_100">
 
                     <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:id="@+id/CommodityUnit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -185,6 +207,8 @@ android:focusable="false"
                     android:textColorHint="@color/quantum_white_100">
 
                     <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:id="@+id/perishable"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -204,6 +228,8 @@ android:focusable="false"
                     android:textColorHint="@color/quantum_white_100">
 <!--                    app:met_floatingLabel="normal"-->
                     <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:id="@+id/ColdStorage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

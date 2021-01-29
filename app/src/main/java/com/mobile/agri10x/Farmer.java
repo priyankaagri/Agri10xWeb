@@ -60,6 +60,7 @@ import com.mobile.agri10x.models.GetRequestedCommodity;
 import com.mobile.agri10x.models.GetTradeCommodity;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -426,8 +427,9 @@ public class Farmer extends AppCompatActivity
                         ErrorLog errorLog = new ErrorLog(Main.getIp()+"/UserInfo","Firstname","String",null,"Farmer.LoadEntitiyData->onPostExecute()",getResources().getString(R.string.DeviceName),getClass().getSimpleName());
                         Main.addErrorReportRequest(errorLog,Farmer.this);
                     }
+                    Picasso.with(Farmer.this).load(Main.getBaseUrl()+u.getImgUrl()).into(nav_image);
                     //new Farmer.downloadImage().execute(Main.getBaseUrl()+u.getImgUrl());
-                    new DownloadImageTask(nav_image).execute(Main.getBaseUrl()+u.getImgUrl());
+                 //   new DownloadImageTask(nav_image).execute(Main.getBaseUrl()+u.getImgUrl());
                     //CreateNewSession(u);
                 }
             }
@@ -847,7 +849,7 @@ public class Farmer extends AppCompatActivity
         }
         else if (id == R.id.weather) {
             //city_name = user_data_intent.getCity();
-            Toast.makeText(getApplicationContext(),"Going to Weather",Toast.LENGTH_LONG).show();
+           // Toast.makeText(getApplicationContext(),"Going to Weather",Toast.LENGTH_LONG).show();
             Intent intent = new Intent(Farmer.this,Weather.class);
             intent.putExtra("cityname",city_name);
             intent.putExtra("Userid",user_data_intent.get_id());
@@ -869,10 +871,19 @@ public class Farmer extends AppCompatActivity
             getBidStatus.setUserid(userId.getUserid());
             new Farmer.loadStockData().execute(Main.getIp()+"/getFarmerBidStatus",new Gson().toJson(getBidStatus));
         }
-        if(id==R.id.farmer_upload_documents){
+         else if(id==R.id.farmer_upload_documents){
             Intent i = new Intent(Farmer.this,UploadDocument.class);
             i.putExtra("Userid",user_data_intent.get_id());
             startActivity(i);
+        }
+         else  if(id == R.id.logout){
+            if(SessionManager.getKEY_regToken_bool()) {
+                LogOut out = new LogOut(Main.id(Farmer.this));
+                new deleteToken().execute(Main.getIp() + "/deleteToken", new Gson().toJson(out));
+            }else
+            {
+                SessionManager.logoutUser();
+            }
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.OpenableColumns;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -49,16 +50,16 @@ import java.util.List;
 
 public class UploadDocument extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Uri fileUri;
-    private String filePath;
+    private String filePath,extension;
     private Button btnChooseFile, upload,back,preview_doc;
-    private TextView filePathView;
+    private TextView filePathView,filename;
     private static final int EXTERNAL_STORAGE_PERMISSION_REQUEST_CODE = 1;
     public static final int PICKFILE_RESULT_CODE = 1;
     private UserId userId;
 
     private boolean mPermissionGranted = false, fileSelected = false;
     byte[] byteArray;
-    private String docType;
+    private String docType,pathofselected="";
     private Spinner docTypeSpinner;
     private String phone;
     private String kyctype = "";
@@ -73,6 +74,7 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
         docTypeSpinner = findViewById(R.id.doc_type_spinner);
         filePathView = findViewById(R.id.document_type);
         upload = findViewById(R.id.Upload1);
+        filename = findViewById(R.id.filename);
         //preview_doc = findViewById(R.id.preview_doc);
 
         Bundle extras = getIntent().getExtras();
@@ -82,10 +84,14 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
         }
 
         List<String> type = new ArrayList<String>();
-        type.add("Aadhar");
-        type.add("AddressProof");
-        type.add("Passport");
-        type.add("PANcard");
+       // Pancard","Electricity Bill","Kisan Credit Card","Voter Id","GST Certificate","Shop Act","Cancelled Cheque"
+        type.add("Pancard");
+        type.add("Electricity Bill");
+        type.add("Kisan Credit Card");
+        type.add("Voter Id");
+        type.add("GST Certificate");
+        type.add("Shop Act");
+        type.add("Cancelled Cheque");
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, type);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -97,24 +103,44 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
             @Override
             public void onClick(View v) {
                 filePathView.setText(docTypeSpinner.getSelectedItem().toString());
-                Intent chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
-                //chooseFile.setType("*/*");
-                chooseFile.setType("application/pdf");
-                chooseFile = Intent.createChooser(chooseFile, "Choose a file");
-                startActivityForResult(chooseFile, PICKFILE_RESULT_CODE);
+//                Intent chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
+//                //chooseFile.setType("*/*");
+//                chooseFile.setType("application/pdf");
+//                chooseFile = Intent.createChooser(chooseFile, "Choose a file");
+
+                final String IMAGE = "image/*";
+                final String PDF = "application/pdf";
+                Intent intent = getCustomFileChooserIntent(PDF, IMAGE);
+                startActivityForResult(intent, PICKFILE_RESULT_CODE);
             }
         });
         upload.setEnabled(false);
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    new UploadDocument.AddDocPOST().execute();
-                    //new UploadDocument.networkPOST().execute(Main.getOldUrl()+"/mVerifyDoc");
-                    //new UploadDocument.networkPOST().execute(Main.getOldUrl()+"/mVerifyDoc");
-                } catch (Exception e) {
-                    Toast.makeText(UploadDocument.this, e.toString(), Toast.LENGTH_SHORT).show();
-                }
+if(pathofselected.equals("File size should not exceed more than 2MB")){
+    pathofselected = "";
+    Toast.makeText(UploadDocument.this, "File size should not exceed more than 2MB", Toast.LENGTH_SHORT).show();
+}else if(pathofselected.equals("") && kyctype.equals("")){
+    Toast.makeText(UploadDocument.this, "Please select Type and File", Toast.LENGTH_SHORT).show();
+}
+else if(pathofselected.equals("")){
+    Toast.makeText(UploadDocument.this, "Please select file", Toast.LENGTH_SHORT).show();
+}else if(kyctype.equals("")){
+    Toast.makeText(UploadDocument.this, "Please select type", Toast.LENGTH_SHORT).show();
+}
+else{
+    try {
+        filename.setText("");
+        docTypeSpinner.setSelection(0);
+        new UploadDocument.AddDocPOST().execute();
+        //new UploadDocument.networkPOST().execute(Main.getOldUrl()+"/mVerifyDoc");
+        //new UploadDocument.networkPOST().execute(Main.getOldUrl()+"/mVerifyDoc");
+    } catch (Exception e) {
+        Toast.makeText(UploadDocument.this, e.toString(), Toast.LENGTH_SHORT).show();
+    }
+}
+
             }
         });
 
@@ -127,6 +153,18 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
         });
 
 
+    }
+
+    private Intent getCustomFileChooserIntent(String ...types) {
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+        // Filter to only show results that can be "opened"
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+        intent.setType("*/*");
+        intent.putExtra(Intent.EXTRA_MIME_TYPES, types);
+        return intent;
     }
 
     class AddDocPOST extends AsyncTask<Void, Integer, AddDoc> {
@@ -147,6 +185,7 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
             addDoc.setFile(encoded);
             addDoc.setKycType(kyctype);
             addDoc.setD1(kyctype);
+            addDoc.setExt(extension);
             addDoc.setUserid(userId.getUserid());
             addDoc.setSession(userId.getUserid());
             addDoc.setEnt(userId.getUserid());
@@ -249,9 +288,21 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
                     fileSelected=true;
                     fileUri = data.getData();
                     String uriString1 = fileUri.toString();
+                    pathofselected = getPDFPath(fileUri);
+                    Log.d("pathofselected",pathofselected);
+                    if(pathofselected.equals("File size should not exceed more than 2MB")){
+                        pathofselected = "";
+                    }else{
+                        filename.setText(pathofselected.substring(pathofselected.lastIndexOf("/") + 1));
+                        String someFilepath = pathofselected.substring(pathofselected.lastIndexOf("/") + 1);
+                        Log.d("strpath",someFilepath);
+                        extension  = someFilepath.substring(someFilepath.lastIndexOf("."));
+                        Log.d("extention",extension);
+                    }
 
                     if(uriString1.startsWith("content://")&& !uriString1.contains(".pdf")){
                         String fp1 = fileUri.getPath();
+
                         try {
                             InputStream iStream =   getApplicationContext().getContentResolver().openInputStream(fileUri);
                             fileBytes = IOUtils.toByteArray(iStream);
@@ -285,9 +336,11 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
                         Toast.makeText(this, filePath, Toast.LENGTH_SHORT).show();
                         filePath = fileUri.getPath();
                         File file = new File(filePath);
+
                         file.setReadable(true);
                         final String[] split = file.getAbsolutePath().split(":");//split the path.
                         filePath = split[1];//
+
                         file.setReadable(true);
                         filePath = "/mnt/sdcard/" + filePath;
                         file = new File(filePath);
@@ -323,6 +376,60 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
                 }
 
         }
+    }
+
+    private String getPDFPath(Uri fileUri) {
+        Uri returnUri = fileUri;
+        Cursor returnCursor = UploadDocument.this.getContentResolver().query(returnUri, null, null, null, null);
+        /*
+         * Get the column indexes of the data in the Cursor,
+         *     * move to the first row in the Cursor, get the data,
+         *     * and display it.
+         * */
+        int nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+        int sizeIndex = returnCursor.getColumnIndex(OpenableColumns.SIZE);
+        returnCursor.moveToFirst();
+        String name = (returnCursor.getString(nameIndex));
+        String size = (Long.toString(returnCursor.getLong(sizeIndex)));
+        File file = new File(UploadDocument.this.getFilesDir(), name);
+        // Get length of file in bytes
+        long fileSizeInBytes = file.length();
+// Convert the bytes to Kilobytes (1 KB = 1024 Bytes)
+        long fileSizeInKB = fileSizeInBytes / 1024;
+// Convert the KB to MegaBytes (1 MB = 1024 KBytes)
+        long fileSizeInMB = fileSizeInKB / 1024;
+
+        if(fileSizeInMB <= 2){
+            try {
+                InputStream inputStream = UploadDocument.this.getContentResolver().openInputStream(fileUri);
+                FileOutputStream outputStream = new FileOutputStream(file);
+                int read = 0;
+                int maxBufferSize = 1 * 1024 * 1024;
+                int bytesAvailable = inputStream.available();
+
+                //int bufferSize = 1024;
+                int bufferSize = Math.min(bytesAvailable, maxBufferSize);
+
+                final byte[] buffers = new byte[bufferSize];
+                while ((read = inputStream.read(buffers)) != -1) {
+                    outputStream.write(buffers, 0, read);
+                }
+                Log.e("File Size", "Size " + file.length());
+                inputStream.close();
+                outputStream.close();
+                Log.e("File Path", "Path " + file.getPath());
+                Log.e("File Size", "Size " + file.length());
+            } catch (Exception e) {
+                Log.e("Exception", e.getMessage());
+            }
+            return file.getPath();
+        }
+        else{
+
+            Toast.makeText(UploadDocument.this, "File size should not exceed more than 2MB", Toast.LENGTH_SHORT).show();
+            return "File size should not exceed more than 2MB";
+        }
+
     }
 
 

@@ -41,14 +41,14 @@ public class SignUpUser implements Serializable {
     String tp;
     String wpwd;
 
-    public SignUpUser(String pwd, String email, String firstname, String lastname, String img, String role,String tp,String wpwd) {
-        this.pwd = pwd;
+    public SignUpUser( String email, String firstname, String lastname, String img, String role,String tp) {
+
         this.email = email;
         this.fn = firstname;
         this.ln = lastname;
         this.img = img;
         this.role = role;
         this.tp = tp;
-        this.wpwd = wpwd;
+
     }
 }

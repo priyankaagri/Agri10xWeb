@@ -104,19 +104,17 @@
                                         card_view:layout_constraintStart_toStartOf="parent"
                                         card_view:layout_constraintTop_toTopOf="parent" />
 
-                                    <ImageView
+                                    <TextView
                                         android:id="@+id/image_role"
+                                        style="?android:attr/ratingBarStyleSmall"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="8dp"
-                                        android:layout_marginTop="2dp"
+                                        android:layout_marginTop="25dp"
                                         android:layout_marginEnd="8dp"
-                                        android:layout_marginBottom="8dp"
-                                        android:gravity="center"
-                                        android:minWidth="40dp"
-                                        android:minHeight="40dp"
-                                        android:src="@drawable/person_placeholder"
-                                        card_view:layout_constraintBottom_toBottomOf="parent"
+                                        android:isIndicator="true"
+                                        android:numStars="5"
+                                        android:stepSize="0.1"
                                         card_view:layout_constraintEnd_toEndOf="parent"
                                         card_view:layout_constraintStart_toStartOf="parent"
                                         card_view:layout_constraintTop_toBottomOf="@+id/role" />
@@ -155,7 +153,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_marginStart="8dp"
 
-                                        android:layout_marginTop="20dp"
+                                        android:layout_marginTop="25dp"
                                         android:layout_marginEnd="8dp"
                                         android:isIndicator="true"
                                         android:numStars="5"
@@ -195,18 +193,18 @@
 
                                     <ImageView
                                         android:id="@+id/kyc_status"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+android:layout_marginTop="20dp"
                                         android:layout_marginStart="8dp"
-                                        android:layout_marginTop="2dp"
+
                                         android:layout_marginEnd="8dp"
-                                        android:layout_marginBottom="8dp"
+
                                         android:gravity="center"
-                                        android:minWidth="40dp"
-                                        android:minHeight="40dp"
-                                        android:src="@drawable/kyc_not_done"
-                                        card_view:layout_constraintBottom_toBottomOf="parent"
+                                        android:minWidth="25dp"
+                                        android:minHeight="25dp"
+
+
                                         card_view:layout_constraintEnd_toEndOf="parent"
                                         card_view:layout_constraintStart_toStartOf="parent"
                                         card_view:layout_constraintTop_toBottomOf="@+id/KYC" />
