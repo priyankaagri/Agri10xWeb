@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -101,13 +102,14 @@ public class Farmer extends AppCompatActivity
     public String city_name;
     User profile;
     private UserId userId;
+    LinearLayout mystocklayout,addstocklayout,kyclayout,weatherlayout,requestlayout,settinglayout;
     public AppCompatImageButton my_stock,add_stock,card_weather,card_request,card_kyc,card_settings;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_farmer2);
+        setContentView(R.layout.new_activity_farmer2);//activity_farmer2
         Toolbar toolbar = findViewById(R.id.toolbarf);
         setSupportActionBar(toolbar);
         session = new SessionManager(getApplicationContext());
@@ -123,6 +125,13 @@ public class Farmer extends AppCompatActivity
         nav_image = v.findViewById(R.id.nav_userImage);
         nav_closing_bal = v.findViewById(R.id.nav_closing_bal_farmer);
         refresh_button = v.findViewById(R.id.nav_refresh_button);
+        //idoflayoutmain
+        mystocklayout=findViewById(R.id.mystocklayout);
+        addstocklayout=findViewById(R.id.addstocklayout);
+        kyclayout=findViewById(R.id.kyclayout);
+        weatherlayout=findViewById(R.id.weatherlayout);
+        requestlayout=findViewById(R.id.requestlayout);
+        settinglayout=findViewById(R.id.settinglayout);
 
         my_stock=findViewById(R.id.my_stock);
         add_stock=findViewById(R.id.add_stock);
@@ -140,6 +149,55 @@ public class Farmer extends AppCompatActivity
         userId.setUserid(user_data_intent.get_id());
         //city_name = SessionManager.getFirstName();
         //Toast.makeText(this,city_name, Toast.LENGTH_LONG).show();
+
+        mystocklayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(Farmer.this,AllStockList.class);
+                i.putExtra("Userid",user_data_intent.get_id());
+                startActivity(i);
+            }
+        });
+        addstocklayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Farmer.this,AddStock.class);
+                i.putExtra("Userid",user_data_intent.get_id());
+                startActivity(i);
+            }
+        });
+        kyclayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Farmer.this, UploadDocument.class);
+                i.putExtra("Userid",user_data_intent.get_id());
+                startActivity(i);
+            }
+        });
+        weatherlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Farmer.this,Weather.class);
+                intent.putExtra("cityname",city_name);
+                intent.putExtra("Userid",user_data_intent.get_id());
+                startActivity(intent);
+            }
+        });
+        requestlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Farmer.this,RequestStock.class);
+                i.putExtra("Userid",user_data_intent.get_id());
+                i.putExtra("user_type",user_data_intent.getRole());
+                startActivity(i);
+            }
+        });
+        settinglayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Farmer.this,SettingsActivity.class));
+            }
+        });
         nav_username.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

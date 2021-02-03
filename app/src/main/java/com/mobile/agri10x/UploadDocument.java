@@ -281,9 +281,9 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
                 if (s.equals("network")) {
                     new UploadDocument.Alert().alert("Network !!!", getResources().getString(R.string.network_error_message));
                 } else if (s.equalsIgnoreCase("Data Saved")) {
-                    new UploadDocument.Alert().alert("Upload", "Upload Successful");
+                    new UploadDocument.Alert().alert("Upload", "Upload Successful!");
                 } else if (s.equalsIgnoreCase("Fle Uploaded")) {
-                    new UploadDocument.Alert().alert("Upload", "Upload Successful");
+                    new UploadDocument.Alert().alert("Upload", "Upload Successful!");
                 }
             }
             //Toast.makeText(UploadDocument.this, "Post Execute" + s, Toast.LENGTH_LONG).show();
@@ -430,9 +430,18 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
                 if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK)
                 {
                     Bitmap photo = (Bitmap) data.getExtras().get("data");
+                   // Bitmap bmp = intent.getExtras().get("data");
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    fileBytes = stream.toByteArray();
+                    photo.recycle();
+                    upload.setEnabled(true);
+
                     count++;
                     //String file = dir+"Image"+count+".jpg";
                     filename.setText("IMG_0000"+count+"jpg");
+                    String aaa="IMG_0000"+count+"jpg";
+                    pathofselected="/data/user/0/com.mobile.agri10x/files/"+aaa;
                     // imageView.setImageBitmap(photo);
                 }
                 /*if (requestCode == TAKE_PHOTO_CODE && resultCode == RESULT_OK) {

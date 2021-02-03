@@ -75,7 +75,7 @@ public class Trader extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_trader);
+        setContentView(R.layout.activity_trader_new);//activity_trader
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         session = new SessionManager(Trader.this);

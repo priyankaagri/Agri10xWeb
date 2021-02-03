@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -81,12 +82,13 @@ public class Unvrified extends AppCompatActivity
     DrawerLayout drawer;
     User user_data_intent,profile;
     public String city_name;
+    LinearLayout requestlayout,kyclayout;
     public AppCompatImageButton ucard_request,ucard_kyc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_unvrified);
+        setContentView(R.layout.activity_unvrified_new);//activity_unvrified
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -104,6 +106,9 @@ public class Unvrified extends AppCompatActivity
         nav_image = v.findViewById(R.id.nav_unverified_image);
 
 
+        requestlayout=findViewById(R.id.requestlayout);
+        kyclayout=findViewById(R.id.kyclayout);
+
         ucard_kyc=findViewById(R.id.ucard_kyc);
         ucard_request=findViewById(R.id.ucard_request);
         context = Unvrified.this;
@@ -111,6 +116,25 @@ public class Unvrified extends AppCompatActivity
         UserId userId=new UserId();
         userId.setUserid(user_data_intent.get_id());
         city_name = user_data_intent.getCity();
+
+        requestlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Unvrified.this,RequestStock.class);
+                i.putExtra("Userid",user_data_intent.get_id());
+                i.putExtra("user_type",user_data_intent.getRole());
+                startActivity(i);
+            }
+        });
+        kyclayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(Unvrified.this,UploadDocument.class);
+                i.putExtra("Userid",userId.getUserid());
+                startActivity(i);
+            }
+        });
         ucard_kyc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
