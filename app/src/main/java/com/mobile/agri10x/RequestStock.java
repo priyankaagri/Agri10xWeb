@@ -304,8 +304,8 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
                 unit = commodityunit.getText().toString().trim();
                 Comm = strcomname;
                 Quan = quantity.getText().toString().trim();
-                variety = varietyid;
-                if (unit.length()>0 && Quan.length()>0 && vlfrom.length()>0 && vlTill.length()>0 && role.length()>0 &&qual.length() > 0 && variety.length()>0 && Quan.length()>0 && unit.length()>0 && Organic.length()>0 && ResidueFree.length()>0) {
+               // variety = varietyid;
+                if (unit.length()>0 && Quan.length()>0 && vlfrom.length()>0 && vlTill.length()>0 && role.length()>0 &&qual.length() > 0   && Organic.length()>0 && ResidueFree.length()>0) { //&& variety.length()>0
                     int quan = Integer.valueOf(Quan);
                     int unitInt = Integer.valueOf(unit);
                     if(unitInt>0 &&  quan>0) {
@@ -589,9 +589,10 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
                     new Alert().alert("Network !!!", getResources().getString(R.string.network_error_message));
                 } else {
                     quantity.setText("");
-                    //quality.setText("");
-                    commodity.setSelectedItem(0);
-                 //   commodity.setText("");
+                     //quality.setText("");
+                    //commodity.setSelectedItem(0);
+                    // commodity.setText("");
+
                     commodityunit.setText("");
                     velidFrom.setText("");
                     velidTill.setText("");
@@ -631,6 +632,8 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     dialogInterface.cancel();
+                    finish();
+                    startActivity(getIntent());
                 }
             });
             Alert.create().show();

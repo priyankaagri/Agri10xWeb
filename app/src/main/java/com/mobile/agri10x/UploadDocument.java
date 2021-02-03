@@ -1,15 +1,19 @@
 package com.mobile.agri10x;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.util.Base64;
 import android.util.Log;
@@ -27,6 +31,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
 import com.google.gson.Gson;
 import com.mobile.agri10x.Connection.POSTRequest;
@@ -36,6 +41,7 @@ import com.mobile.agri10x.Model.UserId;
 import com.mobile.agri10x.SessionManagment.SessionManager;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.output.ByteArrayOutputStream;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -46,6 +52,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class UploadDocument extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -56,6 +63,7 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
     private static final int EXTERNAL_STORAGE_PERMISSION_REQUEST_CODE = 1;
     public static final int PICKFILE_RESULT_CODE = 1;
     private UserId userId;
+    Button CameraClick;
 
     private boolean mPermissionGranted = false, fileSelected = false;
     byte[] byteArray;
@@ -65,6 +73,14 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
     private String kyctype = "";
     private AddDoc addDoc;
     byte[] fileBytes = null;
+    private String imgPath;
+    final private int CAPTURE_IMAGE = 2;
+    int TAKE_PHOTO_CODE = 0;
+    public static int count = 0;
+    String encoded;
+
+    private static final int CAMERA_REQUEST = 1888;
+    private static final int MY_CAMERA_PERMISSION_CODE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +91,7 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
         filePathView = findViewById(R.id.document_type);
         upload = findViewById(R.id.Upload1);
         filename = findViewById(R.id.filename);
+
         //preview_doc = findViewById(R.id.preview_doc);
 
         Bundle extras = getIntent().getExtras();
@@ -84,7 +101,7 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
         }
 
         List<String> type = new ArrayList<String>();
-       // Pancard","Electricity Bill","Kisan Credit Card","Voter Id","GST Certificate","Shop Act","Cancelled Cheque"
+        // Pancard","Electricity Bill","Kisan Credit Card","Voter Id","GST Certificate","Shop Act","Cancelled Cheque"
         type.add("Pancard");
         type.add("Electricity Bill");
         type.add("Kisan Credit Card");
@@ -99,6 +116,38 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
         docTypeSpinner.setOnItemSelectedListener(UploadDocument.this);
 
         btnChooseFile = findViewById(R.id.choose_file);
+        CameraClick = findViewById(R.id.CameraClick);
+
+        final String dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/picFolder/";
+        File newdir = new File(dir);
+        newdir.mkdirs();
+        CameraClick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, CAMERA_REQUEST);
+
+               /* count++;
+                String file = dir+"Image"+count+".jpg";
+                File newfile = new File(file);
+                try {
+                    newfile.createNewFile();
+                }
+                catch (IOException e)
+                {
+                }
+
+                Uri outputFileUri = Uri.fromFile(newfile);
+                //Uri outputFileUri = FileProvider.getUriForFile(UploadDocument.this, BuildConfig.APPLICATION_ID, newfile);
+
+                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
+
+                startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
+            }
+        });
+
         btnChooseFile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,28 +167,28 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-if(pathofselected.equals("File size should not exceed more than 2MB")){
-    pathofselected = "";
-    Toast.makeText(UploadDocument.this, "File size should not exceed more than 2MB", Toast.LENGTH_SHORT).show();
-}else if(pathofselected.equals("") && kyctype.equals("")){
-    Toast.makeText(UploadDocument.this, "Please select Type and File", Toast.LENGTH_SHORT).show();
-}
-else if(pathofselected.equals("")){
-    Toast.makeText(UploadDocument.this, "Please select file", Toast.LENGTH_SHORT).show();
-}else if(kyctype.equals("")){
-    Toast.makeText(UploadDocument.this, "Please select type", Toast.LENGTH_SHORT).show();
-}
-else{
-    try {
-        filename.setText("");
-        docTypeSpinner.setSelection(0);
-        new UploadDocument.AddDocPOST().execute();
-        //new UploadDocument.networkPOST().execute(Main.getOldUrl()+"/mVerifyDoc");
-        //new UploadDocument.networkPOST().execute(Main.getOldUrl()+"/mVerifyDoc");
-    } catch (Exception e) {
-        Toast.makeText(UploadDocument.this, e.toString(), Toast.LENGTH_SHORT).show();
-    }
-}
+                if(pathofselected.equals("File size should not exceed more than 2MB")){
+                    pathofselected = "";
+                    Toast.makeText(UploadDocument.this, "File size should not exceed more than 2MB", Toast.LENGTH_SHORT).show();
+                }else if(pathofselected.equals("") && kyctype.equals("")){
+                    Toast.makeText(UploadDocument.this, "Please select Type and File", Toast.LENGTH_SHORT).show();
+                }
+                else if(pathofselected.equals("")){
+                    Toast.makeText(UploadDocument.this, "Please select file", Toast.LENGTH_SHORT).show();
+                }else if(kyctype.equals("")){
+                    Toast.makeText(UploadDocument.this, "Please select type", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    try {
+                        filename.setText("");
+                        docTypeSpinner.setSelection(0);
+                        new UploadDocument.AddDocPOST().execute();
+                        //new UploadDocument.networkPOST().execute(Main.getOldUrl()+"/mVerifyDoc");
+                        //new UploadDocument.networkPOST().execute(Main.getOldUrl()+"/mVerifyDoc");
+                    } catch (Exception e) {
+                        Toast.makeText(UploadDocument.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }
 
             }
         });
@@ -154,6 +203,8 @@ else{
 
 
     }
+
+
 
     private Intent getCustomFileChooserIntent(String ...types) {
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
@@ -179,7 +230,6 @@ else{
         @Override
         protected AddDoc doInBackground(Void... voids) {
             addDoc = new AddDoc();
-            String encoded;
             encoded = Base64.encodeToString(fileBytes, Base64.DEFAULT);
             encoded.replaceAll("/^[^,]*,/", "");
             addDoc.setFile(encoded);
@@ -374,8 +424,42 @@ else{
                         break;
                     }
                 }
+                break;
+            case CAMERA_REQUEST:
 
+                if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK)
+                {
+                    Bitmap photo = (Bitmap) data.getExtras().get("data");
+                    count++;
+                    //String file = dir+"Image"+count+".jpg";
+                    filename.setText("IMG_0000"+count+"jpg");
+                    // imageView.setImageBitmap(photo);
+                }
+                /*if (requestCode == TAKE_PHOTO_CODE && resultCode == RESULT_OK) {
+                    final Uri imageUri = data.getData();
+                    InputStream imageStream = null;
+                    try {
+                        imageStream = getContentResolver().openInputStream(imageUri);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+                    String encodedImage = encodeImage(selectedImage);
+
+                    encoded=encodedImage;
+                    Log.d("hwaitfor",encoded);
+                }*/
         }
+    }
+
+    private String encodeImage(Bitmap bm)
+    {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bm.compress(Bitmap.CompressFormat.JPEG,100,baos);
+        byte[] b = baos.toByteArray();
+        String encImage = Base64.encodeToString(b, Base64.DEFAULT);
+
+        return encImage;
     }
 
     private String getPDFPath(Uri fileUri) {

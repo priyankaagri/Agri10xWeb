@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.radiobutton.MaterialRadioButton;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -59,7 +61,8 @@ public class Sign_up extends AppCompatActivity {
     Bitmap bitmap;
     ScrollView parentView;
     MaterialBetterSpinner role_spinner;
-    RadioButton radioButton;
+    RadioButton radioButton,radioButton_farmer,radioButtontrader;
+    RadioGroup radioGroup;
     TextView termsAndConPage;
     AlertDialog pleaseWait,codealert;
     //otp
@@ -122,6 +125,20 @@ public class Sign_up extends AppCompatActivity {
         role_spinner.setAdapter(adapter);
         termsAndConPage = findViewById(R.id.termsconditionpage);
         radioButton = findViewById(R.id.tandcbtn);
+        radioButton_farmer=findViewById(R.id.radio_farmer);
+        radioGroup=findViewById(R.id.radioGroup);
+        radioButtontrader=findViewById(R.id.radio_trader);
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                MaterialRadioButton rb = (MaterialRadioButton) group.findViewById(checkedId);
+                if (rb.isChecked()) {
+                    role_string = rb.getText().toString();
+                }
+            }
+        });
+
         ccp = findViewById(R.id.ccp);
         termsAndConPage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,8 +151,9 @@ public class Sign_up extends AppCompatActivity {
             public void onClick(View v) {
                 first_name_string= first_name.getText().toString().trim();
                 last_name_string= last_name.getText().toString().trim();
-                email_string= email.getText().toString().trim();
+             //   email_string= email.getText().toString().trim();
                 contact_no_string= contact_no.getText().toString().trim();
+                email_string = contact_no_string+"@agri10x.com";
                 password_string= password.getText().toString().trim();
                 cpp_string = '+' + ccp.getSelectedCountryCode().toString();
 
@@ -144,9 +162,9 @@ public class Sign_up extends AppCompatActivity {
 
 
                 confirm_wallet_password_string= "";
-                role_string = role_spinner.getText().toString().trim();
+                // role_string = role_spinner.getText().toString().trim();
                 if( first_name_string.length()>0 && last_name_string.length()>0 &&
-                        email_string.length()>0 && contact_no_string.length()>0 &&
+                        contact_no_string.length()>0 &&
                         password_string.length()>0 && confirm_passwod_string.length()>0 &&
                         role_string.length()>0) {
                     if (bitmap == null) {
@@ -156,21 +174,21 @@ public class Sign_up extends AppCompatActivity {
                         }
                         parentView.scrollTo(0, parentView.getTop());
                     }
-                    else if(!radioButton.isChecked()){
-                        Toast.makeText(Sign_up.this,"Check the Terms & Conditions !!!",Toast.LENGTH_LONG).show();
-                    }
-                   else{
-//                        if (confirm_passwod_string.equals(password_string)) {
+//                    else if(!radioButton.isChecked()){
+//                        Toast.makeText(Sign_up.this,"Check the Terms & Conditions !!!",Toast.LENGTH_LONG).show();
+//                    }
+                    else{
+                        if (confirm_passwod_string.equals(password_string)) {
 //
 //                            //sent_sms();
 //                            //inflateEnterOTP();
-//                            contact_no_string = cpp_string + contact_no_string;
-                           new networkPOST().execute(Main.getOldUrl()+"/CreateUser");
+                            contact_no_string = cpp_string + contact_no_string;
+                            new networkPOST().execute(Main.getOldUrl()+"/CreateUser");
 //
 //
-//                        } else {
-//                            Toast.makeText(Sign_up.this, "password does not match!!", Toast.LENGTH_LONG).show();
-//                        }
+                        } else {
+                            Toast.makeText(Sign_up.this, "password does not match!!", Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
                 else{
@@ -265,7 +283,7 @@ public class Sign_up extends AppCompatActivity {
                         password.setText("");
                         confirm_passwod.setText("");
                         role_spinner.setText("");
-                     //   wallet_password.setText("");
+                        //   wallet_password.setText("");
                         //confirm_wallet_password.setText("");
                         String uri = "@drawable/profile_final";
                         int imageResource = getResources().getIdentifier(uri, null, getPackageName());

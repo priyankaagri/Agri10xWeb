@@ -148,6 +148,8 @@ callapi();
 commodity.setOnItemSelectedListener(new OnItemSelectedListener() {
     @Override
     public void onItemSelected(View view, int position, long id) {
+
+
      //   Toast.makeText(AddStock.this, "Item on position " + position + " : " + mSimpleListAdapter.getItem(position) + " Selected", Toast.LENGTH_SHORT).show();
 String pos = commodity.getSelectedItem().toString();
 Log.d("selectedcommo",pos);
@@ -299,8 +301,8 @@ for(int i= 0 ;i < getTradeCommodityArrayList.size() ; i++){
                 Comm = commid;
                 Peri = perishable.getText().toString().trim();
                 Quan = quantity.getText().toString().trim();
-
-                if (unit.length() > 0 && Cold.length() > 0 && Comm.length() > 0 && Peri.length() > 0 && Quan.length() > 0 && varietyid.length() > 0 && stockbitmap != null) {
+Log.d("checkparms",unit+ " "+ Cold +" "+ Comm +" "+Peri+ ""+Quan);
+                if (unit.length() > 0 && Cold.length() > 0 && Comm.length() > 0 && Peri.length() > 0 && Quan.length() > 0 ) { //  && varietyid.length() > 0 && stockbitmap != null
                     int unitInt = Integer.valueOf(unit);
                     int quan = Integer.valueOf(Quan);
                     if (unitInt > 0 && quan > 0) {
@@ -481,12 +483,12 @@ Log.d("checkid",Ccomid);
             }
             stock.setDura("");
             stock.setUnit(unit);
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            stockbitmap.compress(Bitmap.CompressFormat.PNG, 20, baos);
-            byte[] b = baos.toByteArray();
-            String s = Base64.encodeToString(b, Base64.DEFAULT);
-            s.replaceAll("/^[^,]*,/", "");
-            stock.setFile(s);
+//            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//            stockbitmap.compress(Bitmap.CompressFormat.PNG, 20, baos);
+//            byte[] b = baos.toByteArray();
+//            String s = Base64.encodeToString(b, Base64.DEFAULT);
+//            s.replaceAll("/^[^,]*,/", "");
+//            stock.setFile(s);
             stock.setUserid(userId.getUserid());
             return stock;
         }
@@ -532,17 +534,18 @@ Log.d("checkid",Ccomid);
                    new Alert().alert("Network !!!", getResources().getString(R.string.network_error_message));
                 } else {
 //                  Toast.makeText(AddStock.this, s, Toast.LENGTH_LONG).show();
-                   // commodity.setText("");
-                    commodity.setSelectedItem(0);
+     //              commodity.setText("");
+                 //   commodity.setSelectedItem(-1);
+
                     Variety.setText("");
                     commodityunit.setText("");
                     perishable.setText("");
                     coldstorage.setText("");
                     quantity.setText("");
-                    String uri = "@drawable/image6";
-                    int imageResource = getResources().getIdentifier(uri, null, getPackageName());
-                    Drawable res = getResources().getDrawable(imageResource);
-                    stock_image.setImageDrawable(res);
+//                    String uri = "@drawable/image6";
+//                    int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+//                    Drawable res = getResources().getDrawable(imageResource);
+//                    stock_image.setImageDrawable(res);
                     new Alert().alert("Stock!!", "Successfully Added");
                 }
             }
@@ -571,6 +574,8 @@ Log.d("checkid",Ccomid);
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     dialogInterface.cancel();
+                    finish();
+                    startActivity(getIntent());
                 }
             });
             Alert.create().show();

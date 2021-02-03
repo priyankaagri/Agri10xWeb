@@ -108,6 +108,7 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
+                            android:visibility="gone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingBottom="5sp"
@@ -148,6 +149,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:hint="Number"
+                                    android:maxLength="10"
                                     android:inputType="phone"/>
 
                             </LinearLayout>
@@ -155,7 +157,7 @@
 
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:visibility="gone"
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingBottom="5sp"
@@ -175,7 +177,7 @@
 
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:visibility="gone"
+
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingBottom="5sp"
@@ -191,8 +193,51 @@
                                 android:maxLines="1"/>
                         </com.google.android.material.textfield.TextInputLayout>
 
-
                         <LinearLayout
+                            android:layout_marginTop="10dp"
+                            android:weightSum="2"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingTop="10dp">
+                            <TextView
+
+                                android:layout_marginLeft="20dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"
+                                android:gravity="start|center"
+                                android:text="Register As    "
+
+                                android:textColorHighlight="@color/quantum_white_100"
+                                android:textColorHint="@color/quantum_white_100"
+                                android:textColorLink="@color/quantum_white_100"
+                                android:textCursorDrawable="@drawable/cursor"
+                                android:textSize="18sp" />
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_weight="1"
+                                android:id="@+id/radioGroup">
+                                <com.google.android.material.radiobutton.MaterialRadioButton
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Trader"
+                                    android:id="@+id/radio_trader"
+                                    android:layout_weight="2"/>
+                                <com.google.android.material.radiobutton.MaterialRadioButton
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Farmer"
+                                    android:id="@+id/radio_farmer"
+                                    android:layout_weight="2" />
+                            </RadioGroup>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:visibility="gone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -216,6 +261,7 @@
                             android:layout_marginRight="10dp"
                             android:background="@drawable/rounded_corner">
                             <LinearLayout
+                                android:visibility="gone"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">

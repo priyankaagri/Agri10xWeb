@@ -33,8 +33,9 @@ android:background="@drawable/card_view_border"
                     android:id="@+id/image_stock_list"
                     android:layout_width="match_parent"
                     android:layout_height="180dp"
-android:adjustViewBounds="true"
+                    android:adjustViewBounds="true"
                     android:scaleType="centerCrop"/>
+
             </LinearLayout>
 <LinearLayout
     android:background="@color/appgreen"
@@ -62,13 +63,12 @@ android:adjustViewBounds="true"
                     android:textSize="15sp"
                     android:textStyle="bold" />
                 <TextView
-                    android:layout_marginTop="5dp"
+
                     android:id="@+id/qualitystocklist"
                     android:layout_width="0dp"
                     android:layout_height="30dp"
                     android:layout_weight="0.9"
-                    android:gravity="center"
-                    android:layout_gravity="center"
+                  android:gravity="center"
 
                     android:text="Qual"
                     android:textColor="#000"
