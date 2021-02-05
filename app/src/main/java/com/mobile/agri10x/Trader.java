@@ -68,7 +68,7 @@ public class Trader extends AppCompatActivity
     TextView nav_username,nav_wallet_balance;
   //  ImageView nav_image;
     DrawerLayout drawer;
-    String city_name="";
+    String city_name="",myrole;
     static String redirection;
     TextView nav_closing_bal,no_data_to_show;
     UserId userId;
@@ -164,9 +164,38 @@ public class Trader extends AppCompatActivity
 
 
         user_data_intent = (User) getIntent().getSerializableExtra("User_data");
+
         userId = new UserId();
         city_name = user_data_intent.getCity();
         userId.setUserid(user_data_intent.get_id());
+                myrole = user_data_intent.getRole();
+                Log.d("checkmyrole",myrole);
+
+                if(myrole.equals("PTrader")){
+                    AlertDialog.Builder builder1 = new AlertDialog.Builder(Trader.this);
+                    builder1.setMessage("Your KYC is pending");
+                    builder1.setCancelable(true);
+
+                    builder1.setPositiveButton(
+                            "ok",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    builder1.setNegativeButton(
+                            "",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+
+                    AlertDialog alert11 = builder1.create();
+                    alert11.show();
+                }
+
 
         nav_username.setOnClickListener(new View.OnClickListener() {
             @Override

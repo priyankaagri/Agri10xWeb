@@ -24,8 +24,9 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="250sp"
-                android:src="@drawable/colapsing"
-                android:scaleType="centerCrop" />
+                android:src="@drawable/farmer_image"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true" />
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="wrap_content"

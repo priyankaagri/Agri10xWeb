@@ -1,6 +1,7 @@
 package com.mobile.agri10x;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -25,6 +27,10 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.phone.SmsRetriever;
+import com.google.android.gms.auth.api.phone.SmsRetrieverClient;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.gson.Gson;
 import com.mobile.agri10x.Connection.POSTRequest;
 import com.mobile.agri10x.Model.LoginUser;
@@ -66,8 +72,8 @@ OtpTextView otp_view;
     ImageView img_arrow;
     EditText enterotp;
     private static String responce = null;
-    SmsVerifyCatcher smsVerifyCatcher;
-
+    SmsBroadcastReceiver smsBroadcastReceiver;
+    private static final int REQ_USER_CONSENT = 200;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,17 +108,7 @@ OtpTextView otp_view;
 //            }
 //        });
 
-        smsVerifyCatcher = new SmsVerifyCatcher(OTP.this, new OnSmsCatchListener<String>() {
-            @Override
-            public void onSmsCatch(String message) {
-                strotpfrmmsg = parseCode(message);
 
-                Log.d("strotpfrmmsg", strotpfrmmsg);
-//                Toast.makeText(getActivity(), "Agilanbu OTP: " + code, Toast.LENGTH_LONG).show();
-//                et_otp.setText(code);//set code in edit text
-            }
-        });
-        
         otp_view.setOtpListener(new OTPListener() {
             @Override
             public void onInteractionListener() {
@@ -175,6 +171,24 @@ Log.d("params","91"+strmobilenumber+" "+strotp);
             }
         });
         startTimer();
+        startSmsUserConsent();
+    }
+
+    private void startSmsUserConsent() {
+        SmsRetrieverClient client = SmsRetriever.getClient(this);
+//We can add sender phone number or leave it blank
+// I'm adding null here
+        client.startSmsUserConsent(null).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
     }
 
     private String parseCode(String message) {
@@ -568,21 +582,53 @@ Log.d("checkingexist",checkresponse);
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        smsVerifyCatcher.onStart();
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQ_USER_CONSENT) {
+            if ((resultCode == RESULT_OK) && (data != null)) {
+//That gives all message to us.
+// We need to get the code from inside with regex
+                String message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
+                String numberOnly = message.replaceAll("[^0-9]", "");
+//numberOnly 10886110
+
+                String a = numberOnly.substring(2);
+
+               strotpfrmmsg= a.substring(0, a.length() - 2);
+               if(strotpfrmmsg != null){
+                   otp_view.setOTP(strotpfrmmsg);
+               }
+
+
+
+            }
+        }
     }
 
+    private void registerBroadcastReceiver() {
+        smsBroadcastReceiver = new SmsBroadcastReceiver();
+        smsBroadcastReceiver.smsBroadcastReceiverListener =
+                new SmsBroadcastReceiver.SmsBroadcastReceiverListener() {
+                    @Override
+                    public void onSuccess(Intent intent) {
+                        startActivityForResult(intent, REQ_USER_CONSENT);
+                    }
+                    @Override
+                    public void onFailure() {
+                    }
+                };
+        IntentFilter intentFilter = new IntentFilter(SmsRetriever.SMS_RETRIEVED_ACTION);
+        registerReceiver(smsBroadcastReceiver, intentFilter);
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        registerBroadcastReceiver();
+    }
     @Override
     protected void onStop() {
         super.onStop();
-        smsVerifyCatcher.onStop();
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        smsVerifyCatcher.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        unregisterReceiver(smsBroadcastReceiver);
     }
 }
 

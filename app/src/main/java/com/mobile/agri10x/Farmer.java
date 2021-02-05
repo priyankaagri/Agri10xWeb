@@ -96,7 +96,7 @@ public class Farmer extends AppCompatActivity
     //the recyclerview
     public static RecyclerView recyclerView;
     public static ProductAdapter adapter;
-    static String redirection;
+    static String redirection,myrole;
     TextView nav_closing_bal;
     TextView no_data_to_show,check1;
     public String city_name;
@@ -147,8 +147,34 @@ public class Farmer extends AppCompatActivity
         city_name = user_data_intent.getCity();
         userId = new UserId();
         userId.setUserid(user_data_intent.get_id());
-        //city_name = SessionManager.getFirstName();
+
+        myrole = user_data_intent.getRole();
+        Log.d("checkmyrole",myrole);        //city_name = SessionManager.getFirstName();
         //Toast.makeText(this,city_name, Toast.LENGTH_LONG).show();
+        if(myrole.equals("PFarmer")){
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(Farmer.this);
+            builder1.setMessage("Your KYC is pending");
+            builder1.setCancelable(true);
+
+            builder1.setPositiveButton(
+                    "ok",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            builder1.setNegativeButton(
+                    "",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+        }
 
         mystocklayout.setOnClickListener(new View.OnClickListener() {
             @Override

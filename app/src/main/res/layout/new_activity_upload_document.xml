@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:background="@color/offgrey"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+
+                android:layout_marginTop="15dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/but_back"
+                    android:src="@drawable/arrow_back"
+
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"/>
+                <TextView
+                    android:layout_marginLeft="20dp"
+                    android:layout_alignBaseline="@id/but_back"
+                    android:layout_toRightOf="@+id/but_back"
+                    android:text="KYC Verification"
+                    android:textStyle="bold"
+                    android:textSize="25sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="30dp"
+                android:text="Proof of Identity"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="30dp"
+                android:text="@string/kyc_string"
+
+                android:fontFamily="@font/roboto"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose Your Identity Type"
+                android:fontFamily="@font/roboto"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="20sp"
+                android:gravity="center_vertical"
+                android:textSize="24dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="140dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/document_type"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="8dp"
+                    android:textColor="@color/quantum_white_100"
+                    android:hint="SELECT"
+                    android:visibility="gone"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:textSize="16dp"
+                    android:textColorHint="@color/quantum_white_100"
+                    />
+
+                <Spinner
+                    android:background="@android:drawable/btn_dropdown"
+                    android:id="@+id/doc_type_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp"
+                    android:outlineAmbientShadowColor="@color/quantum_white_text"
+                    android:outlineSpotShadowColor="@color/quantum_white_text" />
+
+            </LinearLayout>
+            <TextView
+                android:gravity="right"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="* Select only one document"/>
+            <RelativeLayout
+                android:id="@+id/relative_img_click"
+                android:padding="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:background="@drawable/dash_line_box">
+                <!-- <LinearLayout-->
+                <!-- android:orientation="vertical"-->
+                <!-- android:layout_width="wrap_content"-->
+                <!-- android:layout_height="wrap_content">-->
+                <!-- <TextView-->
+                <!-- android:textColor="@color/kyc_btn_color"-->
+                <!-- android:textStyle="bold"-->
+                <!-- android:padding="10dp"-->
+                <!-- android:text="Click Photo"-->
+                <!-- android:layout_width="wrap_content"-->
+                <!-- android:layout_height="wrap_content"/>-->
+
+                <TextView
+                    android:ellipsize="end"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_centerInParent="true"
+                    android:layout_alignParentLeft="true"
+                    android:id="@id/filename"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
+                    android:text="Choose Document " />
+                <!-- </LinearLayout>-->
+                <ImageView
+                    android:id="@+id/img_canera"
+                    android:src="@drawable/kyc_camera_button"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <!-- <Button-->
+
+            <!-- android:id="@+id/btn_select"-->
+            <!-- android:textColor="@color/white"-->
+            <!-- android:background="@drawable/btn_round_doc"-->
+            <!-- android:layout_marginLeft="30dp"-->
+            <!-- android:layout_marginRight="30dp"-->
+            <!-- android:layout_marginTop="20dp"-->
+            <!-- android:layout_width="match_parent"-->
+            <!-- android:layout_height="wrap_content"-->
+            <!-- android:text="Select"/>-->
+            <Button
+
+                android:id="@+id/Upload1"
+                android:textColor="@color/white"
+                android:background="@drawable/btn_round_doc"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Upload"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

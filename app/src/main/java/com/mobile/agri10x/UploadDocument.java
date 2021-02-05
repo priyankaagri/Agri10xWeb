@@ -3,6 +3,7 @@ package com.mobile.agri10x;
 import android.Manifest;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -17,11 +18,15 @@ import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.util.Base64;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,13 +63,14 @@ import java.util.List;
 public class UploadDocument extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Uri fileUri;
     private String filePath,extension;
-    private Button btnChooseFile, upload,back,preview_doc;
+    private Button btnChooseFile, upload,preview_doc;
+    ImageView back;
     private TextView filePathView,filename;
     private static final int EXTERNAL_STORAGE_PERMISSION_REQUEST_CODE = 1;
     public static final int PICKFILE_RESULT_CODE = 1;
     private UserId userId;
     Button CameraClick;
-
+    RelativeLayout relative_img_click;
     private boolean mPermissionGranted = false, fileSelected = false;
     byte[] byteArray;
     private String docType,pathofselected="";
@@ -85,11 +91,11 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_upload_document);
+        setContentView(R.layout.new_activity_upload_document);
         getPermission();
         docTypeSpinner = findViewById(R.id.doc_type_spinner);
         filePathView = findViewById(R.id.document_type);
-        upload = findViewById(R.id.Upload1);
+        upload = (Button) findViewById(R.id.Upload1);
         filename = findViewById(R.id.filename);
 
         //preview_doc = findViewById(R.id.preview_doc);
@@ -115,54 +121,55 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
         docTypeSpinner.setAdapter(dataAdapter);
         docTypeSpinner.setOnItemSelectedListener(UploadDocument.this);
 
-        btnChooseFile = findViewById(R.id.choose_file);
-        CameraClick = findViewById(R.id.CameraClick);
+      //  btnChooseFile = findViewById(R.id.choose_file);
+        //CameraClick = findViewById(R.id.CameraClick);
+        relative_img_click = findViewById(R.id.relative_img_click);
 
         final String dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/picFolder/";
         File newdir = new File(dir);
         newdir.mkdirs();
-        CameraClick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+//        CameraClick.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+//                startActivityForResult(cameraIntent, CAMERA_REQUEST);
+//
+//               /* count++;
+//                String file = dir+"Image"+count+".jpg";
+//                File newfile = new File(file);
+//                try {
+//                    newfile.createNewFile();
+//                }
+//                catch (IOException e)
+//                {
+//                }
+//
+//                Uri outputFileUri = Uri.fromFile(newfile);
+//                //Uri outputFileUri = FileProvider.getUriForFile(UploadDocument.this, BuildConfig.APPLICATION_ID, newfile);
+//
+//                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
+//
+//                startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
+//            }
+//        });
 
-                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, CAMERA_REQUEST);
-
-               /* count++;
-                String file = dir+"Image"+count+".jpg";
-                File newfile = new File(file);
-                try {
-                    newfile.createNewFile();
-                }
-                catch (IOException e)
-                {
-                }
-
-                Uri outputFileUri = Uri.fromFile(newfile);
-                //Uri outputFileUri = FileProvider.getUriForFile(UploadDocument.this, BuildConfig.APPLICATION_ID, newfile);
-
-                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
-
-                startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
-            }
-        });
-
-        btnChooseFile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                filePathView.setText(docTypeSpinner.getSelectedItem().toString());
-//                Intent chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
-//                //chooseFile.setType("*/*");
-//                chooseFile.setType("application/pdf");
-//                chooseFile = Intent.createChooser(chooseFile, "Choose a file");
-
-                final String IMAGE = "image/*";
-                final String PDF = "application/pdf";
-                Intent intent = getCustomFileChooserIntent(PDF, IMAGE);
-                startActivityForResult(intent, PICKFILE_RESULT_CODE);
-            }
-        });
+//        btnChooseFile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                filePathView.setText(docTypeSpinner.getSelectedItem().toString());
+////                Intent chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
+////                //chooseFile.setType("*/*");
+////                chooseFile.setType("application/pdf");
+////                chooseFile = Intent.createChooser(chooseFile, "Choose a file");
+//
+//                final String IMAGE = "image/*";
+//                final String PDF = "application/pdf";
+//                Intent intent = getCustomFileChooserIntent(PDF, IMAGE);
+//                startActivityForResult(intent, PICKFILE_RESULT_CODE);
+//            }
+//        });
         upload.setEnabled(false);
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -201,7 +208,75 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
             }
         });
 
+        relative_img_click.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                AlertDialog.Builder builder=new AlertDialog.Builder(UploadDocument.this);
+                LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                View layout=inflater.inflate(R.layout.custom_alert_box,null);
+                builder.setView(layout);
+                TextView btn_camera=layout.findViewById(R.id.btn_camera);
+                TextView btn_gal=layout.findViewById(R.id.btn_gal);
+
+                final AlertDialog alertDialog = builder.create();
+
+                btn_camera.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v){
+
+                        Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivityForResult(cameraIntent, CAMERA_REQUEST);
+
+/* count++;
+String file = dir+"Image"+count+".jpg";
+File newfile = new File(file);
+try {
+newfile.createNewFile();
+}
+catch (IOException e)
+{
+}
+
+Uri outputFileUri = Uri.fromFile(newfile);
+//Uri outputFileUri = FileProvider.getUriForFile(UploadDocument.this, BuildConfig.APPLICATION_ID, newfile);
+
+Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
+
+startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
+                        alertDialog.dismiss();
+                    }
+
+                });
+
+
+                btn_gal.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        filePathView.setText(docTypeSpinner.getSelectedItem().toString());
+// Intent chooseFile = new Intent(Intent.ACTION_GET_CONTENT);
+// //chooseFile.setType("*/*");
+// chooseFile.setType("application/pdf");
+// chooseFile = Intent.createChooser(chooseFile, "Choose a file");
+
+                        final String IMAGE = "image/*";
+                        final String PDF = "application/pdf";
+                        Intent intent = getCustomFileChooserIntent(PDF, IMAGE);
+                        startActivityForResult(intent, PICKFILE_RESULT_CODE);
+                        alertDialog.dismiss();
+                    }
+
+                });
+                alertDialog.show();
+                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+                layoutParams.copyFrom(alertDialog.getWindow().getAttributes());
+                layoutParams.width = 800;
+                layoutParams.height =500;
+                alertDialog.getWindow().setAttributes(layoutParams);
+            }
+        });
     }
 
 
