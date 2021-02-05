@@ -66,13 +66,13 @@ public class Trader extends AppCompatActivity
     static User user_data_intent,profiletrader;
     ImageButton refresh_button;
     TextView nav_username,nav_wallet_balance;
-    ImageView nav_image;
+  //  ImageView nav_image;
     DrawerLayout drawer;
     String city_name="";
     static String redirection;
     TextView nav_closing_bal,no_data_to_show;
     UserId userId;
-    LinearLayout addstocklayout,kyclayout,weatherlayout,requestlayout,settinglayout;
+    LinearLayout addstocklayout,kyclayout,weatherlayout,requestlayout,settinglayout,mystocklayout;
     public AppCompatImageButton tadd_stock,tcard_weather,tcard_request,tcard_kyc,card_settings;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +95,7 @@ public class Trader extends AppCompatActivity
         nav_username = v.findViewById(R.id.nav_trader_username);
         nav_closing_bal = v.findViewById(R.id.nav_closing_bal_trader);
         nav_wallet_balance = v.findViewById(R.id.nav_wallet_balance_trader);
-        nav_image = v.findViewById(R.id.nav_trader_userImage);
+       // nav_image = v.findViewById(R.id.nav_trader_userImage);
         refresh_button = v.findViewById(R.id.nav_refresh_button);
 
         tadd_stock=findViewById(R.id.tadd_stock);
@@ -110,7 +110,16 @@ public class Trader extends AppCompatActivity
         weatherlayout = findViewById(R.id.weatherlayout);
         requestlayout = findViewById(R.id.requestlayout);
         settinglayout = findViewById(R.id.settinglayout);
+        mystocklayout = findViewById(R.id.mystocklayout);
 
+        mystocklayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(Trader.this,AllStockList.class);
+                i.putExtra("Userid",user_data_intent.get_id());
+                startActivity(i);
+            }
+        });
         addstocklayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -169,16 +178,16 @@ public class Trader extends AppCompatActivity
                 startActivity(i);
             }
         });
-        nav_image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawer.closeDrawer(Gravity.LEFT);
-                //show the profile page ..
-                Intent i = new Intent(Trader.this, ProfilePage.class);
-                i.putExtra("myUser",profiletrader);
-                startActivity(i);
-            }
-        });
+//        nav_image.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                drawer.closeDrawer(Gravity.LEFT);
+//                //show the profile page ..
+//                Intent i = new Intent(Trader.this, ProfilePage.class);
+//                i.putExtra("myUser",profiletrader);
+//                startActivity(i);
+//            }
+//        });
         refresh_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -312,7 +321,7 @@ public class Trader extends AppCompatActivity
         protected void onPostExecute(Bitmap bitmap) {
             super.onPostExecute(bitmap);
             if(bitmap!=null){
-                nav_image.setImageBitmap(bitmap);
+               // nav_image.setImageBitmap(bitmap);
                 SecurityData.setUserImage(bitmap);
             }
             new Trader.LoadWalletBalance().execute(Main.getIp() + "/getBalance",new Gson().toJson(userId));
@@ -421,7 +430,7 @@ public class Trader extends AppCompatActivity
                         ErrorLog errorLog = new ErrorLog(Main.getIp()+"/UserInfo","Firstname","String",null,"Trader.LoadEntitiyData->onPostExecute()",getResources().getString(R.string.DeviceName),getClass().getSimpleName());
                         Main.addErrorReportRequest(errorLog,Trader.this);
                     }
-                    Picasso.with(Trader.this).load(Main.getBaseUrl()+u.getImgUrl()).into(nav_image);
+                //    Picasso.with(Trader.this).load(Main.getBaseUrl()+u.getImgUrl()).into(nav_image);
                     //new Trader.downloadImage().execute(Main.getBaseUrl()+u.getImgUrl());
                     //  new Trader.DownloadImageTask(nav_image).execute(Main.getBaseUrl()+u.getImgUrl());
                     //CreateNewSession(u);
@@ -781,6 +790,13 @@ public class Trader extends AppCompatActivity
 
         if (id == R.id.trader_wallet) {
             Intent i = new Intent(Trader.this, Wallet.class);
+            i.putExtra("Userid",user_data_intent.get_id());
+            startActivity(i);
+
+        }
+
+        if (id == R.id.mystockfarmer) {
+            Intent i=new Intent(Trader.this,AllStockList.class);
             i.putExtra("Userid",user_data_intent.get_id());
             startActivity(i);
 

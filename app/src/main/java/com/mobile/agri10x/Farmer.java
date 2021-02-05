@@ -83,7 +83,7 @@ public class Farmer extends AppCompatActivity
     View v;
     TextView nav_username,nav_wallet_balance;
     static User user_data_intent;
-    ImageView nav_image;
+  //  ImageView nav_image;
     ImageButton refresh_button;
     SessionManager session;
     DrawerLayout drawer;
@@ -122,7 +122,7 @@ public class Farmer extends AppCompatActivity
         v = navigationView.getHeaderView(0);
         nav_username = v.findViewById(R.id.nav_username);
         nav_wallet_balance = v.findViewById(R.id.nav_wallet_balance_farmer);
-        nav_image = v.findViewById(R.id.nav_userImage);
+      //  nav_image = v.findViewById(R.id.nav_userImage);
         nav_closing_bal = v.findViewById(R.id.nav_closing_bal_farmer);
         refresh_button = v.findViewById(R.id.nav_refresh_button);
         //idoflayoutmain
@@ -208,16 +208,16 @@ public class Farmer extends AppCompatActivity
                 startActivity(i);
             }
         });
-        nav_image.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawer.closeDrawer(Gravity.LEFT);
-                //show the profile page ..
-                Intent i = new Intent(Farmer.this,ProfilePage.class);
-                i.putExtra("myUser",profile);
-                startActivity(i);
-            }
-        });
+//        nav_image.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                drawer.closeDrawer(Gravity.LEFT);
+//                //show the profile page ..
+//                Intent i = new Intent(Farmer.this,ProfilePage.class);
+//                i.putExtra("myUser",profile);
+//                startActivity(i);
+//            }
+//        });
         refresh_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -485,7 +485,7 @@ public class Farmer extends AppCompatActivity
                         ErrorLog errorLog = new ErrorLog(Main.getIp()+"/UserInfo","Firstname","String",null,"Farmer.LoadEntitiyData->onPostExecute()",getResources().getString(R.string.DeviceName),getClass().getSimpleName());
                         Main.addErrorReportRequest(errorLog,Farmer.this);
                     }
-                    Picasso.with(Farmer.this).load(Main.getBaseUrl()+u.getImgUrl()).into(nav_image);
+                 //   Picasso.with(Farmer.this).load(Main.getBaseUrl()+u.getImgUrl()).into(nav_image);
                     //new Farmer.downloadImage().execute(Main.getBaseUrl()+u.getImgUrl());
                  //   new DownloadImageTask(nav_image).execute(Main.getBaseUrl()+u.getImgUrl());
                     //CreateNewSession(u);
@@ -614,7 +614,7 @@ public class Farmer extends AppCompatActivity
         protected void onPostExecute(Bitmap bitmap) {
             super.onPostExecute(bitmap);
             if(bitmap!=null){
-                nav_image.setImageBitmap(bitmap);
+            //    nav_image.setImageBitmap(bitmap);
                 //session.setImage(bitmap);
                 SecurityData.setUserImage(bitmap);
             }

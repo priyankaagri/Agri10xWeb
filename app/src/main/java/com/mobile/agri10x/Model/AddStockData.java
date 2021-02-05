@@ -11,6 +11,19 @@ public class AddStockData {
     String Dura;
     String Userid;
     String Variety;
+    String Commid;
+
+    public String getUserid() {
+        return Userid;
+    }
+
+    public String getCommid() {
+        return Commid;
+    }
+
+    public void setCommid(String commid) {
+        Commid = commid;
+    }
 
     public String getVariety() {
         return Variety;

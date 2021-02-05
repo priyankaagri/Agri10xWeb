@@ -103,11 +103,11 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
         List<String> type = new ArrayList<String>();
         // Pancard","Electricity Bill","Kisan Credit Card","Voter Id","GST Certificate","Shop Act","Cancelled Cheque"
         type.add("Pancard");
-        type.add("Electricity Bill");
-        type.add("Kisan Credit Card");
+//        type.add("Electricity Bill");
+//        type.add("Kisan Credit Card");
         type.add("Voter Id");
-        type.add("GST Certificate");
-        type.add("Shop Act");
+//        type.add("GST Certificate");
+//        type.add("Shop Act");
         type.add("Cancelled Cheque");
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, type);
@@ -167,9 +167,9 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(pathofselected.equals("File size should not exceed more than 2MB")){
+                if(pathofselected.equals("File size should not exceed more than 1MB")){
                     pathofselected = "";
-                    Toast.makeText(UploadDocument.this, "File size should not exceed more than 2MB", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UploadDocument.this, "File size should not exceed more than 1MB", Toast.LENGTH_SHORT).show();
                 }else if(pathofselected.equals("") && kyctype.equals("")){
                     Toast.makeText(UploadDocument.this, "Please select Type and File", Toast.LENGTH_SHORT).show();
                 }
@@ -340,7 +340,7 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
                     String uriString1 = fileUri.toString();
                     pathofselected = getPDFPath(fileUri);
                     Log.d("pathofselected",pathofselected);
-                    if(pathofselected.equals("File size should not exceed more than 2MB")){
+                    if(pathofselected.equals("File size should not exceed more than 1MB")){
                         pathofselected = "";
                     }else{
                         filename.setText(pathofselected.substring(pathofselected.lastIndexOf("/") + 1));
@@ -440,6 +440,7 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
                     count++;
                     //String file = dir+"Image"+count+".jpg";
                     filename.setText("IMG_0000"+count+"jpg");
+                    extension = ".jpg";
                     String aaa="IMG_0000"+count+"jpg";
                     pathofselected="/data/user/0/com.mobile.agri10x/files/"+aaa;
                     // imageView.setImageBitmap(photo);
@@ -492,7 +493,7 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
 // Convert the KB to MegaBytes (1 MB = 1024 KBytes)
         long fileSizeInMB = fileSizeInKB / 1024;
 
-        if(fileSizeInMB <= 2){
+        if(fileSizeInMB <= 1){
             try {
                 InputStream inputStream = UploadDocument.this.getContentResolver().openInputStream(fileUri);
                 FileOutputStream outputStream = new FileOutputStream(file);
@@ -519,8 +520,8 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
         }
         else{
 
-            Toast.makeText(UploadDocument.this, "File size should not exceed more than 2MB", Toast.LENGTH_SHORT).show();
-            return "File size should not exceed more than 2MB";
+            Toast.makeText(UploadDocument.this, "File size should not exceed more than 1MB", Toast.LENGTH_SHORT).show();
+            return "File size should not exceed more than 1MB";
         }
 
     }

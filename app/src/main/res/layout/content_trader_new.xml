@@ -69,7 +69,6 @@
                         android:layout_gravity="center"
                         android:gravity="center"
                         android:layout_weight="1"
-                        android:visibility="gone"
                         android:layout_height="wrap_content">
 
                         <ImageView
@@ -213,8 +212,7 @@
                             android:layout_height="wrap_content"/>
 
                     </LinearLayout>
-
-                   <!-- <LinearLayout
+                    <LinearLayout
                         android:id="@+id/settinglayout"
                         android:layout_width="match_parent"
                         android:orientation="vertical"
@@ -239,48 +237,7 @@
                             android:layout_marginTop="10dp"
                             android:layout_height="wrap_content"/>
 
-                    </LinearLayout>-->
-
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginHorizontal="50dp"
-                    android:layout_height="match_parent">
-
-
-
-                     <LinearLayout
-                         android:id="@+id/settinglayout"
-                         android:layout_width="match_parent"
-                         android:orientation="vertical"
-                         android:layout_gravity="left"
-                         android:gravity="left"
-                         android:layout_weight="1"
-                         android:layout_height="wrap_content">
-                         <ImageView
-                             android:layout_width="100dp"
-                             android:src="@drawable/groupimg"
-                             android:paddingRight="10dp"
-                             android:paddingLeft="10dp"
-                             android:paddingTop="10dp"
-                             android:layout_height="100dp"/>
-                         <TextView
-                             android:layout_width="match_parent"
-                             android:textSize="16dp"
-                             android:text="Setting"
-                             android:textColor="@color/black"
-                             android:layout_gravity="left"
-                             android:gravity="left"
-                             android:layout_marginLeft="18dp"
-                             android:layout_marginTop="10dp"
-                             android:layout_height="wrap_content"/>
-
-                     </LinearLayout>
+                    </LinearLayout>
 
 
                 </LinearLayout>

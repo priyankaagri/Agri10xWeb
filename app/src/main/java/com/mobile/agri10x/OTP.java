@@ -1,5 +1,6 @@
 package com.mobile.agri10x;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,11 +39,15 @@ import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.mukesh.OnOtpCompletionListener;
 import com.mukesh.OtpView;
+import com.stfalcon.smsverifycatcher.OnSmsCatchListener;
+import com.stfalcon.smsverifycatcher.SmsVerifyCatcher;
 
 
 import org.json.JSONObject;
 
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import in.aabhasjindal.otptextview.OTPListener;
 import in.aabhasjindal.otptextview.OtpTextView;
@@ -52,15 +57,16 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class OTP extends AppCompatActivity  {
-    AlertDialog dialog;
+    AlertDialog dialog,dialog2;
     public Gson gson = new Gson();
     TextView timer,mobilenumber,verifynumber,verifyotp;
     CountDownTimer cTimer = null;
 OtpTextView otp_view;
-    String strmobilenumber,strotp;
+    String strmobilenumber,strotp,strotpfrmmsg;
     ImageView img_arrow;
     EditText enterotp;
     private static String responce = null;
+    SmsVerifyCatcher smsVerifyCatcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,6 +101,18 @@ OtpTextView otp_view;
 //                callverifyapi(s);
 //            }
 //        });
+
+        smsVerifyCatcher = new SmsVerifyCatcher(OTP.this, new OnSmsCatchListener<String>() {
+            @Override
+            public void onSmsCatch(String message) {
+                strotpfrmmsg = parseCode(message);
+
+                Log.d("strotpfrmmsg", strotpfrmmsg);
+//                Toast.makeText(getActivity(), "Agilanbu OTP: " + code, Toast.LENGTH_LONG).show();
+//                et_otp.setText(code);//set code in edit text
+            }
+        });
+        
         otp_view.setOtpListener(new OTPListener() {
             @Override
             public void onInteractionListener() {
@@ -122,7 +140,7 @@ OtpTextView otp_view;
                 if(validateOTP()){
                     InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
                     inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-
+                    dialog = new OTP.Alert().pleaseWait();
                    callverifyapi("91"+strmobilenumber,strotp);
 
 Log.d("params","91"+strmobilenumber+" "+strotp);
@@ -133,17 +151,19 @@ Log.d("params","91"+strmobilenumber+" "+strotp);
         timer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
-                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-                dialog = new OTP.Alert().pleaseWait();
-
+//                InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+//                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+//                InputMethodManager inputMethodManager =
+//                        (InputMethodManager) getSystemService(
+//                                Activity.INPUT_METHOD_SERVICE);
+//                inputMethodManager.hideSoftInputFromWindow(
+//                        getWindow().getDecorView().getRootView().getWindowToken(), 0);
+//
+//                dialog2 = new OTP.Alert().pleaseWait();
                 callresendotp();
-                verifyotp.setVisibility(View.VISIBLE);
+             //   verifyotp.setVisibility(View.VISIBLE);
 
-                Intent intent = new Intent(OTP.this,OTP.class);
-                intent.putExtra("mobilenumber",strmobilenumber);
-                startActivity(intent);
-                finish();
+
             }
         });
         img_arrow.setOnClickListener(new View.OnClickListener() {
@@ -155,6 +175,16 @@ Log.d("params","91"+strmobilenumber+" "+strotp);
             }
         });
         startTimer();
+    }
+
+    private String parseCode(String message) {
+        Pattern p = Pattern.compile("\\b\\d{6}\\b");
+        Matcher m = p.matcher(message);
+        String code = "";
+        while (m.find()) {
+            code = m.group(0);
+        }
+        return code;
     }
 
     private boolean validateOTP() {
@@ -181,18 +211,22 @@ Log.d("params","91"+strmobilenumber+" "+strotp);
             @Override
             public void onResponse(Call<resendOTP> call,
                                    Response<resendOTP> response) {
-                dialog.dismiss();
+
                 Log.d("resendotpres",response.toString());
                 if (response.isSuccessful()) {
+                    Intent intent = new Intent(OTP.this,OTP.class);
+                    intent.putExtra("mobilenumber",strmobilenumber);
+                    startActivity(intent);
+                    finish();
 
-
-                    timer.setClickable(false);
-                    timer.setFocusable(false);
-                    startTimer();
+//                    timer.setClickable(false);
+//                    timer.setFocusable(false);
+//                    startTimer();
 
                     Toast.makeText(OTP.this,"OTP Resend", Toast.LENGTH_SHORT).show();
                 }
                 else {
+
                     Toast.makeText(OTP.this,"Something went wrong", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -200,6 +234,7 @@ Log.d("params","91"+strmobilenumber+" "+strotp);
             @Override
             public void onFailure(Call<resendOTP> call,
                                   Throwable t) {
+                dialog2.dismiss();
                 Toast.makeText(OTP.this,"Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
@@ -232,10 +267,11 @@ Log.d("params","91"+strmobilenumber+" "+strotp);
  if(response.body().getType().equals("success")){
      checkphoneapi("91"+strmobilenumber);
 
-     dialog = new OTP.Alert().pleaseWait();
+
      Log.d("checkphone",strmobilenumber);
  }else if(response.body().getType().equals("error")){
-     Toast.makeText(OTP.this,"OTP Not Verified.", Toast.LENGTH_SHORT).show();
+     dialog.dismiss();
+     Toast.makeText(OTP.this,"You Entered wrong OTP.", Toast.LENGTH_SHORT).show();
  }
 
 
@@ -271,7 +307,7 @@ Log.d("params","91"+strmobilenumber+" "+strotp);
             public void onResponse(Call<CheckPhoneExits> call,
                                    Response<CheckPhoneExits> response) {
                 Log.d("checkphone",response.toString());
-                dialog.dismiss();
+
                 if (response.isSuccessful()) {
 
 Log.d("responsecheck", String.valueOf(response.body().getExist()));
@@ -298,6 +334,7 @@ Log.d("checkingexist",checkresponse);
 
                 }
                 else {
+                    dialog.dismiss();
                     //    new LoginActivity.Alert().SignUp("UnRegistered User!!","First Register Yourself For Our Service");
                 }
             }
@@ -306,6 +343,7 @@ Log.d("checkingexist",checkresponse);
             public void onFailure(Call<CheckPhoneExits> call,
                                   Throwable t) {
                 Toast.makeText(OTP.this,"Something went wrong", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
             }
         });
     }
@@ -358,7 +396,7 @@ Log.d("checkingexist",checkresponse);
     }
 
     class networkPOST extends AsyncTask<String, Integer, String> {
-        AlertDialog dialog;
+//        AlertDialog dialog;
 
         @Override
         protected void onProgressUpdate(Integer... values) {
@@ -368,7 +406,7 @@ Log.d("checkingexist",checkresponse);
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            dialog = new OTP.Alert().pleaseWait();
+//            dialog = new OTP.Alert().pleaseWait();
         }
 
         @Override
@@ -418,8 +456,16 @@ Log.d("checkingexist",checkresponse);
 //                        startActivity(i);
 //                        finish();
                         Toast.makeText(OTP.this,"You are not currently registerd as Farmer or Trader",Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(OTP.this,LoginActivity.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(i);
+                        finish();
                     } else {
                         Toast.makeText(OTP.this,"You are not currently registerd as Farmer or Trader",Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(OTP.this,LoginActivity.class);
+                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(i);
+                        finish();
 //                        if(u.getRole()!=null){
 //                            Intent i = new Intent(OTP.this,Unvrified.class);
 //                            i.putExtra("User_data", u);
@@ -519,6 +565,24 @@ Log.d("checkingexist",checkresponse);
                 }
             });
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        smsVerifyCatcher.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        smsVerifyCatcher.onStop();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        smsVerifyCatcher.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }
 

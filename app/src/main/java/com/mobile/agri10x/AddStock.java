@@ -475,6 +475,7 @@ Log.d("checkid",Ccomid);
                 stock.setPeri("0");
             }
             stock.setComm(strcomname);
+            stock.setCommid(commid);
             stock.setEnt(SessionManager.getUsername());
             if (Cold.equals("Yes")) {
                 stock.setCold("1");

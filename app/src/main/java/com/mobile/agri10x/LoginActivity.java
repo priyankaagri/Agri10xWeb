@@ -363,7 +363,7 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
                 Log.d("getotp",response.toString());
                 if (response.isSuccessful()) {
 
-
+                    dialog.dismiss();
                     Intent i = new Intent(LoginActivity.this,OTP.class);
                     i.putExtra("mobilenumber",strmobilenumber);
                     startActivity(i);
@@ -371,6 +371,7 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
 
                 }
                 else {
+                    dialog.dismiss();
                     new LoginActivity.Alert().SignUp("","Try Again Later");
                 }
             }
@@ -378,6 +379,7 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
             @Override
             public void onFailure(Call<GetOTP> call,
                                   Throwable t) {
+                dialog.dismiss();
                 Toast.makeText(LoginActivity.this,"Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });

@@ -102,8 +102,8 @@ public class Unvrified extends AppCompatActivity
         NavigationView navigationView  = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         v = navigationView.getHeaderView(0);
-        nav_username = v.findViewById(R.id.nav_unverified_username);
-        nav_image = v.findViewById(R.id.nav_unverified_image);
+//        nav_username = v.findViewById(R.id.nav_unverified_username);
+//        nav_image = v.findViewById(R.id.nav_unverified_image);
 
 
         requestlayout=findViewById(R.id.requestlayout);

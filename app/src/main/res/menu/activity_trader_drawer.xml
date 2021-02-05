@@ -10,6 +10,10 @@
             android:icon="@drawable/wallet"
             android:title="Wallet" />
         <item
+            android:id="@+id/mystockfarmer"
+            android:icon="@drawable/ic_my_stock"
+            android:title="My Stocks" />
+        <item
             android:id="@+id/request_stock_trader"
             android:icon="@drawable/ic_request_stock"
             android:title="Request"

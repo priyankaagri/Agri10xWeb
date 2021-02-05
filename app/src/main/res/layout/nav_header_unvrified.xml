@@ -1,64 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="200dp"
     android:orientation="vertical"
     android:background="#8B0000">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal">
-
-        <ImageView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitCenter"
-            android:src="@drawable/agri10x_logo_image"
-            android:paddingTop="20dp"
-            android:contentDescription="TODO" />
 
-    </LinearLayout>
+            android:orientation="vertical"
+            android:layout_gravity="center_horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="96dp"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:padding="80dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/agri10x_logo_image"
+    />
 
-        android:layout_gravity="center_horizontal">
+        </LinearLayout>
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/nav_unverified_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/user_image_placeholder" />
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="96dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:orientation="vertical"-->
 
-    </LinearLayout>
+<!--        android:layout_gravity="center_horizontal">-->
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+<!--        <de.hdodenhof.circleimageview.CircleImageView-->
+<!--            android:visibility="gone"-->
+<!--            android:id="@+id/nav_unverified_image"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@drawable/user_image_placeholder" />-->
 
-        >
+<!--    </LinearLayout>-->
 
-        <TextView
-            android:id="@+id/nav_unverified_username"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/name_of_user"
-            android:fontFamily="@font/googlesans_regular"
-            android:gravity="center"
-            android:textColor="@color/colourWhite"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:paddingBottom="10dp"
-            />
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+
+<!--        >-->
+
+<!--        <TextView-->
+<!--            android:visibility="gone"-->
+<!--            android:id="@+id/nav_unverified_username"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="@string/name_of_user"-->
+<!--            android:fontFamily="@font/googlesans_regular"-->
+<!--            android:gravity="center"-->
+<!--            android:textColor="@color/colourWhite"-->
+<!--            android:textSize="20sp"-->
+<!--            android:textStyle="bold"-->
+<!--            android:paddingBottom="10dp"-->
+<!--            />-->
 
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
     <!--<LinearLayout-->
         <!--android:layout_width="match_parent"-->

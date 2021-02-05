@@ -24,7 +24,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void run() {
 
-                Intent intent = new Intent(SplashScreen.this,ScreenSlidePagerActivity.class);
+                Intent intent = new Intent(SplashScreen.this,WebPage.class);
                 startActivity(intent);
                 Animatoo.animateZoom(SplashScreen.this);
                 finish();
