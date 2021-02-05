@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -71,6 +72,7 @@ public class Trader extends AppCompatActivity
     static String redirection;
     TextView nav_closing_bal,no_data_to_show;
     UserId userId;
+    LinearLayout addstocklayout,kyclayout,weatherlayout,requestlayout,settinglayout;
     public AppCompatImageButton tadd_stock,tcard_weather,tcard_request,tcard_kyc,card_settings;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +87,7 @@ public class Trader extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -101,10 +104,61 @@ public class Trader extends AppCompatActivity
         tcard_kyc=findViewById(R.id.tcard_kyc);
         card_settings = findViewById(R.id.settings);
 
+
+        addstocklayout = findViewById(R.id.addstocklayout);
+        kyclayout = findViewById(R.id.kyclayout);
+        weatherlayout = findViewById(R.id.weatherlayout);
+        requestlayout = findViewById(R.id.requestlayout);
+        settinglayout = findViewById(R.id.settinglayout);
+
+        addstocklayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Trader.this,AddStock.class);
+                i.putExtra("Userid",user_data_intent.get_id());
+                startActivity(i);
+            }
+        });
+        kyclayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent i = new Intent(Trader.this,UploadDocument.class);
+                i.putExtra("Userid",user_data_intent.get_id());
+                startActivity(i);
+            }
+        });
+        weatherlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Trader.this, Weather.class);
+                i.putExtra("cityname",city_name);
+                i.putExtra("Userid",user_data_intent.get_id());
+                startActivity(i);
+            }
+        });
+        requestlayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Trader.this,RequestStock.class);
+                i.putExtra("user_type",user_data_intent.getRole());
+                i.putExtra("Userid",user_data_intent.get_id());
+                startActivity(i);
+            }
+        });
+        settinglayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Trader.this,SettingsActivity.class));
+            }
+        });
+
+
         user_data_intent = (User) getIntent().getSerializableExtra("User_data");
         userId = new UserId();
         city_name = user_data_intent.getCity();
         userId.setUserid(user_data_intent.get_id());
+
         nav_username.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,14 +190,14 @@ public class Trader extends AppCompatActivity
         tadd_stock.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(SecurityData.getCommodity()==null)
-                    //new getComodity().execute(Main.getOldUrl()+"/getComm");
-                    new Trader.getComodity().execute(Main.getOldUrl() + "/getTradeCommodity", new Gson().toJson(userId));
-                else{
+//                if(SecurityData.getCommodity()==null)
+//                    //new getComodity().execute(Main.getOldUrl()+"/getComm");
+//                    new Trader.getComodity().execute(Main.getOldUrl() + "/getTradeCommodity", new Gson().toJson(userId));
+//                else{
                     Intent i = new Intent(Trader.this,AddStock.class);
                     i.putExtra("Userid",user_data_intent.get_id());
                     startActivity(i);
-                }
+             //   }
             }
         });
 
@@ -160,15 +214,15 @@ public class Trader extends AppCompatActivity
         tcard_request.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(SecurityData.getCommodity()==null)
-                    new getReqStockComm().execute(Main.getOldUrl() + "/getRequestedCommodity", new Gson().toJson(userId));
-                //new getComodity().execute(Main.getOldUrl()+"/getComm");
-                else{
+//                if(SecurityData.getCommodity()==null)
+//                    new getReqStockComm().execute(Main.getOldUrl() + "/getRequestedCommodity", new Gson().toJson(userId));
+//                    //new getComodity().execute(Main.getOldUrl()+"/getComm");
+//                else{
                     Intent i = new Intent(Trader.this,RequestStock.class);
                     i.putExtra("user_type",user_data_intent.getRole());
                     i.putExtra("Userid",user_data_intent.get_id());
                     startActivity(i);
-                }
+            //    }
             }
         });
         tcard_kyc.setOnClickListener(new View.OnClickListener() {
@@ -215,7 +269,7 @@ public class Trader extends AppCompatActivity
     void loadData(){
         //no need to load data no change in the session manager
         //if(SessionManager.getUsername()!=null && user_data_intent.getUsername().equals(SessionManager.getUsername())){
-           if(false){
+        if(false){
             //do nothing
             if(SessionManager.getImageURI()!=null ){
                 final String url = Main.getOldUrl()+ SessionManager.getImageURI();
@@ -361,7 +415,7 @@ public class Trader extends AppCompatActivity
                             name = u.getFirstname()+" "+u.getLastname();
                         }
                         if(name!=null)
-                        nav_username.setText(name);
+                            nav_username.setText(name);
                     }
                     else{
                         ErrorLog errorLog = new ErrorLog(Main.getIp()+"/UserInfo","Firstname","String",null,"Trader.LoadEntitiyData->onPostExecute()",getResources().getString(R.string.DeviceName),getClass().getSimpleName());
@@ -369,7 +423,7 @@ public class Trader extends AppCompatActivity
                     }
                     Picasso.with(Trader.this).load(Main.getBaseUrl()+u.getImgUrl()).into(nav_image);
                     //new Trader.downloadImage().execute(Main.getBaseUrl()+u.getImgUrl());
-                  //  new Trader.DownloadImageTask(nav_image).execute(Main.getBaseUrl()+u.getImgUrl());
+                    //  new Trader.DownloadImageTask(nav_image).execute(Main.getBaseUrl()+u.getImgUrl());
                     //CreateNewSession(u);
                 }
             }
@@ -482,21 +536,21 @@ public class Trader extends AppCompatActivity
     void registerTokenAgain(){
         final String[] token_string = new String[1];
         FirebaseInstanceId.getInstance().getInstanceId()
-            .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                @Override
-                public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                if (!task.isSuccessful()) {
-                    return;
-                }else {
-                    token_string[0] = task.getResult().getToken();
-                    String UUID = Main.id(Trader.this);
-                    if(UUID!=null) {
-                        registrationToken tokenToServer = new registrationToken(SessionManager.getKEY_Entity_id(), SessionManager.getRole(), UUID, token_string[0]);
-                        new registerToken().execute(Main.getIp() + "/getDetails", new Gson().toJson(tokenToServer));
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            return;
+                        }else {
+                            token_string[0] = task.getResult().getToken();
+                            String UUID = Main.id(Trader.this);
+                            if(UUID!=null) {
+                                registrationToken tokenToServer = new registrationToken(SessionManager.getKEY_Entity_id(), SessionManager.getRole(), UUID, token_string[0]);
+                                new registerToken().execute(Main.getIp() + "/getDetails", new Gson().toJson(tokenToServer));
+                            }
+                        }
                     }
-                }
-                }
-            });
+                });
     }
 
     class registerToken extends AsyncTask<String, Integer, String> {
@@ -732,24 +786,24 @@ public class Trader extends AppCompatActivity
 
         }
         if(id == R.id.request_stock_trader){
-            if(SecurityData.getCommodity()==null)
-                new getReqStockComm().execute(Main.getOldUrl() + "/getRequestedCommodity", new Gson().toJson(userId));
-            else{
+//            if(SecurityData.getCommodity()==null)
+//                new getReqStockComm().execute(Main.getOldUrl() + "/getRequestedCommodity", new Gson().toJson(userId));
+//            else{
                 Intent i = new Intent(Trader.this,RequestStock.class);
                 i.putExtra("user_type",user_data_intent.getRole());
                 i.putExtra("Userid",user_data_intent.get_id());
                 startActivity(i);
-            }
+         //   }
         }
         if(id == R.id.add_stock_trader)
         {
-            if(SecurityData.getCommodity()==null)
-                new Trader.getComodity().execute(Main.getOldUrl() + "/getTradeCommodity", new Gson().toJson(userId));
-            else{
+//            if(SecurityData.getCommodity()==null)
+//                new Trader.getComodity().execute(Main.getOldUrl() + "/getTradeCommodity", new Gson().toJson(userId));
+//            else{
                 Intent i = new Intent(Trader.this,AddStock.class);
                 i.putExtra("Userid",user_data_intent.get_id());
                 startActivity(i);
-            }
+           // }
         }
         if (id == R.id.weather) {
             Intent i = new Intent(Trader.this, Weather.class);

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class LoginUser implements Serializable {
     String user;
-    String pwd;
+  //  String pwd;
 
     public String getUser() {
         return user;
@@ -14,11 +14,11 @@ public class LoginUser implements Serializable {
         this.user = user;
     }
 
-    public String getPwd() {
-        return pwd;
-    }
-
-    public void setPwd(String pwd) {
-        this.pwd = pwd;
-    }
+//    public String getPwd() {
+//        return pwd;
+//    }
+//
+//    public void setPwd(String pwd) {
+//        this.pwd = pwd;
+//    }
 }

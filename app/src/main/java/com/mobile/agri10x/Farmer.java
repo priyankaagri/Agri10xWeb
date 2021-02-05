@@ -795,25 +795,25 @@ public class Farmer extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         }
-//        if (doubleBackToExitPressedOnce) {
-//            Intent a = new Intent(Intent.ACTION_MAIN);
-//            a.addCategory(Intent.CATEGORY_HOME);
-//            a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//            startActivity(a);
-//            return;
-//        }
-//
-//        this.doubleBackToExitPressedOnce = true;
-//        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
-//
-//        new Handler().postDelayed(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//
-//                doubleBackToExitPressedOnce=false;
-//            }
-//        }, 2000);
+        if (doubleBackToExitPressedOnce) {
+            Intent a = new Intent(Intent.ACTION_MAIN);
+            a.addCategory(Intent.CATEGORY_HOME);
+            a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(a);
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
     }
 
 
@@ -837,14 +837,14 @@ public class Farmer extends AppCompatActivity
         }
 
         if(id==R.id.request_stock_farmer){
-            if(SecurityData.getCommodity()==null)
-                new getReqStockComm().execute(Main.getOldUrl() + "/getRequestCommodity", new Gson().toJson(userId));
-            else{
+//            if(SecurityData.getCommodity()==null)
+//                new getReqStockComm().execute(Main.getOldUrl() + "/getRequestCommodity", new Gson().toJson(userId));
+//            else{
                 Intent i = new Intent(Farmer.this,RequestStock.class);
                 i.putExtra("Userid",user_data_intent.get_id());
                 i.putExtra("user_type",user_data_intent.getRole());
                 startActivity(i);
-            }
+          //  }
         }
 
 
@@ -881,29 +881,29 @@ public class Farmer extends AppCompatActivity
 
         }
         else if (id == R.id.addStock) {
-            if(SecurityData.getCommodity()==null){
-                callapi();
-                new Farmer.getComodity().execute(Main.getOldUrl() + "/getTradeCommodity", new Gson().toJson(userId));
-            }
-
-            else{
+//            if(SecurityData.getCommodity()==null){
+//                callapi();
+//                new Farmer.getComodity().execute(Main.getOldUrl() + "/getTradeCommodity", new Gson().toJson(userId));
+//            }
+//
+//            else{
                 Intent i = new Intent(Farmer.this,AddStock.class);
                 i.putExtra("Userid",user_data_intent.get_id());
                 startActivity(i);
-            }
+           // }
         }
         else if(id==R.id.request_stock_farmer){
-            if(SecurityData.getCommodity()==null){
-                callapi2();
-                new getReqStockComm().execute(Main.getOldUrl() + "/getRequestedCommodity", new Gson().toJson(userId));   
-            }
-            
-            else{
+//            if(SecurityData.getCommodity()==null){
+//                callapi2();
+//                new getReqStockComm().execute(Main.getOldUrl() + "/getRequestedCommodity", new Gson().toJson(userId));
+//            }
+//
+//            else{
                 Intent i = new Intent(Farmer.this,RequestStock.class);
                 i.putExtra("Userid",user_data_intent.get_id());
                 i.putExtra("user_type",user_data_intent.getRole());
                 startActivity(i);
-            }
+           // }
         }
         else if (id == R.id.weather) {
             //city_name = user_data_intent.getCity();

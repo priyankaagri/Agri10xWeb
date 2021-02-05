@@ -1,25 +1,33 @@
 package com.mobile.agri10x;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyProperties;
 import android.security.keystore.UserNotAuthenticatedException;
 import android.text.Html;
+import android.util.ArrayMap;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,6 +47,10 @@ import com.mobile.agri10x.Model.LoginUser;
 import com.mobile.agri10x.Model.Main;
 import com.mobile.agri10x.Model.User;
 import com.mobile.agri10x.SessionManagment.SessionManager;
+import com.mobile.agri10x.models.CheckPhoneExits;
+import com.mobile.agri10x.models.GetOTP;
+import com.mobile.agri10x.retrofit.AgriInvestor;
+import com.mobile.agri10x.retrofit.ApiHandler;
 
 import org.json.JSONObject;
 
@@ -59,6 +71,7 @@ import java.security.spec.AlgorithmParameterSpec;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.Executor;
 
 import javax.crypto.BadPaddingException;
@@ -70,17 +83,23 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 import static android.security.keystore.KeyProperties.PURPOSE_ENCRYPT;
 
 public class LoginActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-
+    AlertDialog dialog;
     public Gson gson = new Gson();
-    public static EditText Username, Password;
-    public static Button Login;
-    private TextView tv_forgot_password;
+    public static EditText mobilenumber, Password;
+    String strmobilenumber;
+    //  public static Button Login;
+    private TextView tv_forgot_password,sendotp;
     private static String responce = null;
     public boolean doubleBackToExitPressedOnce = false;
-
+    ImageView call,img_arrow;
     //private static final int PERMISSIONS_REQUEST_READ_CONTACTS = 1, PERMISSIONS_REQUEST_WRITE_CONTACTS = 2, PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 3,PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 4,PERMISSIONS_REQUEST_CAMERA = 5,PERMISSIONS_RECEIVE_SMS = 6;
     private final static int REQUEST_CODE_ASK_PERMISSIONS = 1;
 
@@ -101,9 +120,13 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.new_activity_login); //activity_login
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         checkPermissions();
+        img_arrow = findViewById(R.id.img_arrow);
+        call= findViewById(R.id.call);
+        sendotp = findViewById(R.id.sendotp);
         executor = ContextCompat.getMainExecutor(this);
         biometricPrompt = new BiometricPrompt(LoginActivity.this,
                 executor, new BiometricPrompt.AuthenticationCallback() {
@@ -111,8 +134,8 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
             public void onAuthenticationError(int errorCode,
                                               @NonNull CharSequence errString) {
                 super.onAuthenticationError(errorCode, errString);
-                Toast.makeText(getApplicationContext(),"Enter username for Login !!", Toast.LENGTH_SHORT)
-                        .show();
+//                Toast.makeText(getApplicationContext(),"Enter username for Login !!", Toast.LENGTH_SHORT)
+//                        .show();
             }
 
             @Override
@@ -126,7 +149,7 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
                 String pp = pref.getString("password","defaultValue");
                 LoginUser user = new LoginUser();
                 user.setUser(pu);
-                user.setPwd(pp);
+             //   user.setPwd(pp);
                 new LoginActivity.networkPOST().execute(Main.getIp()+"/login", gson.toJson(user));
                 //restorePrefData();
                 try {
@@ -195,49 +218,49 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
         if(preferences.getBoolean("sync",false)) {
             biometricPrompt.authenticate(promptInfo);
         }
-        Username = findViewById(R.id.login_email);
-        Password = findViewById(R.id.login_password);
+        mobilenumber = findViewById(R.id.mobilenumber);
+//        Password = findViewById(R.id.login_password);
         signup = findViewById(R.id.login_sign_up);
-        tv_forgot_password = findViewById(R.id.tv_forgot_password);
+//        tv_forgot_password = findViewById(R.id.tv_forgot_password);
         session = new SessionManager(getApplicationContext());  //only once through out the application
 
-        tv_forgot_password.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this,ForgotPassword.class));
-            }
-        });
-        Login = findViewById(R.id.login);
-        Login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View arg0) {
-                String username = Username.getText().toString();
-                String password = Password.getText().toString();
-                if (username.trim().length() > 0 && password.trim().length() > 0) {
-                    LoginUser user = new LoginUser();
-                    user.setUser(username);
-                    user.setPwd(password);
-                    SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
-                    SharedPreferences.Editor editor = pref.edit();
-                    editor.putString("username",user.getUser());
-                    editor.putString("password",user.getPwd());
-                    editor.commit();
-//                    try {
-//                        user.setUser(AESCrypt.encrypt(key,username));
-//                    } catch (GeneralSecurityException e) {
-//                        e.printStackTrace();
-//                    }
-//                    try {
-//                        user.setPwd(AESCrypt.encrypt(key,password));
-//                    } catch (GeneralSecurityException e) {
-//                        e.printStackTrace();
-//                    }
-                    new LoginActivity.networkPOST().execute(Main.getIp()+"/login", gson.toJson(user));
-                } else {
-                    Toast.makeText(getApplicationContext(), "Give Proper inputs :)", Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+//        tv_forgot_password.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(LoginActivity.this,ForgotPassword.class));
+//            }
+//        });
+        //       Login = findViewById(R.id.login);
+//        Login.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View arg0) {
+//                String username = Username.getText().toString();
+//                String password = Password.getText().toString();
+//                if (username.trim().length() > 0 && password.trim().length() > 0) {
+//                    LoginUser user = new LoginUser();
+//                    user.setUser(username);
+//                    user.setPwd(password);
+//                    SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
+//                    SharedPreferences.Editor editor = pref.edit();
+//                    editor.putString("username",user.getUser());
+//                    editor.putString("password",user.getPwd());
+//                    editor.commit();
+////                    try {
+////                        user.setUser(AESCrypt.encrypt(key,username));
+////                    } catch (GeneralSecurityException e) {
+////                        e.printStackTrace();
+////                    }
+////                    try {
+////                        user.setPwd(AESCrypt.encrypt(key,password));
+////                    } catch (GeneralSecurityException e) {
+////                        e.printStackTrace();
+////                    }
+//                    new LoginActivity.networkPOST().execute(Main.getIp()+"/login", gson.toJson(user));
+//                } else {
+//                    Toast.makeText(getApplicationContext(), "Give Proper inputs :)", Toast.LENGTH_LONG).show();
+//                }
+//            }
+//        });
 //        Login.setOnLongClickListener(new View.OnLongClickListener() {
 //            @Override
 //            public boolean onLongClick(View v) {
@@ -247,15 +270,129 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
 //                return true;
 //            }
 //        });
-        signup.setOnClickListener(new View.OnClickListener() {
+//        signup.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(LoginActivity.this, Sign_up.class);
+//                startActivity(i);
+//            }
+//        });
+        img_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(LoginActivity.this, Sign_up.class);
+                Intent i = new Intent(LoginActivity.this,WebPage.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(i);
+            }
+        });
+        call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callPhoneNumber();
+            }
+        });
+
+        sendotp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                strmobilenumber = mobilenumber.getText().toString();
+                Log.d("Mobilenumber",strmobilenumber);
+                if(validateMobileNo()){
+                    InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                    callcheckphone(strmobilenumber);
+
+
+                }
             }
         });
     }
 
+    private void callcheckphone(String strmobilenumber) {
+        Map<String, Object> jsonParams = new ArrayMap<>();
+//put something inside the map, could be null
+        jsonParams.put("tp", "91"+strmobilenumber);
+
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+
+        AgriInvestor apiService = ApiHandler.getApiService();
+        final Call<CheckPhoneExits> loginCall = apiService.wsCheckPhoneExits(
+                "123456",body);
+        loginCall.enqueue(new Callback<CheckPhoneExits>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<CheckPhoneExits> call,
+                                   Response<CheckPhoneExits> response) {
+                Log.d("checkphone",response.toString());
+                if (response.isSuccessful()) {
+                    dialog = new Alert().pleaseWait();
+                    callotp(strmobilenumber);
+
+
+
+                }
+                else {
+                    //    new LoginActivity.Alert().SignUp("UnRegistered User!!","First Register Yourself For Our Service");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CheckPhoneExits> call,
+                                  Throwable t) {
+                Toast.makeText(LoginActivity.this,"Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void callotp(String number) {
+        Map<String, Object> jsonParams = new ArrayMap<>();
+//put something inside the map, could be null
+        jsonParams.put("mobileNo", "91"+number);
+
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+
+        AgriInvestor apiService = ApiHandler.getApiService();
+        final Call<GetOTP> loginCall = apiService.wsgetOTP(
+                "123456",body);
+        loginCall.enqueue(new Callback<GetOTP>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetOTP> call,
+                                   Response<GetOTP> response) {
+                dialog.dismiss();
+                Log.d("getotp",response.toString());
+                if (response.isSuccessful()) {
+
+
+                    Intent i = new Intent(LoginActivity.this,OTP.class);
+                    i.putExtra("mobilenumber",strmobilenumber);
+                    startActivity(i);
+
+
+                }
+                else {
+                    new LoginActivity.Alert().SignUp("","Try Again Later");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetOTP> call,
+                                  Throwable t) {
+                Toast.makeText(LoginActivity.this,"Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private boolean validateMobileNo() {
+
+        if (strmobilenumber.isEmpty() || strmobilenumber.length() < 10 ) {
+            Toast.makeText(LoginActivity.this,
+                    "Invalid Mobile Number", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
+
+    }
     protected void onStart() {
         super.onStart();
 
@@ -390,7 +527,7 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
                     }
                 }
                 else {
-                    new Alert().SignUp("UnRegistered User!!","First Register Yourself For Our Service");
+                   // new Alert().SignUp("UnRegistered User!!","First Register Yourself For Our Service");
                 }
             }
 
@@ -641,7 +778,7 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
     }
 
 
-//    private boolean restorePref() {
+    //    private boolean restorePref() {
 //        SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
 //        Boolean isIntroActivityOpnendBefore = pref.getBoolean("isFirst",false);
 //        return  isIntroActivityOpnendBefore;
@@ -653,6 +790,54 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
 //        editor.putBoolean("isFirst",true);
 //        editor.commit();
 //    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                                           int[] grantResults)
+    {
+        if(requestCode == 101)
+        {
+            if(grantResults[0] == PackageManager.PERMISSION_GRANTED)
+            {
+                callPhoneNumber();
+            }
+            else
+            {
+                Log.e("TAG", "Permission not Granted");
+            }
+        }
+    }
+
+    private void callPhoneNumber()
+    {
+        try
+        {
+            if(Build.VERSION.SDK_INT > 22)
+            {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                    // TODO: Consider calling
+
+                    ActivityCompat.requestPermissions(LoginActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 101);
+
+                    return;
+                }
+
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:" + "18001212243"));
+                startActivity(callIntent);
+
+            }
+            else {
+                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                callIntent.setData(Uri.parse("tel:" + "18001212243"));
+                startActivity(callIntent);
+            }
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+
 
 }
 
