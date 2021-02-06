@@ -3,8 +3,11 @@ package com.mobile.agri10x;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -33,6 +36,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricPrompt;
@@ -40,6 +44,11 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.credentials.Credential;
+import com.google.android.gms.auth.api.credentials.HintRequest;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.mobile.agri10x.Connection.POSTRequest;
@@ -90,7 +99,7 @@ import retrofit2.Response;
 
 import static android.security.keystore.KeyProperties.PURPOSE_ENCRYPT;
 
-public class LoginActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class LoginActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
     AlertDialog dialog;
     public Gson gson = new Gson();
     public static EditText mobilenumber, Password;
@@ -127,6 +136,10 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
         img_arrow = findViewById(R.id.img_arrow);
         call= findViewById(R.id.call);
         sendotp = findViewById(R.id.sendotp);
+        mobilenumber = findViewById(R.id.mobilenumber);
+        //        tv_forgot_password = findViewById(R.id.tv_forgot_password);
+//        Password = findViewById(R.id.login_password);
+        signup = findViewById(R.id.login_sign_up);
         executor = ContextCompat.getMainExecutor(this);
         biometricPrompt = new BiometricPrompt(LoginActivity.this,
                 executor, new BiometricPrompt.AuthenticationCallback() {
@@ -218,12 +231,28 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
         if(preferences.getBoolean("sync",false)) {
             biometricPrompt.authenticate(promptInfo);
         }
-        mobilenumber = findViewById(R.id.mobilenumber);
-//        Password = findViewById(R.id.login_password);
-        signup = findViewById(R.id.login_sign_up);
-//        tv_forgot_password = findViewById(R.id.tv_forgot_password);
-        session = new SessionManager(getApplicationContext());  //only once through out the application
 
+
+        session = new SessionManager(getApplicationContext());  //only once through out the application
+        GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(LoginActivity.this)
+                .addOnConnectionFailedListener(LoginActivity.this)
+                .addApi(Auth.CREDENTIALS_API)
+                .build();
+
+        if (mGoogleApiClient != null) {
+            mGoogleApiClient.connect();
+        }
+        HintRequest hintRequest = new HintRequest.Builder()
+                .setPhoneNumberIdentifierSupported(true)
+                .build();
+
+        PendingIntent intent = Auth.CredentialsApi.getHintPickerIntent(mGoogleApiClient, hintRequest);
+        try {
+            startIntentSenderForResult(intent.getIntentSender(), 1008, null, 0, 0, 0, null);
+        } catch (IntentSender.SendIntentException e) {
+            Log.e("", "Could not start hint picker Intent", e);
+        }
 //        tv_forgot_password.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -298,17 +327,28 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
                 strmobilenumber = mobilenumber.getText().toString();
                 Log.d("Mobilenumber",strmobilenumber);
                 if(validateMobileNo()){
-                    InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
-                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+//                    InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+//                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                    InputMethodManager imm = (InputMethodManager)getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                    if (imm.isAcceptingText()) {
+                        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+                        inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                    } else {
+                        // writeToLog("Software Keyboard was not shown");
+                    }
                     callcheckphone(strmobilenumber);
 
 
                 }
             }
         });
+
+
     }
 
     private void callcheckphone(String strmobilenumber) {
+        dialog = new Alert().pleaseWait();
         Map<String, Object> jsonParams = new ArrayMap<>();
 //put something inside the map, could be null
         jsonParams.put("tp", "91"+strmobilenumber);
@@ -325,7 +365,7 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
                                    Response<CheckPhoneExits> response) {
                 Log.d("checkphone",response.toString());
                 if (response.isSuccessful()) {
-                    dialog = new Alert().pleaseWait();
+
                     callotp(strmobilenumber);
 
 
@@ -456,6 +496,21 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
+    @Override
+    public void onConnected(@Nullable Bundle bundle) {
+
+    }
+
+    @Override
+    public void onConnectionSuspended(int i) {
+
+    }
+
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
 
@@ -840,7 +895,33 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
         }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        switch (requestCode) {
+            case 1008:
+                if (resultCode == RESULT_OK) {
+
+                    Credential cred = data.getParcelableExtra(Credential.EXTRA_KEY);
+                    Credential credd = data.getParcelableExtra(Credential.EXTRA_KEY);
+// cred.getId====: ====+919*******
+                   // Log.e("cred.getId", cred.getId());
+// userMob = cred.getId();
+                //    Toast.makeText(LoginActivity.this, ""+cred.getId(), Toast.LENGTH_SHORT).show();
+
+
+                } else {
+// Sim Card not found!
+                   // Log.e("cred.getId", "1008 else");
+
+                    return;
+                }
+
+
+                break;
+        }
+    }
 }
 
 

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -134,8 +135,15 @@ OtpTextView otp_view;
 
                 Log.d("otp",strotp);
                 if(validateOTP()){
-                    InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+
+                    InputMethodManager imm = (InputMethodManager)getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                    if (imm.isAcceptingText()) {
+                                            InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
                     inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                    } else {
+                       // writeToLog("Software Keyboard was not shown");
+                    }
                     dialog = new OTP.Alert().pleaseWait();
                    callverifyapi("91"+strmobilenumber,strotp);
 

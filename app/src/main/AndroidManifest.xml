@@ -36,7 +36,7 @@
         <activity
             android:name=".OTP"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity android:name=".WebPage" />
         <activity android:name=".ActiveTrade" />
         <activity android:name=".ToPdf" />
@@ -132,6 +132,7 @@
         <activity
             android:name=".Trader"
             android:label="@string/title_activity_trader"
+            android:windowSoftInputMode="stateVisible|adjustResize"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashScreen"
@@ -149,6 +150,7 @@
         <activity
             android:name=".Farmer"
             android:label="@string/title_activity_farmer"
+            android:windowSoftInputMode="stateVisible|adjustResize"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Father"

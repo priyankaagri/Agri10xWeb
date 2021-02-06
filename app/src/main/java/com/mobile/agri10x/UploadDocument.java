@@ -270,11 +270,11 @@ startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
 
                 });
                 alertDialog.show();
-                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
-                layoutParams.copyFrom(alertDialog.getWindow().getAttributes());
-                layoutParams.width = 800;
-                layoutParams.height =500;
-                alertDialog.getWindow().setAttributes(layoutParams);
+//                WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+//                layoutParams.copyFrom(alertDialog.getWindow().getAttributes());
+//                layoutParams.width = 800;
+//                layoutParams.height =500;
+//                alertDialog.getWindow().setAttributes(layoutParams);
             }
         });
     }

@@ -7,9 +7,9 @@ android {
         applicationId "com.mobile.agri10x"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 24
+        versionCode 25
         multiDexEnabled true
-        versionName "1.1.1"
+        versionName "1.1.2"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -101,4 +101,5 @@ dependencies {
     implementation 'com.github.stfalcon:smsverifycatcher:0.3.2'
     implementation 'com.google.android.gms:play-services-auth:17.0.0'
     implementation 'com.google.android.gms:play-services-auth-api-phone:17.1.0'
+
 }
