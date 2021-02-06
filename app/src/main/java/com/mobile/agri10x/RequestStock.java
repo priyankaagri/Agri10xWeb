@@ -344,6 +344,7 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
 
 
                 Log.d("getcommidnname",commid+" "+strcomname);
+                Variety.setText("");
                 callvariety(commid);
             }
 

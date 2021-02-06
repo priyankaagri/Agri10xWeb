@@ -50,6 +50,7 @@ import com.google.android.gms.auth.api.credentials.HintRequest;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.gson.Gson;
 import com.mobile.agri10x.Connection.POSTRequest;
 import com.mobile.agri10x.Model.LoginUser;
@@ -104,6 +105,7 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
     public Gson gson = new Gson();
     public static EditText mobilenumber, Password;
     String strmobilenumber;
+    TextInputLayout mobilenumbertxt;
     //  public static Button Login;
     private TextView tv_forgot_password,sendotp;
     private static String responce = null;
@@ -137,6 +139,7 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
         call= findViewById(R.id.call);
         sendotp = findViewById(R.id.sendotp);
         mobilenumber = findViewById(R.id.mobilenumber);
+        mobilenumbertxt = findViewById(R.id.mobilenumbertxt);
         //        tv_forgot_password = findViewById(R.id.tv_forgot_password);
 //        Password = findViewById(R.id.login_password);
         signup = findViewById(R.id.login_sign_up);
@@ -234,25 +237,30 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
 
 
         session = new SessionManager(getApplicationContext());  //only once through out the application
-        GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(LoginActivity.this)
-                .addOnConnectionFailedListener(LoginActivity.this)
-                .addApi(Auth.CREDENTIALS_API)
-                .build();
+//        mobilenumbertxt.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+                GoogleApiClient mGoogleApiClient = new GoogleApiClient.Builder(LoginActivity.this)
+                        .addConnectionCallbacks(LoginActivity.this)
+                        .addOnConnectionFailedListener(LoginActivity.this)
+                        .addApi(Auth.CREDENTIALS_API)
+                        .build();
 
-        if (mGoogleApiClient != null) {
-            mGoogleApiClient.connect();
-        }
-        HintRequest hintRequest = new HintRequest.Builder()
-                .setPhoneNumberIdentifierSupported(true)
-                .build();
+                if (mGoogleApiClient != null) {
+                    mGoogleApiClient.connect();
+                }
+                HintRequest hintRequest = new HintRequest.Builder()
+                        .setPhoneNumberIdentifierSupported(true)
+                        .build();
 
-        PendingIntent intent = Auth.CredentialsApi.getHintPickerIntent(mGoogleApiClient, hintRequest);
-        try {
-            startIntentSenderForResult(intent.getIntentSender(), 1008, null, 0, 0, 0, null);
-        } catch (IntentSender.SendIntentException e) {
-            Log.e("", "Could not start hint picker Intent", e);
-        }
+                PendingIntent intent = Auth.CredentialsApi.getHintPickerIntent(mGoogleApiClient, hintRequest);
+                try {
+                    startIntentSenderForResult(intent.getIntentSender(), 1008, null, 0, 0, 0, null);
+                } catch (IntentSender.SendIntentException e) {
+                    Log.e("", "Could not start hint picker Intent", e);
+                }
+//            }
+//        });
 //        tv_forgot_password.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -909,6 +917,34 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
                    // Log.e("cred.getId", cred.getId());
 // userMob = cred.getId();
                 //    Toast.makeText(LoginActivity.this, ""+cred.getId(), Toast.LENGTH_SHORT).show();
+                    String phoneNumber = cred.getId();
+                    phoneNumber = phoneNumber.replaceAll("[()\\s-]+", "");
+                    if(phoneNumber.startsWith("+"))
+                    {
+                        if(phoneNumber.length()==13)
+                        {
+                            String str_getMOBILE=phoneNumber.substring(3);
+                            mobilenumber.setText(str_getMOBILE);
+                        }
+                        else if(phoneNumber.length()==14)
+                        {
+                            String str_getMOBILE=phoneNumber.substring(4);
+                            mobilenumber.setText(str_getMOBILE);
+                        }
+
+
+                    }
+                    else if(phoneNumber.startsWith("0")){
+                        if(phoneNumber.length()==11)
+                        {
+                            String str_getMOBILE=phoneNumber.substring(1);
+                            mobilenumber.setText(str_getMOBILE);
+                        }
+                    }
+                    else
+                    {
+                        mobilenumber.setText(phoneNumber);
+                    }
 
 
                 } else {

@@ -23,7 +23,7 @@
 
                 android:src="@drawable/arrow_back"
                 android:id="@+id/img_arrow"
-                android:tint="@color/black"
+                app:tint="@color/black"
                 android:layout_width="40dp"
                 android:layout_height="30dp"/>
             <TextView
@@ -40,7 +40,7 @@
              android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/ic_baseline_call_24"
-                android:tint="@color/black"
+                app:tint="@color/black"
                 android:id="@+id/call"
                 android:layout_width="40dp"
                 android:layout_height="30dp"/>
@@ -54,6 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/mobilenumbertxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp">

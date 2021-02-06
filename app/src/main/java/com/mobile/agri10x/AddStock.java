@@ -164,6 +164,7 @@ for(int i= 0 ;i < getTradeCommodityArrayList.size() ; i++){
 
 
                     Log.d("getcommidnname",commid+" "+strcomname);
+        Variety.setText("");
                     callvariety(commid);
     }
 
