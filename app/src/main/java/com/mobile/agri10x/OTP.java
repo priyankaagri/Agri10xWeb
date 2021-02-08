@@ -155,15 +155,16 @@ Log.d("params","91"+strmobilenumber+" "+strotp);
         timer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
-//                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-//                InputMethodManager inputMethodManager =
-//                        (InputMethodManager) getSystemService(
-//                                Activity.INPUT_METHOD_SERVICE);
-//                inputMethodManager.hideSoftInputFromWindow(
-//                        getWindow().getDecorView().getRootView().getWindowToken(), 0);
-//
-//                dialog2 = new OTP.Alert().pleaseWait();
+                InputMethodManager imm = (InputMethodManager)getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                if (imm.isAcceptingText()) {
+                    InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                } else {
+                    // writeToLog("Software Keyboard was not shown");
+                }
+
+                dialog2 = new OTP.Alert().pleaseWait();
                 callresendotp();
              //   verifyotp.setVisibility(View.VISIBLE);
 
@@ -233,7 +234,7 @@ Log.d("params","91"+strmobilenumber+" "+strotp);
             @Override
             public void onResponse(Call<resendOTP> call,
                                    Response<resendOTP> response) {
-
+                dialog2.dismiss();
                 Log.d("resendotpres",response.toString());
                 if (response.isSuccessful()) {
                     Intent intent = new Intent(OTP.this,OTP.class);

@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -93,9 +94,17 @@ public class WebPage extends AppCompatActivity {
             webView.loadUrl("https://www.agri10x.com/");
 
 
+            try {
 
+                currentVersion = getApplicationContext().getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+
+                Log.d("Current Version","::"+currentVersion);
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
 
         }
+
 
     }
     @Override
@@ -203,6 +212,7 @@ public class WebPage extends AppCompatActivity {
             super.onPostExecute(onlineVersion);
 
             if (onlineVersion != null && !onlineVersion.isEmpty()) {
+
 
                 if (onlineVersion.equals(currentVersion)) {
 
