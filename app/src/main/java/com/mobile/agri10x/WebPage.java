@@ -2,9 +2,13 @@ package com.mobile.agri10x;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -23,17 +27,25 @@ import com.mobile.agri10x.Model.Main;
 import com.mobile.agri10x.Model.SecurityData;
 import com.mobile.agri10x.SessionManagment.SessionManager;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+
 public class WebPage extends AppCompatActivity {
     private WebView webView = null;
     public boolean doubleBackToExitPressedOnce = false;
     ProgressDialog progressDialog;
+    String currentVersion="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_web_page);
 
-
+            new GetVersionCode().execute();
             this.webView = (WebView) findViewById(R.id.webview);
 
             WebSettings webSettings = webView.getSettings();
@@ -147,5 +159,81 @@ public class WebPage extends AppCompatActivity {
 
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+
+    private class GetVersionCode extends AsyncTask<Void, String, String> {
+
+        @Override
+
+        protected String doInBackground(Void... voids) {
+
+            String newVersion = null;
+
+            try {
+                Document document = (Document) Jsoup.connect("https://play.google.com/store/apps/details?id=" +getPackageName() + "&hl=en")
+                        .timeout(30000)
+                        .userAgent("Mozilla/5.0 (Windows; U; WindowsNT 5.1; en-US; rv1.8.1.6) Gecko/20070725 Firefox/2.0.0.6")
+                        .referrer("http://www.google.com")
+                        .get();
+                if (document != null) {
+                    Elements element = document.getElementsContainingOwnText("Current Version");
+                    for (org.jsoup.nodes.Element ele : element) {
+                        if (ele.siblingElements() != null) {
+                            Elements sibElemets = ele.siblingElements();
+                            for (Element sibElemet : sibElemets) {
+                                newVersion = sibElemet.text();
+                            }
+                        }
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return newVersion;
+
+        }
+
+
+        @Override
+
+        protected void onPostExecute(String onlineVersion) {
+
+            super.onPostExecute(onlineVersion);
+
+            if (onlineVersion != null && !onlineVersion.isEmpty()) {
+
+                if (onlineVersion.equals(currentVersion)) {
+
+                } else {
+                    AlertDialog alertDialog = new AlertDialog.Builder(WebPage.this).create();
+                    alertDialog.setTitle("Update");
+                    alertDialog.setIcon(getDrawable(R.drawable.appstoreicon));
+                    alertDialog.setMessage("New Update is available");
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Update", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            try {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
+                            } catch (android.content.ActivityNotFoundException anfe) {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName())));
+                            }
+                        }
+                    });
+
+                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    alertDialog.show();
+                }
+
+            }
+
+            Log.d("update", "Current version " + currentVersion + "playstore version " + onlineVersion);
+
+        }
     }
 }
