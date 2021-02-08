@@ -84,6 +84,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AllStockList"
+android:label="My Stock"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".About"

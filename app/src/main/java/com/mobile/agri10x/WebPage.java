@@ -218,9 +218,9 @@ public class WebPage extends AppCompatActivity {
 
                 } else {
                     AlertDialog alertDialog = new AlertDialog.Builder(WebPage.this).create();
-                    alertDialog.setTitle("Update");
+                    alertDialog.setTitle("Time To Upgrade");
                     alertDialog.setIcon(getDrawable(R.drawable.appstoreicon));
-                    alertDialog.setMessage("New Update is available");
+                    alertDialog.setMessage("Hey there, Download Agri10x latest app version and stay updated !");
                     alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Update", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             try {
