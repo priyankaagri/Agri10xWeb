@@ -69,7 +69,7 @@ public class Trader extends AppCompatActivity
     TextView nav_username,nav_wallet_balance;
   //  ImageView nav_image;
     DrawerLayout drawer;
-    String city_name="",myrole;
+    String city_name="",myrole,myfirstname="";
     static String redirection;
     TextView nav_closing_bal,no_data_to_show;
     UserId userId;
@@ -183,6 +183,12 @@ public class Trader extends AppCompatActivity
         userId.setUserid(user_data_intent.get_id());
                 myrole = user_data_intent.getRole();
                 Log.d("checkmyrole",myrole);
+
+        myfirstname = user_data_intent.getUsername();
+        if(myfirstname  != null){
+            getSupportActionBar().setTitle(myfirstname);
+        }
+
 
                 if(myrole.equals("PTrader")){
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(Trader.this);

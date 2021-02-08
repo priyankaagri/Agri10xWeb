@@ -97,7 +97,7 @@ public class Farmer extends AppCompatActivity
     //the recyclerview
     public static RecyclerView recyclerView;
     public static ProductAdapter adapter;
-    static String redirection,myrole;
+    static String redirection,myrole,myfirstname="",mylastname="";
     TextView nav_closing_bal;
     TextView no_data_to_show,check1;
     public String city_name;
@@ -150,6 +150,12 @@ public class Farmer extends AppCompatActivity
         city_name = user_data_intent.getCity();
         userId = new UserId();
         userId.setUserid(user_data_intent.get_id());
+myfirstname = user_data_intent.getUsername();
+if(myfirstname != null){
+    getSupportActionBar().setTitle(myfirstname);
+
+}
+
 
         myrole = user_data_intent.getRole();
         Log.d("checkmyrole",myrole);        //city_name = SessionManager.getFirstName();

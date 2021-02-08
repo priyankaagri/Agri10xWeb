@@ -73,7 +73,7 @@ public class UpdateProfile_New extends AppCompatActivity {
             public void onClick(View view) {
                 first_name_string= first_name.getText().toString().trim();
                 last_name_string= last_name.getText().toString().trim();
-                if(role_string.length()>0){
+                if(first_name_string.length()>0 && last_name_string.length()>0 && strmobile.length()>0 && role_string.length()>0){
                     new networkPOST().execute(Main.getOldUrl()+"/CreateUser");
                     // Toast.makeText(UpdateProfile_New.this,"Profile Updated Succesfully!",Toast.LENGTH_LONG).show();
 
@@ -186,7 +186,7 @@ public class UpdateProfile_New extends AppCompatActivity {
 //                    role_string = "QC";
 //                }
                 Log.d("params",role_string+" "+strmobile);
-                SignUpUser newUser = new SignUpUser("P"+role_string,strmobile);//email_string,contact_no_strin,encoded,first_name_string,last_name_string
+                SignUpUser newUser = new SignUpUser("P"+role_string,strmobile,first_name_string,last_name_string);//email_string,contact_no_strin,encoded,first_name_string,last_name_string
                 str = POSTRequest.fetchUserData(strings[0],new Gson().toJson(newUser),UpdateProfile_New.this);
             } catch (Exception e) {
                 return "network";

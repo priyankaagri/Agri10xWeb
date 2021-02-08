@@ -554,6 +554,8 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
                         u.setUsername(json_session_data_form_server.getString("username"));
                         u.setRole(json_session_data_form_server.getString("role"));
                         u.set_id(json_session_data_form_server.getString("Userid"));
+//                        u.setFirstname(json_session_data_form_server.getString("fn"));
+//                        u.setLastname(json_session_data_form_server.getString(""));
                         //other data not required
 //                        if(!restorePref()){
 //                            savePrefsData();
