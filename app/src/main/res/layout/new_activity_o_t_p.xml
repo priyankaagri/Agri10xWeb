@@ -61,7 +61,7 @@
             <TextView
                 android:layout_marginTop="15dp"
                 android:textAlignment="center"
-                android:text="Enter 4 digit Verification Code"
+                android:text="Enter 4 Digit Verification Code"
                 android:textStyle="bold"
                 android:textSize="15sp"
                 android:layout_width="match_parent"

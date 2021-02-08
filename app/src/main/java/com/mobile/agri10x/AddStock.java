@@ -2,6 +2,7 @@ package com.mobile.agri10x;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -578,6 +579,23 @@ Log.d("checkid",Ccomid);
                     dialogInterface.cancel();
                     finish();
                     startActivity(getIntent());
+                }
+            });
+            Alert.create().show();
+        }
+
+        public void alertt(String title, String body) {
+            final AlertDialog.Builder Alert = new AlertDialog.Builder(AddStock.this);
+            Alert.setCancelable(false)
+                    .setTitle(title)
+                    .setMessage(body);
+            Alert.setNegativeButton("Okay", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+            Intent intent = new Intent(AddStock.this,AllStockList.class);
+            startActivity(intent);
+            finish();
                 }
             });
             Alert.create().show();

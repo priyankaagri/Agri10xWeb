@@ -422,6 +422,7 @@ startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
                         String someFilepath = pathofselected.substring(pathofselected.lastIndexOf("/") + 1);
                         Log.d("strpath",someFilepath);
                         extension  = someFilepath.substring(someFilepath.lastIndexOf("."));
+                        extension = extension.replaceAll("[-+.^:,]","");
                         Log.d("extention",extension);
                     }
 
@@ -515,7 +516,7 @@ startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
                     count++;
                     //String file = dir+"Image"+count+".jpg";
                     filename.setText("IMG_0000"+count+"jpg");
-                    extension = ".jpg";
+                    extension = "jpg";
                     String aaa="IMG_0000"+count+"jpg";
                     pathofselected="/data/user/0/com.mobile.agri10x/files/"+aaa;
                     // imageView.setImageBitmap(photo);

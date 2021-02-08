@@ -29,7 +29,7 @@
                     <ImageView
 
                         android:src="@drawable/arrow_back"
-                        android:tint="@color/appgreen"
+                        app:tint="@color/appgreen"
                         android:id="@+id/img_arrow"
                         android:layout_width="40dp"
                         android:layout_height="30dp"/>

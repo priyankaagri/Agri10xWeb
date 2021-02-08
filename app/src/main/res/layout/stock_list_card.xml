@@ -18,7 +18,7 @@
 
         android:layout_margin="10dp">
         <LinearLayout
-android:background="@drawable/card_view_border"
+            android:background="@drawable/card_view_border"
             android:padding="2dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -27,185 +27,186 @@ android:background="@drawable/card_view_border"
             <LinearLayout
 
                 android:layout_width="match_parent"
-                android:layout_height="150dp">
+                android:layout_height="170dp">
 
                 <ImageView
+                    android:padding="10dp"
                     android:id="@+id/image_stock_list"
                     android:layout_width="match_parent"
-                    android:layout_height="180dp"
+                    android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"/>
 
             </LinearLayout>
-<LinearLayout
-    android:background="@color/appgreen"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-
             <LinearLayout
-
-                android:weightSum="2"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/commoditynamestocklist"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-
-                    android:padding="5dp"
-                    android:text="Commodity Name"
-                    android:textAllCaps="true"
-                    android:layout_weight="1"
-                    android:textColor="@color/colourBlack"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-                <TextView
-
-                    android:id="@+id/qualitystocklist"
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="0.9"
-                  android:gravity="center"
-
-                    android:text="Qual"
-                    android:textColor="#000"
-                    android:textSize="15sp"
-                    android:textStyle="bold"/>
-
-                <ImageView
-                    android:id="@+id/arrowdown"
-                    android:visibility="gone"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_arrow_drop_down_black_24dp"
-                    android:layout_weight="0.1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
-
-                </ImageView>
-                <ImageView
-                    android:visibility="gone"
-               android:id="@+id/arrowup"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_baseline_arrow_drop_up_24"
-                    android:layout_weight="0.1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content">
-
-                </ImageView>
-            </LinearLayout>
-
-
-            <View
-
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_margin="8dp"
-                android:background="#ffffff" />
-            <LinearLayout
-
-                android:id="@+id/ll1"
+                android:background="@color/appgreen"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
 
+                <LinearLayout
 
-            <LinearLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/unitstocklist"
+                    android:weightSum="2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="left"
-                    android:padding="10dp"
-                    android:text="Unit:"
-                    android:textColor="#000"
-                    android:textSize="@dimen/my_stock_small_text" />
+                    android:layout_height="30dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:id="@+id/commoditynamestocklist"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
 
-                <TextView
-                    android:id="@+id/quantitystocklist"
+                        android:padding="5dp"
+                        android:text="Commodity Name"
+                        android:textAllCaps="true"
+                        android:layout_weight="1"
+                        android:textColor="@color/colourBlack"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                    <TextView
+
+                        android:id="@+id/qualitystocklist"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="0.9"
+                        android:gravity="center"
+
+                        android:text="Qual"
+                        android:textColor="#000"
+                        android:textSize="15sp"
+                        android:textStyle="bold"/>
+
+                    <ImageView
+                        android:id="@+id/arrowdown"
+                        android:visibility="gone"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_arrow_drop_down_black_24dp"
+                        android:layout_weight="0.1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                    </ImageView>
+                    <ImageView
+                        android:visibility="gone"
+                        android:id="@+id/arrowup"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_baseline_arrow_drop_up_24"
+                        android:layout_weight="0.1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content">
+
+                    </ImageView>
+                </LinearLayout>
+
+
+                <View
+
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="left"
-                    android:padding="10dp"
-                    android:text="Quantity:"
-                    android:textColor="#000"
-                    android:textSize="@dimen/my_stock_small_text" />
+                    android:layout_height="1dp"
+                    android:layout_margin="8dp"
+                    android:background="#ffffff" />
+                <LinearLayout
 
+                    android:id="@+id/ll1"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+
+                    <LinearLayout
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/unitstocklist"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:padding="10dp"
+                            android:text="Unit:"
+                            android:textColor="#000"
+                            android:textSize="@dimen/my_stock_small_text" />
+
+                        <TextView
+                            android:id="@+id/quantitystocklist"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:padding="10dp"
+                            android:text="Quantity:"
+                            android:textColor="#000"
+                            android:textSize="@dimen/my_stock_small_text" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/perishable_stock_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:padding="10dp"
+                            android:text="Perishable:"
+                            android:textColor="#000"
+                            android:textSize="@dimen/my_stock_small_text" />
+
+                        <TextView
+                            android:id="@+id/coldStorage_stock_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:padding="10dp"
+                            android:text="Cold Storage:"
+                            android:textColor="#000"
+                            android:textSize="@dimen/my_stock_small_text" />
+
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/entrytime_stock_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:padding="10dp"
+                            android:text="EntryTime:"
+                            android:textColor="#000"
+                            android:textSize="@dimen/my_stock_small_text" />
+
+                        <TextView
+                            android:id="@+id/blockQuantity_stock_list"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="left"
+                            android:padding="10dp"
+                            android:text="BlockQuantity:"
+                            android:textColor="#000"
+                            android:textSize="@dimen/my_stock_small_text" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
             </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/perishable_stock_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="left"
-                    android:padding="10dp"
-                    android:text="Perishable:"
-                    android:textColor="#000"
-                    android:textSize="@dimen/my_stock_small_text" />
-
-                <TextView
-                    android:id="@+id/coldStorage_stock_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="left"
-                    android:padding="10dp"
-                    android:text="Cold Storage:"
-                    android:textColor="#000"
-                    android:textSize="@dimen/my_stock_small_text" />
-
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/entrytime_stock_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="left"
-                    android:padding="10dp"
-                    android:text="EntryTime:"
-                    android:textColor="#000"
-                    android:textSize="@dimen/my_stock_small_text" />
-
-                <TextView
-                    android:id="@+id/blockQuantity_stock_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="left"
-                    android:padding="10dp"
-                    android:text="BlockQuantity:"
-                    android:textColor="#000"
-                    android:textSize="@dimen/my_stock_small_text" />
-
-            </LinearLayout>
-
-            </LinearLayout>
-</LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </LinearLayout>

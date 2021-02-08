@@ -88,6 +88,7 @@ public class Farmer extends AppCompatActivity
     SessionManager session;
     DrawerLayout drawer;
     Button tempactive;
+    ImageView famimg;
     List<GetTradeCommodity> getTradeCommodityArrayList = new ArrayList<>();
     List<GetRequestedCommodity> getRequestedCommodityArrayList = new ArrayList<>();
     //Recycler View
@@ -117,8 +118,10 @@ public class Farmer extends AppCompatActivity
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
+        toggle.setDrawerIndicatorEnabled(false);
         toggle.syncState();
         NavigationView navigationView = findViewById(R.id.nav_view);
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         v = navigationView.getHeaderView(0);
         nav_username = v.findViewById(R.id.nav_username);
         nav_wallet_balance = v.findViewById(R.id.nav_wallet_balance_farmer);
@@ -139,7 +142,7 @@ public class Farmer extends AppCompatActivity
         card_request=findViewById(R.id.card_request);
         card_kyc=findViewById(R.id.card_kyc);
         card_settings = findViewById(R.id.settings);
-
+        famimg = findViewById(R.id.famimg);
         //tempactive = findViewById(R.id.tempactive);
 
         navigationView.setNavigationItemSelectedListener(this);
@@ -362,7 +365,14 @@ public class Farmer extends AppCompatActivity
 //                //new LoadEntitiyData().execute(Main.getIp()+"/UserInfo",new Gson().toJson(getBidStatus));
 //            }
 //        }, 1200);
+        famimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Farmer.this,OnlyWebPage.class);
+                startActivity(i);
 
+            }
+        });
 
     }
     protected void onStart() {

@@ -65,6 +65,7 @@ public class Trader extends AppCompatActivity
     View v;
     static User user_data_intent,profiletrader;
     ImageButton refresh_button;
+    ImageView farmimg;
     TextView nav_username,nav_wallet_balance;
   //  ImageView nav_image;
     DrawerLayout drawer;
@@ -86,10 +87,12 @@ public class Trader extends AppCompatActivity
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
+        toggle.setDrawerIndicatorEnabled(false);
         toggle.syncState();
 
 
         NavigationView navigationView = findViewById(R.id.nav_view);
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         navigationView.setNavigationItemSelectedListener(this);
         v = navigationView.getHeaderView(0);
         nav_username = v.findViewById(R.id.nav_trader_username);
@@ -98,6 +101,7 @@ public class Trader extends AppCompatActivity
        // nav_image = v.findViewById(R.id.nav_trader_userImage);
         refresh_button = v.findViewById(R.id.nav_refresh_button);
 
+        farmimg = findViewById(R.id.farmimg);
         tadd_stock=findViewById(R.id.tadd_stock);
         tcard_weather=findViewById(R.id.tcard_weather);
         tcard_request=findViewById(R.id.tcard_request);
@@ -153,6 +157,15 @@ public class Trader extends AppCompatActivity
                 i.putExtra("user_type",user_data_intent.getRole());
                 i.putExtra("Userid",user_data_intent.get_id());
                 startActivity(i);
+            }
+        });
+
+        farmimg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Trader.this,OnlyWebPage.class);
+                startActivity(i);
+
             }
         });
         settinglayout.setOnClickListener(new View.OnClickListener() {

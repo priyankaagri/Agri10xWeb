@@ -22,6 +22,7 @@
             app:title="@string/app_name">
 
             <ImageView
+                android:id="@+id/famimg"
                 android:layout_width="match_parent"
                 android:layout_height="250sp"
                 android:src="@drawable/farmer_image"

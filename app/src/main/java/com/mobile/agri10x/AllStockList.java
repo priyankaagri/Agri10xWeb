@@ -2,6 +2,7 @@ package com.mobile.agri10x;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -41,6 +42,7 @@ public class AllStockList extends AppCompatActivity {
 
     static StockList[] p;
     private UserId userId;
+    Button addmorestock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
@@ -65,6 +67,7 @@ public class AllStockList extends AppCompatActivity {
 
         context = getApplicationContext();
         //getting the recyclerview from xml
+        addmorestock = findViewById(R.id.addmorestock);
         recyclerView = findViewById(R.id.recyclerView_stocklist);
         recyclerView.setHasFixedSize(true);
         recyclerView.setItemViewCacheSize(20);
@@ -73,7 +76,14 @@ public class AllStockList extends AppCompatActivity {
 
         //initializing the productlist
         productList = new ArrayList<>();
-
+        addmorestock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AllStockList.this,AddStock.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         new DownloadMyStock().execute(Main.getOldUrl()+"/getMyStockList",new Gson().toJson(userId));
 
     }

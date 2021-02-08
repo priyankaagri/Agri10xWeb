@@ -13,9 +13,10 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA"
+    <uses-permission
+        android:name="android.permission.CAMERA"
         android:required="true"
-        android:requiredFeature="true"/>
+        android:requiredFeature="true" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -32,7 +33,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UpdateProfile_New"></activity>
+        <activity android:name=".OnlyWebPage"
+            android:theme="@style/AppTheme.NoActionBar" ></activity>
+        <activity android:name=".UpdateProfile_New" />
         <activity
             android:name=".OTP"
             android:theme="@style/AppTheme.NoActionBar"
@@ -132,8 +135,8 @@
         <activity
             android:name=".Trader"
             android:label="@string/title_activity_trader"
-            android:windowSoftInputMode="stateVisible|adjustResize"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".SplashScreen"
             android:theme="@style/AppTheme.NoActionBar">
@@ -150,8 +153,8 @@
         <activity
             android:name=".Farmer"
             android:label="@string/title_activity_farmer"
-            android:windowSoftInputMode="stateVisible|adjustResize"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
         <activity
             android:name=".Father"
             android:label="@string/title_activity_main"
