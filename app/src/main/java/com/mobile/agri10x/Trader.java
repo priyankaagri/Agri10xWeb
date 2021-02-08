@@ -185,12 +185,22 @@ public class Trader extends AppCompatActivity
                 Log.d("checkmyrole",myrole);
 
         myfirstname = user_data_intent.getUsername();
-        if(myfirstname  != null){
-            getSupportActionBar().setTitle(myfirstname);
-        }
+        Log.d("takefirstname",myfirstname);
+//        if(myfirstname != null  ){
+//            getSupportActionBar().setTitle(myfirstname);
+//        }
+//        else if(myfirstname.equals("undefined undefined")){
+//            getSupportActionBar().setTitle("");
+//        }
 
 
-                if(myrole.equals("PTrader")){
+         if(myfirstname.equals("undefined undefined")){
+            getSupportActionBar().setTitle("");
+        }else{
+             getSupportActionBar().setTitle(myfirstname);
+         }
+
+        if(myrole.equals("PTrader")){
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(Trader.this);
                     builder1.setMessage("Your KYC is pending");
                     builder1.setCancelable(true);

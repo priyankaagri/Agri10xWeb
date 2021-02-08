@@ -151,11 +151,12 @@ public class Farmer extends AppCompatActivity
         userId = new UserId();
         userId.setUserid(user_data_intent.get_id());
 myfirstname = user_data_intent.getUsername();
-if(myfirstname != null){
-    getSupportActionBar().setTitle(myfirstname);
-
-}
-
+Log.d("takefirstname",myfirstname);
+        if(myfirstname.equals("undefined undefined")){
+            getSupportActionBar().setTitle("");
+        }else{
+            getSupportActionBar().setTitle(myfirstname);
+        }
 
         myrole = user_data_intent.getRole();
         Log.d("checkmyrole",myrole);        //city_name = SessionManager.getFirstName();
