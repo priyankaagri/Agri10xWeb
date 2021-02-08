@@ -151,7 +151,7 @@ public class Farmer extends AppCompatActivity
         userId = new UserId();
         userId.setUserid(user_data_intent.get_id());
 myfirstname = user_data_intent.getUsername();
-Log.d("takefirstname",myfirstname);
+
         if(myfirstname.equals("undefined undefined")){
             getSupportActionBar().setTitle("");
         }else{

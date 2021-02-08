@@ -185,7 +185,7 @@ public class Trader extends AppCompatActivity
                 Log.d("checkmyrole",myrole);
 
         myfirstname = user_data_intent.getUsername();
-        Log.d("takefirstname",myfirstname);
+
 //        if(myfirstname != null  ){
 //            getSupportActionBar().setTitle(myfirstname);
 //        }
