@@ -3,10 +3,13 @@ package com.mobile.agri10x.retrofit;
 import com.mobile.agri10x.models.CheckPhoneExits;
 import com.mobile.agri10x.models.GetLogin;
 import com.mobile.agri10x.models.GetOTP;
+import com.mobile.agri10x.models.GetProfile;
 import com.mobile.agri10x.models.GetRequestedCommodity;
 import com.mobile.agri10x.models.GetRequestedVariety;
 import com.mobile.agri10x.models.GetTradeCommodity;
 import com.mobile.agri10x.models.GetTradeVariety;
+import com.mobile.agri10x.models.GetUserInfo;
+import com.mobile.agri10x.models.SetUserO;
 import com.mobile.agri10x.models.resendOTP;
 import com.mobile.agri10x.models.verfyOTP;
 
@@ -51,4 +54,11 @@ public interface AgriInvestor {
 
     @POST("login")
     Call<GetLogin> wsLoginCheck(@Header("x-auth-token") String token, @Body RequestBody params);
+
+    @POST("getUser")
+    Call<GetProfile> wsGetProfileData(@Header("x-auth-token") String token, @Body RequestBody params);
+
+
+    @POST("SetUser")
+    Call<GetUserInfo> wssetuserinfo(@Header("x-auth-token") String token, @Body SetUserO setUserO);
 }

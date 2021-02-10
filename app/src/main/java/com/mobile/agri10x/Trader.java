@@ -171,7 +171,10 @@ public class Trader extends AppCompatActivity
         settinglayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Trader.this,SettingsActivity.class));
+                Intent i = new Intent(Trader.this, SettingActivityNew.class);
+                i.putExtra("Userid", user_data_intent.get_id());
+                i.putExtra("role", user_data_intent.getRole());
+                startActivity(i);
             }
         });
 

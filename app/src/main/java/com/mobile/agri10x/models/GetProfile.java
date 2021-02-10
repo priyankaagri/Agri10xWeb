@@ -236,4 +236,5 @@ public class GetProfile {
         this.imgUrl = imgUrl;
     }
 
+
 }

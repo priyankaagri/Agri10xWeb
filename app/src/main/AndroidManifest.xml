@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.mobile.agri10x">
 
+    <uses-sdk android:minSdkVersion="28" />
+
     <uses-permission android:name="android.permission.RECEIVE_SMS" />
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
@@ -17,8 +19,6 @@
         android:name="android.permission.CAMERA"
         android:required="true"
         android:requiredFeature="true" />
-
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
@@ -26,6 +26,7 @@
 
     <application
         android:allowBackup="true"
+        android:extractNativeLibs="false"
         android:hardwareAccelerated="true"
         android:icon="@drawable/appstorelogo"
         android:label="@string/app_name"
@@ -35,8 +36,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".OnlyWebPage"
-            android:theme="@style/AppTheme.NoActionBar" ></activity>
+        <activity android:name=".UpdateProfileUser"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".SettingActivityNew"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".OnlyWebPage"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UpdateProfile_New" />
         <activity
             android:name=".OTP"
@@ -83,7 +89,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AllStockList"
-android:label="My Stock"
+            android:label="My Stock"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".About"

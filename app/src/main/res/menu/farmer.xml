@@ -6,12 +6,14 @@
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
+        android:visible="false"
         app:showAsAction="never" />
     <item
         android:id="@+id/notification_button_farmer"
         android:orderInCategory="100"
         android:icon="@mipmap/ic_notification_simple"
         android:title="Notification"
+        android:visible="false"
         app:showAsAction="always"
         />
     <!--<item-->
@@ -23,5 +25,6 @@
         android:id="@+id/log_out"
         android:orderInCategory="100"
         android:title="Log Out"
+        android:visible="false"
         app:showAsAction="never"/>
 </menu>

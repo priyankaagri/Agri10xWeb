@@ -231,7 +231,10 @@ myfirstname = user_data_intent.getUsername();
         settinglayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(Farmer.this,SettingsActivity.class));
+                Intent i = new Intent(Farmer.this, SettingActivityNew.class);
+                i.putExtra("Userid", user_data_intent.get_id());
+                i.putExtra("role", user_data_intent.getRole());
+                startActivity(i);
             }
         });
         nav_username.setOnClickListener(new View.OnClickListener() {

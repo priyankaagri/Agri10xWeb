@@ -20,6 +20,7 @@ import android.util.ArrayMap;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -79,7 +80,7 @@ OtpTextView otp_view;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_activity_o_t_p);
-
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN | WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -97,7 +98,7 @@ OtpTextView otp_view;
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             strmobilenumber = extras.getString("mobilenumber");
-            verifynumber.setText("We Send Verification code to "+strmobilenumber);
+            verifynumber.setText("We have sent verification code to "+strmobilenumber);
         }else{
             verifynumber.setText("");
         }
@@ -376,7 +377,7 @@ Log.d("checkingexist",checkresponse);
 
     //start timer function
     void startTimer() {
-        cTimer = new CountDownTimer(30000, 1000)
+        cTimer = new CountDownTimer(60000, 1000)
         {
             public void onTick(long millisUntilFinished) {
                 timer.setText( "00:"+String.valueOf(millisUntilFinished / 1000) +"  seconds remaining..." );
@@ -598,17 +599,18 @@ Log.d("checkingexist",checkresponse);
 //That gives all message to us.
 // We need to get the code from inside with regex
                 String message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
-                String numberOnly = message.replaceAll("[^0-9]", "");
+                if(message.contains("Agri10x E-Marketplace login")) {
+                    String numberOnly = message.replaceAll("[^0-9]", "");
 //numberOnly 10886110
 
-                String a = numberOnly.substring(2);
+                    String a = numberOnly.substring(2);
 
-               strotpfrmmsg= a.substring(0, a.length() - 2);
-               if(strotpfrmmsg != null){
-                   otp_view.setOTP(strotpfrmmsg);
-               }
+                    strotpfrmmsg = a.substring(0, a.length() - 2);
+                    if (strotpfrmmsg != null) {
+                        otp_view.setOTP(strotpfrmmsg);
+                    }
 
-
+                }
 
             }
         }

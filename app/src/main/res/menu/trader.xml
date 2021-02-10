@@ -12,6 +12,7 @@
         android:orderInCategory="100"
         android:icon="@mipmap/ic_notification_simple"
         android:title="Notification"
+        android:visible="false"
         app:showAsAction="always"
         />
     <!--<item-->
@@ -21,6 +22,7 @@
         <!--app:showAsAction="never"/>-->
     <item
         android:id="@+id/log_out"
+        android:visible="false"
         android:orderInCategory="100"
         android:title="Log Out"
         app:showAsAction="never"/>

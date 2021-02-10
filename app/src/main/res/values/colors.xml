@@ -10,5 +10,6 @@
     <color name="tab_indicator_gray">#c0c0c0</color>
     <color name="offgrey">#F2F2F2</color>
     <color name="textgrey">#808080</color>
-
+    <color name="background">#E0E0E0</color>
+    <color name="txtcolor">#808080</color>
 </resources>
