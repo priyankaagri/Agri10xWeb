@@ -111,15 +111,15 @@ public class Farmer extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_activity_farmer2);//activity_farmer2
-        Toolbar toolbar = findViewById(R.id.toolbarf);
-        setSupportActionBar(toolbar);
+      //  Toolbar toolbar = findViewById(R.id.toolbarf);
+       // setSupportActionBar(toolbar);
         session = new SessionManager(getApplicationContext());
         drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.setDrawerIndicatorEnabled(false);
-        toggle.syncState();
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.addDrawerListener(toggle);
+//        toggle.setDrawerIndicatorEnabled(false);
+//        toggle.syncState();
         NavigationView navigationView = findViewById(R.id.nav_view);
         drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         v = navigationView.getHeaderView(0);
@@ -150,13 +150,13 @@ public class Farmer extends AppCompatActivity
         city_name = user_data_intent.getCity();
         userId = new UserId();
         userId.setUserid(user_data_intent.get_id());
-myfirstname = user_data_intent.getUsername();
-
-        if(myfirstname.equals("undefined undefined")){
-            getSupportActionBar().setTitle("");
-        }else{
-            getSupportActionBar().setTitle(myfirstname);
-        }
+//myfirstname = user_data_intent.getUsername();
+//
+//        if(myfirstname.equals("undefined undefined")){
+//            getSupportActionBar().setTitle("");
+//        }else{
+//            getSupportActionBar().setTitle(myfirstname);
+//        }
 
         myrole = user_data_intent.getRole();
         Log.d("checkmyrole",myrole);        //city_name = SessionManager.getFirstName();

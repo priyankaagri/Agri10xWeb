@@ -15,7 +15,7 @@
             android:layout_height="wrap_content">
             <RelativeLayout
 
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
@@ -30,6 +30,7 @@
                     android:layout_toRightOf="@+id/but_back"
                     android:text="KYC Verification"
                     android:textStyle="bold"
+                    android:textColor="@color/black"
                     android:textSize="25sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>

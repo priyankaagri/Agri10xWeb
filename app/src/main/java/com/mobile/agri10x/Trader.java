@@ -79,16 +79,16 @@ public class Trader extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trader_new);//activity_trader
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+       // Toolbar toolbar = findViewById(R.id.toolbar);
+      //  setSupportActionBar(toolbar);
         session = new SessionManager(Trader.this);
 
         drawer = findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.setDrawerIndicatorEnabled(false);
-        toggle.syncState();
+//        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+//                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//        drawer.addDrawerListener(toggle);
+//        toggle.setDrawerIndicatorEnabled(false);
+//        toggle.syncState();
 
 
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -187,7 +187,7 @@ public class Trader extends AppCompatActivity
                 myrole = user_data_intent.getRole();
                 Log.d("checkmyrole",myrole);
 
-        myfirstname = user_data_intent.getUsername();
+//        myfirstname = user_data_intent.getUsername();
 
 //        if(myfirstname != null  ){
 //            getSupportActionBar().setTitle(myfirstname);
@@ -197,11 +197,11 @@ public class Trader extends AppCompatActivity
 //        }
 
 
-         if(myfirstname.equals("undefined undefined")){
-            getSupportActionBar().setTitle("");
-        }else{
-             getSupportActionBar().setTitle(myfirstname);
-         }
+//         if(myfirstname.equals("undefined undefined")){
+//            getSupportActionBar().setTitle("");
+//        }else{
+//             getSupportActionBar().setTitle(myfirstname);
+//         }
 
         if(myrole.equals("PTrader")){
                     AlertDialog.Builder builder1 = new AlertDialog.Builder(Trader.this);

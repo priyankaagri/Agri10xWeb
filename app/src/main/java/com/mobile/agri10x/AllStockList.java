@@ -5,9 +5,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -31,7 +33,7 @@ import java.util.List;
 
 public class AllStockList extends AppCompatActivity {
 
-    Toolbar toolbar;
+  //  Toolbar toolbar;
 
     //Recycler View
     public static List<StockList> productList;
@@ -39,7 +41,7 @@ public class AllStockList extends AppCompatActivity {
     //the recyclerview
     public static RecyclerView recyclerView;
     public static StockListAdapter adapter;
-
+ImageView but_back;
     static StockList[] p;
     private UserId userId;
     Button addmorestock;
@@ -49,11 +51,12 @@ public class AllStockList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock_list2);
 
-        //toolbar
-        toolbar = findViewById(R.id.toolbar1);
-        setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_action_name );
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//        //toolbar
+//        toolbar = findViewById(R.id.toolbar1);
+//        setSupportActionBar(toolbar);
+//        toolbar.setNavigationIcon(R.drawable.ic_action_name );
+        but_back = findViewById(R.id.but_back);
+        but_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -64,6 +67,7 @@ public class AllStockList extends AppCompatActivity {
             userId=new UserId();
             userId.setUserid(extras.getString("Userid"));
         }
+     //   Log.d("getuserid",extras.getString("Userid"));
 
         context = getApplicationContext();
         //getting the recyclerview from xml
@@ -80,6 +84,7 @@ public class AllStockList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AllStockList.this,AddStock.class);
+                intent.putExtra("Userid",userId.getUserid());
                 startActivity(intent);
                 finish();
             }

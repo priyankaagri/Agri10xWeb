@@ -119,6 +119,7 @@ dialog2.dismiss();
                 if (response.isSuccessful()) {
                     String strupdate =response.body().getUpdate().toString();
                   callGetDAta();
+                  Toast.makeText(UpdateProfileUser.this,"Data Updated Successfully",Toast.LENGTH_SHORT).show();
                 }
                 else {
                     dialog2.dismiss();
@@ -129,7 +130,7 @@ dialog2.dismiss();
             public void onFailure(Call<GetUserInfo> call,
                                   Throwable t) {
                 dialog2.dismiss();
-                Toast.makeText(UpdateProfileUser.this, "infailure", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateProfileUser.this, "Date Not Updated", Toast.LENGTH_SHORT).show();
             }
         });
     }
