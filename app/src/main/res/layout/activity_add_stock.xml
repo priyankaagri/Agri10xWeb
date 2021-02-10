@@ -5,27 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddStock"
+    android:background="@color/offgrey"
     android:orientation="vertical"
-    android:background="#ff3a20">
-
+  >
+<!--    android:background="#ff3a20"-->
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
-        android:background="#ff3a20">
+        android:background="@color/offgrey">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#ff3a20"
+            android:background="@color/offgrey"
          >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#ff3a20"
+                android:background="@color/offgrey"
                 android:orientation="vertical"
                 android:layout_margin="15dp">
                 <LinearLayout
@@ -38,7 +39,7 @@
                         android:id="@+id/but_back_add"
                         android:layout_height="match_parent"
                         android:layout_marginRight="26dp"
-                        android:background="@drawable/ic_white_arrow_back"/>
+                        android:background="@drawable/arrow_back"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -46,7 +47,7 @@
                         android:fontFamily="@font/roboto"
                         android:text="Add Stock"
                         android:textAllCaps="true"
-                        android:textColor="#ffffff"
+                        android:textColor="@color/black"
                         android:textSize="26sp"
                         android:textStyle="bold"/>
 
@@ -77,19 +78,20 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/quantum_white_100">
+                    android:textColor="@color/black">
                     <gr.escsoft.michaelprimez.searchablespinner.SearchableSpinner
                         android:id="@+id/Commodity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:focusable="false"
                         android:clickable="false"
-                        app:RevealViewBackgroundColor="#ff3a20"
+                        app:RevealViewBackgroundColor="@color/offgrey"
                         app:SearchHintText="Commodity"
+
                         app:SearchViewTextColor="@color/black"
-                        app:DoneSearchTintColor="#ff3a20"
+                        app:DoneSearchTintColor="@color/black"
                         app:ShowBorders="false"
-                        app:RevealEmptyText="  Commodity"
+                        app:RevealEmptyText="   Commodity"
                         app:SpinnerExpandHeight="300dp"/>
 <!--                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner-->
 <!--                        android:id="@+id/Commodity"-->
@@ -111,7 +113,7 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/quantum_white_100">
+                    android:textColorHint="@color/black">
 
                     <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
                         android:layout_marginLeft="15dp"
@@ -122,10 +124,10 @@
                         android:hint="Variety"
 android:focusable="false"
                         android:clickable="false"
-                        android:textColor="@color/colourWhite"
-                        android:textColorHighlight="#FFFFFF"
-                        android:textColorHint="@color/quantum_white_100"
-                        android:textColorLink="@color/colourWhite"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textColorLink="@color/black"
                         android:textCursorDrawable="@drawable/cursor"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -134,8 +136,8 @@ android:focusable="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Number of Bags"
-                    android:textColorHint="@color/quantum_white_100"
-                    android:layout_marginTop="16dp">
+                    android:textColorHint="@color/black"
+                 >
 
                     <EditText
                         android:layout_marginLeft="15dp"
@@ -147,9 +149,9 @@ android:focusable="false"
                         android:fontFamily="@font/calibri"
                         android:inputType="number"
                         android:maxLines="1"
-                        android:textColorHighlight="@color/colourWhite"
-                        android:textColorHint="@color/colourWhite"
-                        android:textColorLink="@color/colourWhite"
+                        android:textColorHighlight="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textColorLink="@color/black"
                         android:textCursorDrawable="@drawable/cursor"
                         android:textSize="18sp" />
 
@@ -182,7 +184,7 @@ android:focusable="false"
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/quantum_white_100">
+                    android:textColorHint="@color/black">
 
                     <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
                         android:layout_marginLeft="15dp"
@@ -191,10 +193,10 @@ android:focusable="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Unit of bag in Kg"
-                        android:textColor="@color/colourWhite"
-                        android:textColorHighlight="#FFFFFF"
-                        android:textColorHint="@color/colourWhite"
-                        android:textColorLink="@color/colourWhite"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textColorLink="@color/black"
                         android:textCursorDrawable="@drawable/cursor"
                         />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -204,7 +206,7 @@ android:focusable="false"
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/quantum_white_100">
+                    android:textColorHint="@color/black">
 
                     <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
                         android:layout_marginLeft="15dp"
@@ -213,10 +215,10 @@ android:focusable="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Perishable Good"
-                        android:textColor="@color/colourWhite"
-                        android:textColorHighlight="@color/colourWhite"
-                        android:textColorHint="@color/colourWhite"
-                        android:textColorLink="@color/colourWhite"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textColorLink="@color/black"
                         android:textCursorDrawable="@drawable/cursor"
                  />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -225,7 +227,7 @@ android:focusable="false"
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/quantum_white_100">
+                    android:textColorHint="@color/black">
 <!--                    app:met_floatingLabel="normal"-->
                     <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
                         android:layout_marginLeft="15dp"
@@ -234,10 +236,10 @@ android:focusable="false"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Cold Storage"
-                        android:textColor="@color/colourWhite"
-                        android:textColorHighlight="@color/colourWhite"
-                        android:textColorHint="@color/quantum_white_100"
-                        android:textColorLink="@color/colourWhite"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textColorLink="@color/black"
                         android:textCursorDrawable="@drawable/cursor"
                          />
                 </com.google.android.material.textfield.TextInputLayout>
@@ -249,12 +251,12 @@ android:focusable="false"
                     android:layout_gravity="center"
                     android:layout_marginTop="24dp"
                     android:layout_marginBottom="16dp"
-                    android:background="@color/quantum_white_100"
-                    android:drawableLeft="@drawable/ic_touch_app_white_24dp"
+                    android:background="@color/appgreen"
+
                     android:text="Add Stock"
                     android:textAlignment="center"
                     android:textAllCaps="true"
-                    android:textColor="#ff3a20"
+                    android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 

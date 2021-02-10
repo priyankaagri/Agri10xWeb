@@ -79,7 +79,7 @@
             android:name=".Weather"
             android:label="@string/title_activity_weather"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden" />
+        />
         <activity
             android:name=".MyInterest"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -145,7 +145,7 @@
             android:name=".Trader"
 
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateVisible|adjustResize" />
+      />
         <activity
             android:name=".SplashScreen"
             android:theme="@style/AppTheme.NoActionBar">
@@ -163,7 +163,7 @@
             android:name=".Farmer"
 
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateVisible|adjustResize" />
+       />
         <activity
             android:name=".Father"
             android:label="@string/title_activity_main"

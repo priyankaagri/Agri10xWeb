@@ -76,8 +76,15 @@ Log.d("Loguserid",userid);
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog2 = new UpdateProfileUser.Alert().pleaseWait();
-                callupdateapi();
+              String  first_name_string= first_name.getText().toString().trim();
+               String last_name_string= last_name.getText().toString().trim();
+                if(first_name_string.length()>0 && last_name_string.length()>0){
+                    dialog2 = new UpdateProfileUser.Alert().pleaseWait();
+                    callupdateapi();
+                }else{
+                    Toast.makeText(UpdateProfileUser.this,"Please Enter First Name and Last Name",Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
     }

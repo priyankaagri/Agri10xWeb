@@ -40,6 +40,7 @@ public class WebPage extends AppCompatActivity {
     public boolean doubleBackToExitPressedOnce = false;
     ProgressDialog progressDialog;
     String currentVersion="";
+    String newVersion = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         {
@@ -120,9 +121,33 @@ public class WebPage extends AppCompatActivity {
         int id = item.getItemId();
 
         if(id==R.id.loginweb){
-            Intent i = new Intent(WebPage.this,LoginActivity.class);
+            if (newVersion != null && !newVersion.isEmpty()) {
 
-            startActivity(i);
+
+                if (newVersion.equals(currentVersion)) {
+                    Intent i = new Intent(WebPage.this,LoginActivity.class);
+                    startActivity(i);
+                }
+                else {
+                    AlertDialog alertDialog = new AlertDialog.Builder(WebPage.this).create();
+                    alertDialog.setTitle("Time To Upgrade");
+                    alertDialog.setIcon(getDrawable(R.drawable.appstoreicon));
+                    alertDialog.setMessage("Hey there, Download Agri10x latest app version and stay updated !");
+                    alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Update", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            try {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
+                            } catch (android.content.ActivityNotFoundException anfe) {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=" + getPackageName())));
+                            }
+                        }
+                    });
+
+
+
+                    alertDialog.show();
+                }
+            }
         }
 
 
@@ -177,7 +202,7 @@ public class WebPage extends AppCompatActivity {
 
         protected String doInBackground(Void... voids) {
 
-            String newVersion = null;
+
 
             try {
                 Document document = (Document) Jsoup.connect("https://play.google.com/store/apps/details?id=" +getPackageName() + "&hl=en")
@@ -221,6 +246,7 @@ public class WebPage extends AppCompatActivity {
                     alertDialog.setTitle("Time To Upgrade");
                     alertDialog.setIcon(getDrawable(R.drawable.appstoreicon));
                     alertDialog.setMessage("Hey there, Download Agri10x latest app version and stay updated !");
+                    alertDialog.setCanceledOnTouchOutside(false);
                     alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Update", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             try {
@@ -231,11 +257,11 @@ public class WebPage extends AppCompatActivity {
                         }
                     });
 
-                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
+//                    alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int which) {
+//                            dialog.dismiss();
+//                        }
+//                    });
 
                     alertDialog.show();
                 }

@@ -549,7 +549,7 @@ Log.d("checkid",Ccomid);
 //                    int imageResource = getResources().getIdentifier(uri, null, getPackageName());
 //                    Drawable res = getResources().getDrawable(imageResource);
 //                    stock_image.setImageDrawable(res);
-                    new Alert().alert("Stock!!", "Successfully Added");
+                    new Alert().alertt("Stock!!", "Successfully Added");
                 }
             }
 
@@ -594,8 +594,10 @@ Log.d("checkid",Ccomid);
                 public void onClick(DialogInterface dialogInterface, int i) {
                     dialogInterface.cancel();
             Intent intent = new Intent(AddStock.this,AllStockList.class);
-            startActivity(intent);
-            finish();
+
+                    intent.putExtra("Userid",userId.getUserid());
+                    startActivity(intent);
+                    finish();
                 }
             });
             Alert.create().show();
@@ -614,6 +616,8 @@ Log.d("checkid",Ccomid);
 
     }
 
+    @Override
+    public void onBackPressed() {
 
-
+    }
 }

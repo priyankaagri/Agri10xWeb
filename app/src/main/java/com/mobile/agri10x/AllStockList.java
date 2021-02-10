@@ -192,4 +192,9 @@ ImageView but_back;
             });
         }
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }
