@@ -75,12 +75,12 @@ public class AddStock extends AppCompatActivity {
     private static final String[] Unit = new String[]{
             "10", "20", "30", "40", "50"
     };
-
+    private Spinner quality_spinner;
     ImageView stock_image;
     EditText quantity;
     SearchableSpinner commodity;
     MaterialBetterSpinner commodityunit, perishable, coldstorage,Variety;
-    String Quan, Cold, Comm, Peri, unit;
+    String Quan, Cold, Comm, Peri, unit,qual;
     Bitmap stockbitmap;
     private Button back;
     String commid,varietyid,strcomname;
@@ -119,7 +119,7 @@ callapi();
                 AddStock.this.finish();
             }
         });
-
+        quality_spinner=(Spinner) findViewById(R.id.quality_spinner);
         stock_image = findViewById(R.id.Stock_Image);
         Button button = findViewById(R.id.addStock_button);
 
@@ -174,7 +174,27 @@ for(int i= 0 ;i < getTradeCommodityArrayList.size() ; i++){
 
     }
 });
+        List<String> type = new ArrayList<String>();
+        type.add("Grade A");
+        type.add("Grade B");
+        type.add("Grade C");
+        type.add("Grade D");
 
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,type);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        quality_spinner.setAdapter(dataAdapter);
+        quality_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                qual = parent.getItemAtPosition(position).toString();
+              //  Log.d("takequal",qual);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                qual = "B";
+            }
+        });
 //        commodity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 //            @Override
 //            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long id) {
@@ -303,6 +323,7 @@ for(int i= 0 ;i < getTradeCommodityArrayList.size() ; i++){
                 Comm = commid;
                 Peri = perishable.getText().toString().trim();
                 Quan = quantity.getText().toString().trim();
+
 Log.d("checkparms",unit+ " "+ Cold +" "+ Comm +" "+Peri+ ""+Quan);
                 if (unit.length() > 0 && Cold.length() > 0 && Comm.length() > 0 && Peri.length() > 0 && Quan.length() > 0 ) { //  && varietyid.length() > 0 && stockbitmap != null
                     int unitInt = Integer.valueOf(unit);
@@ -478,6 +499,7 @@ Log.d("checkid",Ccomid);
             }
             stock.setComm(strcomname);
             stock.setCommid(commid);
+            stock.setQuality(qual);
             stock.setEnt(SessionManager.getUsername());
             if (Cold.equals("Yes")) {
                 stock.setCold("1");

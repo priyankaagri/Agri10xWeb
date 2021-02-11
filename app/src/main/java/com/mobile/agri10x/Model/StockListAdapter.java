@@ -91,14 +91,27 @@ public class StockListAdapter extends RecyclerView.Adapter<StockListAdapter.Stoc
 
 
 
-        if(product.getEntryTime()!=null)
-            holder.Entrytime.setText(product.getEntryTime());
-        else{
-            ErrorLog errorLog = new ErrorLog(Main.getOldUrl()+"/getMyStockList","EntryTime","String",null,this.getClass().getName()+"->onBindViewHolder",mCtx.getResources().getString(R.string.DeviceName),activityName);
-            Main.addErrorReportRequest(errorLog,mCtx);
+//        if(product.getEntryTime()!=null)
+//            holder.Entrytime.setText(product.getEntryTime());
+//        else{
+//            ErrorLog errorLog = new ErrorLog(Main.getOldUrl()+"/getMyStockList","EntryTime","String",null,this.getClass().getName()+"->onBindViewHolder",mCtx.getResources().getString(R.string.DeviceName),activityName);
+//            Main.addErrorReportRequest(errorLog,mCtx);
+//        }
+
+        if(product.getQuality()!=null){
+          //  Log.d("getqual",product.getQuality());
+         String   content = product.getQuality();
+         content = content.replace("Grade","");
+            holder.Entrytime.setText("Grade:"+content);
         }
 
+        else{
+/* ErrorLog errorLog = new ErrorLog(Main.getOldUrl()+"/getMyStockList","EntryTime","String",null,this.getClass().getName()+"->onBindViewHolder",mCtx.getResources().getString(R.string.DeviceName),activityName);
+Main.addErrorReportRequest(errorLog,mCtx);*/
 
+            ErrorLog errorLog = new ErrorLog(Main.getOldUrl()+"/getMyStockList","quality","String",null,this.getClass().getName()+"->onBindViewHolder",mCtx.getResources().getString(R.string.DeviceName),activityName);
+            Main.addErrorReportRequest(errorLog,mCtx);
+        }
 
         if(product.isNeedColdStorage())
         {

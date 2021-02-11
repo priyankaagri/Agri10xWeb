@@ -234,6 +234,7 @@ public class Farmer extends AppCompatActivity
                 Intent i = new Intent(Farmer.this, SettingActivityNew.class);
                 i.putExtra("Userid", user_data_intent.get_id());
                 i.putExtra("role", user_data_intent.getRole());
+
                 startActivity(i);
             }
         });
@@ -695,8 +696,8 @@ public class Farmer extends AppCompatActivity
                 } else {
                     try {
                         JSONObject jsonObject = new JSONObject(s);
-                        SecurityData.setClosingBalance(jsonObject.getString("Closing"));
-                        SecurityData.setWithdthrawBalance(jsonObject.getString("Widthraw"));
+                        SecurityData.setClosingBalance(jsonObject.getLong("Closing"));
+                        SecurityData.setWithdthrawBalance(jsonObject.getLong("Widthraw"));
                         SecurityData.setPendingBalance(jsonObject.getString("Pending"));
                         if(SecurityData.getWithdthrawBalance()!=null && SecurityData.getClosingBalance()!=null) {
                             nav_wallet_balance.setText("Withdrawable: " + Main.getIndian_currency() + " " + SecurityData.getWithdthrawBalance());
@@ -706,16 +707,16 @@ public class Farmer extends AppCompatActivity
                             Main.addErrorReportRequest(errorLog,Farmer.this);
                         }
                     } catch (JSONException e) {
-                        SecurityData.setWithdthrawBalance("0");
-                        SecurityData.setClosingBalance("0");
+                        SecurityData.setWithdthrawBalance((long) 0.0);
+                        SecurityData.setClosingBalance((long) 0.0);
                         nav_wallet_balance.setText("Withdrawable: " +Main.getIndian_currency() + " " + SecurityData.getWithdthrawBalance());
                         nav_closing_bal.setText("Closing: "+Main.getIndian_currency()+" "+SecurityData.getClosingBalance());
                     }
                 }
             }
             else{
-                SecurityData.setWithdthrawBalance("0");
-                SecurityData.setClosingBalance("0");
+                SecurityData.setWithdthrawBalance((long) 0.0);
+                SecurityData.setClosingBalance((long) 0.0);
                 nav_wallet_balance.setText("Withdrawable: " +Main.getIndian_currency() + " " + SecurityData.getWithdthrawBalance());
                 nav_closing_bal.setText("Closing: "+Main.getIndian_currency()+" "+SecurityData.getClosingBalance());
             }
@@ -754,8 +755,8 @@ public class Farmer extends AppCompatActivity
                 } else {
                     try {
                         JSONObject jsonObject = new JSONObject(s);
-                        SecurityData.setClosingBalance(jsonObject.getString("Closing"));
-                        SecurityData.setWithdthrawBalance(jsonObject.getString("Widthraw"));
+                        SecurityData.setClosingBalance(jsonObject.getLong("Closing"));
+                        SecurityData.setWithdthrawBalance(jsonObject.getLong("Widthraw"));
                         SecurityData.setPendingBalance(jsonObject.getString("Pending"));
                         if(SecurityData.getWithdthrawBalance()!=null && SecurityData.getClosingBalance()!=null) {
                             nav_wallet_balance.setText("Withdrawable: " + Main.getIndian_currency() + " " + SecurityData.getWithdthrawBalance());
@@ -765,16 +766,16 @@ public class Farmer extends AppCompatActivity
                             Main.addErrorReportRequest(errorLog,Farmer.this);
                         }
                     } catch (JSONException e) {
-                        SecurityData.setWithdthrawBalance("0");
-                        SecurityData.setClosingBalance("0");
+                        SecurityData.setWithdthrawBalance((long) 0.0);
+                        SecurityData.setClosingBalance((long) 0.0);
                         nav_wallet_balance.setText("Withdrawable: " +Main.getIndian_currency() + " " + SecurityData.getWithdthrawBalance());
                         nav_closing_bal.setText("Closing: "+Main.getIndian_currency()+" "+SecurityData.getClosingBalance());
                     }
                 }
             }
             else{
-                SecurityData.setWithdthrawBalance("0");
-                SecurityData.setClosingBalance("0");
+                SecurityData.setWithdthrawBalance((long) 0.0);
+                SecurityData.setClosingBalance((long) 0.0);
                 nav_wallet_balance.setText("Withdrawable: " +Main.getIndian_currency() + " " + SecurityData.getWithdthrawBalance());
                 nav_closing_bal.setText("Closing: "+Main.getIndian_currency()+" "+SecurityData.getClosingBalance());
             }

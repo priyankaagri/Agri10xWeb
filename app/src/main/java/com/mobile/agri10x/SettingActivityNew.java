@@ -26,7 +26,7 @@ import com.mobile.agri10x.SessionManagment.SessionManager;
 
 public class SettingActivityNew extends AppCompatActivity {
     ImageView but_back;
-    LinearLayout showintrest, EditProfile, logout;
+    LinearLayout showintrest, EditProfile, logout,wallet;
     TextView Shareapp, referfrnd, termscondition,version;
     String Userid, role;
     String currentVersion;
@@ -47,6 +47,15 @@ public class SettingActivityNew extends AppCompatActivity {
     }
 
     private void Clicklisner() {
+
+        wallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SettingActivityNew.this, Wallet.class);
+                i.putExtra("Userid",Userid);
+                startActivity(i);
+            }
+        });
         EditProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -152,7 +161,7 @@ public class SettingActivityNew extends AppCompatActivity {
         referfrnd = findViewById(R.id.referfrnd);
         termscondition = findViewById(R.id.termscondition);
         version = findViewById(R.id.version);
-
+        wallet= findViewById(R.id.wallet);
         try {
 
             currentVersion = getApplicationContext().getPackageManager().getPackageInfo(getPackageName(), 0).versionName;

@@ -9,8 +9,8 @@ public class SecurityData {
     private static  String[] Commodity;
     private static String PendingBalance;
     private static long dateLimit = 90; //days
-    private static String WithdthrawBalance;
-    private static String ClosingBalance;
+    private static Long WithdthrawBalance;
+    private static Long ClosingBalance;
 
 
     public static long getDateLimit() {
@@ -29,19 +29,19 @@ public class SecurityData {
         PendingBalance = pendingBalance;
     }
 
-    public static String getWithdthrawBalance() {
+    public static Long getWithdthrawBalance() {
         return WithdthrawBalance;
     }
 
-    public static void setWithdthrawBalance(String withdthrawBalance) {
+    public static void setWithdthrawBalance(Long withdthrawBalance) {
         WithdthrawBalance = withdthrawBalance;
     }
 
-    public static String getClosingBalance() {
+    public static Long getClosingBalance() {
         return ClosingBalance;
     }
 
-    public static void setClosingBalance(String closingBalance) {
+    public static void setClosingBalance(Long closingBalance) {
         ClosingBalance = closingBalance;
     }
 

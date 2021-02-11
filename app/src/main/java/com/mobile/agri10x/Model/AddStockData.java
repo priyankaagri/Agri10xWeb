@@ -12,6 +12,15 @@ public class AddStockData {
     String Userid;
     String Variety;
     String Commid;
+    String quality;
+
+    public String getQuality() {
+        return quality;
+    }
+
+    public void setQuality(String quality) {
+        this.quality = quality;
+    }
 
     public String getUserid() {
         return Userid;

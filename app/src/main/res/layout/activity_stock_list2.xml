@@ -64,7 +64,7 @@ android:id="@+id/toolbar1"
             android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#ff3a20"
+            android:background="@color/appgreen"
             android:text="Add more stock"/>
 
     </RelativeLayout>

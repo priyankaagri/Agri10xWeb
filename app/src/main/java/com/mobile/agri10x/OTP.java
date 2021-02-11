@@ -145,7 +145,7 @@ OtpTextView otp_view;
                     } else {
                        // writeToLog("Software Keyboard was not shown");
                     }
-                    dialog = new OTP.Alert().pleaseWait();
+                    dialog = new OTP.Alert().verifyingotp();
                    callverifyapi("91"+strmobilenumber,strotp);
 
 Log.d("params","91"+strmobilenumber+" "+strotp);
@@ -563,7 +563,16 @@ Log.d("checkingexist",checkresponse);
             dialog.show();
             return dialog;
         }
-
+        public AlertDialog verifyingotp() {
+            AlertDialog.Builder mBuilder = new AlertDialog.Builder(OTP.this);
+            View mView = getLayoutInflater().inflate(R.layout.alert_verify_spinning, null);
+            ProgressBar pb = mView.findViewById(R.id.progressBar);
+            mBuilder.setView(mView);
+            mBuilder.setCancelable(false);
+            final AlertDialog dialog = mBuilder.create();
+            dialog.show();
+            return dialog;
+        }
         public void ChangeIP() {
             final AlertDialog.Builder mBuilder = new AlertDialog.Builder(OTP.this);
             View mView = getLayoutInflater().inflate(R.layout.change_ip, null);

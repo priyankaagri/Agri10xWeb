@@ -243,7 +243,35 @@ android:focusable="false"
                         android:textCursorDrawable="@drawable/cursor"
                          />
                 </com.google.android.material.textfield.TextInputLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="15dp"
+android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="40sp">
 
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.7"
+                        android:gravity="start|center"
+                        android:text="Quality"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textColorLink="@color/black"
+                        android:textCursorDrawable="@drawable/cursor"
+                        android:textSize="18sp" />
+
+                    <Spinner
+                        android:id="@+id/quality_spinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.4"
+                        android:outlineAmbientShadowColor="@color/quantum_white_text"
+                        android:outlineSpotShadowColor="@color/quantum_white_text"
+                        android:textSize="20sp" />
+                </LinearLayout>
                 <Button
                     android:id="@+id/addStock_button"
                     android:layout_width="250dp"

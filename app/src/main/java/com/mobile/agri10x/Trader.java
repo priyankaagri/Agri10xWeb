@@ -418,8 +418,8 @@ public class Trader extends AppCompatActivity
                 } else {
                     try {
                         JSONObject jsonObject = new JSONObject(s);
-                        SecurityData.setClosingBalance(jsonObject.getString("Closing"));
-                        SecurityData.setWithdthrawBalance(jsonObject.getString("Widthraw"));
+                        SecurityData.setClosingBalance(jsonObject.getLong("Closing"));
+                        SecurityData.setWithdthrawBalance(jsonObject.getLong("Widthraw"));
                         SecurityData.setPendingBalance(jsonObject.getString("Pending"));
                         if(SecurityData.getWithdthrawBalance()!=null && SecurityData.getClosingBalance()!=null) {
                             nav_wallet_balance.setText("Withdrawable: " + Main.getIndian_currency() + " " + SecurityData.getWithdthrawBalance());
@@ -429,16 +429,16 @@ public class Trader extends AppCompatActivity
                             Main.addErrorReportRequest(errorLog,Trader.this);
                         }
                     } catch (JSONException e) {
-                        SecurityData.setWithdthrawBalance("0");
-                        SecurityData.setClosingBalance("0");
+                        SecurityData.setWithdthrawBalance((long) 0.0);
+                        SecurityData.setClosingBalance((long) 0.0);
                         nav_wallet_balance.setText("Withdrawable: " +Main.getIndian_currency() + " " + SecurityData.getWithdthrawBalance());
                         nav_closing_bal.setText("Closing: "+Main.getIndian_currency()+" "+SecurityData.getClosingBalance());
                     }
                 }
             }
             else{
-                SecurityData.setWithdthrawBalance("0");
-                SecurityData.setClosingBalance("0");
+                SecurityData.setWithdthrawBalance((long) 0.0);
+                SecurityData.setClosingBalance((long) 0.0);
                 nav_wallet_balance.setText("Withdrawable: " +Main.getIndian_currency() + " " + SecurityData.getWithdthrawBalance());
                 nav_closing_bal.setText("Closing: "+Main.getIndian_currency()+" "+SecurityData.getClosingBalance());
             }
@@ -557,8 +557,8 @@ public class Trader extends AppCompatActivity
                 } else {
                     try {
                         JSONObject jsonObject = new JSONObject(s);
-                        SecurityData.setClosingBalance(jsonObject.getString("Closing"));
-                        SecurityData.setWithdthrawBalance(jsonObject.getString("Widthraw"));
+                        SecurityData.setClosingBalance(jsonObject.getLong("Closing"));
+                        SecurityData.setWithdthrawBalance(jsonObject.getLong("Widthraw"));
                         SecurityData.setPendingBalance(jsonObject.getString("Pending"));
                         if(SecurityData.getWithdthrawBalance()!=null && SecurityData.getClosingBalance()!=null) {
                             nav_wallet_balance.setText("Withdrawable: " + Main.getIndian_currency() + " " + SecurityData.getWithdthrawBalance());
@@ -568,16 +568,16 @@ public class Trader extends AppCompatActivity
                             Main.addErrorReportRequest(errorLog,Trader.this);
                         }
                     } catch (JSONException e) {
-                        SecurityData.setWithdthrawBalance("0");
-                        SecurityData.setClosingBalance("0");
+                        SecurityData.setWithdthrawBalance((long) 0.0);
+                        SecurityData.setClosingBalance((long) 0.0);
                         nav_wallet_balance.setText("Withdrawable: " +Main.getIndian_currency() + " " + SecurityData.getWithdthrawBalance());
                         nav_closing_bal.setText("Closing: "+Main.getIndian_currency()+" "+SecurityData.getClosingBalance());
                     }
                 }
             }
             else{
-                SecurityData.setWithdthrawBalance("0");
-                SecurityData.setClosingBalance("0");
+                SecurityData.setWithdthrawBalance((long) 0.0);
+                SecurityData.setClosingBalance((long) 0.0);
                 nav_wallet_balance.setText("Withdrawable: " +Main.getIndian_currency() + " " + SecurityData.getWithdthrawBalance());
                 nav_closing_bal.setText("Closing: "+Main.getIndian_currency()+" "+SecurityData.getClosingBalance());
             }

@@ -7,9 +7,9 @@ android {
         applicationId "com.mobile.agri10x"
         minSdkVersion 23
         targetSdkVersion 29
-        versionCode 28
         multiDexEnabled true
-        versionName "1.1.3"
+        versionCode 30
+        versionName "1.1.5"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

@@ -508,7 +508,7 @@ startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
                     Bitmap photo = (Bitmap) data.getExtras().get("data");
                    // Bitmap bmp = intent.getExtras().get("data");
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                    photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    photo.compress(Bitmap.CompressFormat.JPEG, 70, stream);
                     fileBytes = stream.toByteArray();
                     photo.recycle();
                     upload.setEnabled(true);
