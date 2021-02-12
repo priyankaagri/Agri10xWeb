@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.mobile.agri10x">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+    <uses-feature android:name="android.hardware.type.watch" />
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -33,10 +35,33 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UpdateProfileUser"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".SettingActivityNew"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".Refer"
+            android:label="@string/title_activity_refer">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <uses-library
+            android:name="com.google.android.wearable"
+            android:required="true" />
+        <!--
+               Set to true if your app is Standalone, that is, it does not require the handheld
+               app to run.
+        -->
+        <meta-data
+            android:name="com.google.android.wearable.standalone"
+            android:value="true" />
+
+        <activity
+            android:name=".UpdateProfileUser"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".SettingActivityNew"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".OnlyWebPage"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -75,8 +100,7 @@
         <activity
             android:name=".Weather"
             android:label="@string/title_activity_weather"
-            android:theme="@style/AppTheme.NoActionBar"
-        />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MyInterest"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -86,7 +110,6 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AllStockList"
-
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".About"
@@ -140,9 +163,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Trader"
-
-            android:theme="@style/AppTheme.NoActionBar"
-      />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashScreen"
             android:theme="@style/AppTheme.NoActionBar">
@@ -158,9 +179,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Farmer"
-
-            android:theme="@style/AppTheme.NoActionBar"
-       />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Father"
             android:label="@string/title_activity_main"

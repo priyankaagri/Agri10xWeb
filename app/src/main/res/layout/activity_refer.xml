@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/referralscreen_background"
+    tools:context=".Refer">
+    <RelativeLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+
+            android:src="@drawable/arrow_back"
+            android:id="@+id/img_arrow"
+            android:layout_width="40dp"
+            android:layout_height="30dp"/>
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:layout_alignBaseline="@id/img_arrow"
+            android:layout_toRightOf="@+id/img_arrow"
+            android:text="Refer"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+    <TextView
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Refer Your Friends"
+        android:textSize="20dp"
+        android:textAlignment="center"/>
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Earn Talktime worth"
+        android:textColor="@color/appgreen"
+        android:textSize="24dp"
+        android:textAlignment="center"/>
+    <ImageView
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:src="@drawable/price"/>
+    <TextView
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Once you refer as a Farmer"
+        android:textSize="20dp"
+        android:textAlignment="center"/>
+    <Button
+        android:id="@+id/btn_refer"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Refer"
+        android:textColor="@color/white"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:background="@drawable/btn_round"/>
+</LinearLayout>
