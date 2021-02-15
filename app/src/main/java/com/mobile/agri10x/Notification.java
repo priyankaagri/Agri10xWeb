@@ -174,7 +174,7 @@ public class Notification extends AppCompatActivity {
             }
             else {
                 Interestedbutton.setText("Show Interest");
-                Interestedbutton.setBackgroundResource(R.drawable.buttonshape);
+                Interestedbutton.setBackgroundResource(R.drawable.btn_round);
             }
         }
 
