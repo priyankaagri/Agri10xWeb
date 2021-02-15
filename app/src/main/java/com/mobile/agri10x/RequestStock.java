@@ -651,4 +651,9 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
             return dialog;
         }
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }

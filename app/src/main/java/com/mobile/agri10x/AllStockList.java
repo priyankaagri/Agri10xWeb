@@ -41,7 +41,7 @@ public class AllStockList extends AppCompatActivity {
     //the recyclerview
     public static RecyclerView recyclerView;
     public static StockListAdapter adapter;
-ImageView but_back;
+    ImageView but_back;
     static StockList[] p;
     private UserId userId;
     Button addmorestock;

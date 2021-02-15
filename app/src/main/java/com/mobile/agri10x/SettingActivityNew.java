@@ -267,4 +267,9 @@ public class SettingActivityNew extends AppCompatActivity {
             });
         }
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }

@@ -643,4 +643,8 @@ startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
         }
     }
 
+    @Override
+    public void onBackPressed() {
+
+    }
 }

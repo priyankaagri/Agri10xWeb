@@ -75,6 +75,7 @@ public class AddStock extends AppCompatActivity {
     private static final String[] Unit = new String[]{
             "10", "20", "30", "40", "50"
     };
+
     private Spinner quality_spinner;
     ImageView stock_image;
     EditText quantity;
@@ -146,7 +147,7 @@ callapi();
 //                android.R.layout.simple_dropdown_item_1line, getTradeCommodityArrayList);
 //        commodity.setAdapter(adapter);
 
-commodity.setOnItemSelectedListener(new OnItemSelectedListener() {
+    commodity.setOnItemSelectedListener(new OnItemSelectedListener() {
     @Override
     public void onItemSelected(View view, int position, long id) {
 
@@ -154,7 +155,8 @@ commodity.setOnItemSelectedListener(new OnItemSelectedListener() {
      //   Toast.makeText(AddStock.this, "Item on position " + position + " : " + mSimpleListAdapter.getItem(position) + " Selected", Toast.LENGTH_SHORT).show();
 String pos = commodity.getSelectedItem().toString();
 Log.d("selectedcommo",pos);
-for(int i= 0 ;i < getTradeCommodityArrayList.size() ; i++){
+for(int i= 0 ;i < getTradeCommodityArrayList.size() ; i++)
+{
     if(pos.equals(getTradeCommodityArrayList.get(i).getCommodity())){
         commid = getTradeCommodityArrayList.get(i).getId();
         strcomname = getTradeCommodityArrayList.get(i).getCommodity();
