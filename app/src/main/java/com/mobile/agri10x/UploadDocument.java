@@ -176,14 +176,17 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
             public void onClick(View v) {
                 if(pathofselected.equals("File size should not exceed more than 1MB")){
                     pathofselected = "";
-                    Toast.makeText(UploadDocument.this, "File size should not exceed more than 1MB", Toast.LENGTH_SHORT).show();
+                    filename.setText(pathofselected);
+                    Toast.makeText(UploadDocument.this, "File size should not exceed more than 1MB", Toast.LENGTH_LONG).show();
                 }else if(pathofselected.equals("") && kyctype.equals("")){
-                    Toast.makeText(UploadDocument.this, "Please select Type and File", Toast.LENGTH_SHORT).show();
+                    filename.setText("");
+                    Toast.makeText(UploadDocument.this, "Please select Type and File", Toast.LENGTH_LONG).show();
                 }
                 else if(pathofselected.equals("")){
-                    Toast.makeText(UploadDocument.this, "Please select file", Toast.LENGTH_SHORT).show();
+                    filename.setText("");
+                    Toast.makeText(UploadDocument.this, "Please select file", Toast.LENGTH_LONG).show();
                 }else if(kyctype.equals("")){
-                    Toast.makeText(UploadDocument.this, "Please select type", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UploadDocument.this, "Please select type", Toast.LENGTH_LONG).show();
                 }
                 else{
                     try {
@@ -416,7 +419,7 @@ startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
                     pathofselected = getPDFPath(fileUri);
                     Log.d("pathofselected",pathofselected);
                     if(pathofselected.equals("File size should not exceed more than 1MB")){
-                        pathofselected = "";
+                        pathofselected = "File size should not exceed more than 1MB";
                     }else{
                         filename.setText(pathofselected.substring(pathofselected.lastIndexOf("/") + 1));
                         String someFilepath = pathofselected.substring(pathofselected.lastIndexOf("/") + 1);
@@ -431,8 +434,14 @@ startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
 
                         try {
                             InputStream iStream =   getApplicationContext().getContentResolver().openInputStream(fileUri);
-                            fileBytes = IOUtils.toByteArray(iStream);
-                            iStream.close();
+                            Bitmap bitmap = BitmapFactory.decodeStream(iStream);
+                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
+                            fileBytes = stream.toByteArray();
+                            Log.d("going gLLARY","going gLLARY");
+                            bitmap.recycle();
+//                            fileBytes = IOUtils.toByteArray(iStream);
+//                            iStream.close();
 //                            preview_doc.setOnClickListener(new View.OnClickListener() {
 //                                @Override
 //                                public void onClick(View v) {
@@ -508,11 +517,11 @@ startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
                     Bitmap photo = (Bitmap) data.getExtras().get("data");
                    // Bitmap bmp = intent.getExtras().get("data");
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                    photo.compress(Bitmap.CompressFormat.JPEG, 70, stream);
+                   photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
                     fileBytes = stream.toByteArray();
                     photo.recycle();
                     upload.setEnabled(true);
-
+                    Log.d("going camera","going camera");
                     count++;
                     //String file = dir+"Image"+count+".jpg";
                     filename.setText("IMG_0000"+count+"jpg");
@@ -569,7 +578,7 @@ startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
 // Convert the KB to MegaBytes (1 MB = 1024 KBytes)
         long fileSizeInMB = fileSizeInKB / 1024;
 
-        if(fileSizeInMB <= 1){
+//        if(fileSizeInMB <= 1){
             try {
                 InputStream inputStream = UploadDocument.this.getContentResolver().openInputStream(fileUri);
                 FileOutputStream outputStream = new FileOutputStream(file);
@@ -593,12 +602,12 @@ startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
                 Log.e("Exception", e.getMessage());
             }
             return file.getPath();
-        }
-        else{
-
-            Toast.makeText(UploadDocument.this, "File size should not exceed more than 1MB", Toast.LENGTH_SHORT).show();
-            return "File size should not exceed more than 1MB";
-        }
+     //   }
+//        else{
+//
+//            Toast.makeText(UploadDocument.this, "File size should not exceed more than 1MB", Toast.LENGTH_SHORT).show();
+//            return "File size should not exceed more than 1MB";
+//        }
 
     }
 
