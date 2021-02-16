@@ -58,14 +58,15 @@ android:id="@+id/toolbar1"
         android:layout_height="wrap_content">
         <Button
             android:id="@+id/addmorestock"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:layout_marginLeft="85dp"
+            android:layout_marginRight="85dp"
             android:layout_centerInParent="true"
             android:textColor="@color/white"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAllCaps="true"
             android:background="@drawable/btn_round"
-            android:text="  Add more stock"/>
+            android:text="Add more stock"/>
 
     </RelativeLayout>
 

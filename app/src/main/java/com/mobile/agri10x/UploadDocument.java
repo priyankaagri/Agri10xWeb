@@ -62,6 +62,7 @@ import java.util.List;
 
 public class UploadDocument extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Uri fileUri;
+    long fileSizeInMB;
     private String filePath,extension;
     private Button btnChooseFile, upload,preview_doc;
     ImageView back;
@@ -436,7 +437,14 @@ startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
                             InputStream iStream =   getApplicationContext().getContentResolver().openInputStream(fileUri);
                             Bitmap bitmap = BitmapFactory.decodeStream(iStream);
                             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                            bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
+                            if(fileSizeInMB > 1){
+                                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
+                                Log.d("going jpeg gal","going jpeg gal");
+                            }else{
+                                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                                Log.d("going png gal","going png gal");
+                            }
+
                             fileBytes = stream.toByteArray();
                             Log.d("going gLLARY","going gLLARY");
                             bitmap.recycle();
@@ -517,7 +525,14 @@ startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
                     Bitmap photo = (Bitmap) data.getExtras().get("data");
                    // Bitmap bmp = intent.getExtras().get("data");
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                   photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    if(fileSizeInMB > 1){
+                        photo.compress(Bitmap.CompressFormat.JPEG, 50, stream);
+                        Log.d("going jpeg cam","going jpeg cam");
+                    }else{
+                        photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                        Log.d("going png cam","going png cam");
+                    }
+                 //  photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
                     fileBytes = stream.toByteArray();
                     photo.recycle();
                     upload.setEnabled(true);
@@ -576,7 +591,7 @@ startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
 // Convert the bytes to Kilobytes (1 KB = 1024 Bytes)
         long fileSizeInKB = fileSizeInBytes / 1024;
 // Convert the KB to MegaBytes (1 MB = 1024 KBytes)
-        long fileSizeInMB = fileSizeInKB / 1024;
+        fileSizeInMB = fileSizeInKB / 1024;
 
 //        if(fileSizeInMB <= 1){
             try {

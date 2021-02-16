@@ -240,4 +240,9 @@ public class Notification extends AppCompatActivity {
         }
 
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }

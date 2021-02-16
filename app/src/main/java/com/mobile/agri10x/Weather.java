@@ -282,4 +282,10 @@ public class Weather extends AppCompatActivity implements IWeatherCallbackListen
             return dialog;
         }
     }
+
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }

@@ -364,7 +364,7 @@
                         android:paddingLeft="16dp"
                         android:paddingRight="16dp"
                         android:text="Add Request"
-                        android:textAllCaps="false"
+                        android:textAllCaps="true"
                         android:textColor="@color/white"
                         android:textColorLink="@color/quantum_white_100"
                         android:textCursorDrawable="@color/quantum_white_100"
