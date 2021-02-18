@@ -72,7 +72,7 @@ public class WebPage extends AppCompatActivity {
             webView.setWebViewClient(new WebViewClient() {
                 @Override
                 public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                    view.loadUrl("https://www.agri10x.com/");
+                    view.loadUrl("https://emarket.agri10x.com/");//https://www.agri10x.com/"
                     if (progressDialog.isShowing()) {
                         progressDialog.dismiss();
                     }
@@ -92,7 +92,7 @@ public class WebPage extends AppCompatActivity {
 
                 }
             });
-            webView.loadUrl("https://www.agri10x.com/");
+            webView.loadUrl("https://emarket.agri10x.com/");
 
 
             try {

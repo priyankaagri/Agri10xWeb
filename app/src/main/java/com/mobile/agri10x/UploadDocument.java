@@ -112,7 +112,7 @@ public class UploadDocument extends AppCompatActivity implements AdapterView.OnI
         type.add("Pancard");
 //        type.add("Electricity Bill");
 //        type.add("Kisan Credit Card");
-        type.add("Voter Id");
+ //       type.add("Voter Id");
 //        type.add("GST Certificate");
 //        type.add("Shop Act");
         type.add("Cancelled Cheque");
