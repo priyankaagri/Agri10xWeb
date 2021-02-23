@@ -26,7 +26,7 @@ import com.mobile.agri10x.SessionManagment.SessionManager;
 
 public class SettingActivityNew extends AppCompatActivity {
     ImageView but_back;
-    LinearLayout showintrest, EditProfile, logout,wallet;
+    LinearLayout showintrest, EditProfile, logout,wallet,payment;
     TextView Shareapp, referfrnd, termscondition,version;
     String Userid, role;
     String currentVersion;
@@ -52,6 +52,14 @@ public class SettingActivityNew extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(SettingActivityNew.this, Wallet.class);
+                i.putExtra("Userid",Userid);
+                startActivity(i);
+            }
+        });
+        payment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SettingActivityNew.this, PaymentGateway.class);
                 i.putExtra("Userid",Userid);
                 startActivity(i);
             }
@@ -162,6 +170,8 @@ public class SettingActivityNew extends AppCompatActivity {
         termscondition = findViewById(R.id.termscondition);
         version = findViewById(R.id.version);
         wallet= findViewById(R.id.wallet);
+        payment = findViewById(R.id.payment);
+
         try {
 
             currentVersion = getApplicationContext().getPackageManager().getPackageInfo(getPackageName(), 0).versionName;

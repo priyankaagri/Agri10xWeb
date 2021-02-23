@@ -31,7 +31,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Refer"></activity>
+        <activity android:name=".PaymentGateway"
+            android:theme="@style/AppTheme.NoActionBar" ></activity>
+        <activity android:name=".Refer" />
         <activity
             android:name=".UpdateProfileUser"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -174,6 +176,11 @@
             android:name=".Employee"
             android:label="Employee"
             android:theme="@style/AppTheme.NoActionBar" />
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_live_zdqce1DCYfjD8s" />
+<!--        rzp_live_zdqce1DCYfjD8s-->
+<!--        rzp_test_0dorUbDNe71CBm-->
     </application>
 
 </manifest>

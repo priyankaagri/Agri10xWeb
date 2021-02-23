@@ -77,7 +77,50 @@
                 android:layout_weight="8"
                 android:src="@drawable/forward_arrow" />
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@color/tab_indicator_gray" />
 
+        <LinearLayout
+            android:id="@+id/payment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="15dp">
+
+            <!-- <TextView
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_weight="5"
+            android:gravity="left"
+            android:text="Edit Profile"
+
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold" />-->
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_weight="2"
+                android:gravity="left"
+                android:text="Payment"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_weight="8"
+                android:src="@drawable/forward_arrow" />
+        </LinearLayout>
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -145,7 +188,7 @@
 
                 android:gravity="left"
 
-                android:text="Show Intrest"
+                android:text="Show Interest"
                 android:textColor="@color/black"
                 android:textSize="18dp"
                 android:textStyle="bold" />

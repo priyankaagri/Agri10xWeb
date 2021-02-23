@@ -235,6 +235,7 @@ public class Farmer extends AppCompatActivity
                 i.putExtra("Userid", user_data_intent.get_id());
                 i.putExtra("role", user_data_intent.getRole());
 
+
                 startActivity(i);
             }
         });
