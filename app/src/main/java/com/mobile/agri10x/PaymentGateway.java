@@ -25,10 +25,13 @@ import com.mobile.agri10x.Model.LoginUser;
 import com.mobile.agri10x.Model.Main;
 import com.mobile.agri10x.models.CheckPhoneExits;
 import com.mobile.agri10x.models.GetAddMoney;
+import com.mobile.agri10x.models.GetCheckOutHandle;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
 import com.razorpay.Checkout;
+import com.razorpay.PaymentData;
 import com.razorpay.PaymentResultListener;
+import com.razorpay.PaymentResultWithDataListener;
 
 import org.json.JSONObject;
 
@@ -39,11 +42,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PaymentGateway extends AppCompatActivity implements PaymentResultListener {
+public class PaymentGateway extends AppCompatActivity implements PaymentResultWithDataListener {
 ImageView img_arrow;
 Button addmoney ;
 TextInputEditText add_money_towallet;
-String userid,orderidfromres,amountfromres;
+String userid,orderidfromres,amountfromres,order_id, payment_id, signature;
     AlertDialog dialog;
 TextView benificary;
 
@@ -95,7 +98,7 @@ TextView benificary;
 
         Map<String, Object> jsonParams = new ArrayMap<>();
 //put something inside the map, could be null
-        jsonParams.put("Userid", userid);
+        jsonParams.put("Userid",userid);
         jsonParams.put("Mon",getamt);
 
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
@@ -152,6 +155,7 @@ amountfromres = String.valueOf(response.body().getAmount());
 //You can omit the image option to fetch the image from dashboard
             options.put("image", "https://data.agri10x.com/images/Icognitive%20logo2.png");
             options.put("currency", "INR");
+            options.put("theme.color", "#5FA30F");
             options.put("order_id", orderidfromres);
             String payment =amountfromres;        //orderamount.getText().toString();
 // amount is in paise so please multiple it by 100
@@ -163,7 +167,7 @@ amountfromres = String.valueOf(response.body().getAmount());
 //            JSONObject preFill = new JSONObject();
 //            preFill.put("email", "kamal.bunkar07@gmail.com");
 //            preFill.put("contact", "9144040888");
-//
+
 //            options.put("prefill", preFill);
 
             co.open(activity, options);
@@ -174,20 +178,87 @@ amountfromres = String.valueOf(response.body().getAmount());
     }
 
 
+//    @Override
+//    public void onPaymentSuccess(String s) {
+//// payment successfull pay_DGU19rDsInjcF2
+//        Log.e("statuspayment", " payment successfull " + s.toString());
+//        callcheckouthandle();
+//       // Toast.makeText(this, "Payment successfully done! " + s, Toast.LENGTH_SHORT).show();
+//    }
+
+
+
+//    @Override
+//    public void onPaymentError(int i, String s) {
+//        Log.e("statuspayment", "error code "+String.valueOf(i)+" -- Payment failed "+s.toString() );
+//        try {
+//            Toast.makeText(this, "Payment error please try again", Toast.LENGTH_SHORT).show();
+//        } catch (Exception e) {
+//            Log.e("OnPaymentError", "Exception in onPaymentError", e);
+//        }
+//    }
+
     @Override
-    public void onPaymentSuccess(String s) {
-// payment successfull pay_DGU19rDsInjcF2
-        Log.e("statuspayment", " payment successfull " + s.toString());
-        Toast.makeText(this, "Payment successfully done! " + s, Toast.LENGTH_SHORT).show();
+    public void onPaymentSuccess(String s, PaymentData paymentData) {
+                 order_id = paymentData.getOrderId();
+                payment_id = paymentData.getPaymentId();
+                signature = paymentData.getSignature();
+
+                callcheckouthandle(order_id,payment_id,signature);
+
+                Log.d("mainresponse",order_id+ " "+ payment_id+ " "+signature);
     }
+
+
     @Override
-    public void onPaymentError(int i, String s) {
-        Log.e("statuspayment", "error code "+String.valueOf(i)+" -- Payment failed "+s.toString() );
-        try {
-            Toast.makeText(this, "Payment error please try again", Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            Log.e("OnPaymentError", "Exception in onPaymentError", e);
-        }
+    public void onPaymentError(int i, String s, PaymentData paymentData) {
+
+    }
+
+    private void callcheckouthandle(String order_id, String payment_id, String signature) {
+        Map<String, Object> jsonParams = new ArrayMap<>();
+//put something inside the map, could be null
+        jsonParams.put("razorpay_payment_id", payment_id);
+        jsonParams.put("razorpay_order_id",order_id);
+        jsonParams.put("razorpay_signature",signature);
+        jsonParams.put("Userid",userid);
+
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+
+        AgriInvestor apiService = ApiHandler.getApiService();
+        final Call<GetCheckOutHandle> loginCall = apiService.wsGetCheckoutHandle(
+                "123456",body);
+        loginCall.enqueue(new Callback<GetCheckOutHandle>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetCheckOutHandle> call,
+                                   Response<GetCheckOutHandle> response) {
+                Log.d("checkphone",response.toString());
+
+                if (response.isSuccessful()) {
+                    dialog.dismiss();
+                    Log.d("responsecheck", String.valueOf(response.body()));
+                    String checkresponse =String.valueOf(response.body());
+                    Log.d("checkingexist",checkresponse);
+
+Toast.makeText(PaymentGateway.this,response.body().getStatus(),Toast.LENGTH_SHORT).show();
+
+                }
+                else {
+                    dialog.dismiss();
+                    //    new LoginActivity.Alert().SignUp("UnRegistered User!!","First Register Yourself For Our Service");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetCheckOutHandle> call,
+                                  Throwable t) {
+                dialog.dismiss();
+                Toast.makeText(PaymentGateway.this,"Payment Fail",Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
     }
 
     public class Alert {

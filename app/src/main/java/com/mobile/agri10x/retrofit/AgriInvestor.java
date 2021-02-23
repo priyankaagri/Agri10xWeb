@@ -2,6 +2,7 @@ package com.mobile.agri10x.retrofit;
 
 import com.mobile.agri10x.models.CheckPhoneExits;
 import com.mobile.agri10x.models.GetAddMoney;
+import com.mobile.agri10x.models.GetCheckOutHandle;
 import com.mobile.agri10x.models.GetLogin;
 import com.mobile.agri10x.models.GetOTP;
 import com.mobile.agri10x.models.GetProfile;
@@ -65,4 +66,8 @@ public interface AgriInvestor {
 
     @POST("AddMoney")
     Call<GetAddMoney> wsGetAddMoney(@Header("x-auth-token") String token,@Body RequestBody params);
+
+
+    @POST("checkoutHandling")
+    Call<GetCheckOutHandle> wsGetCheckoutHandle(@Header("x-auth-token") String token,@Body RequestBody params);
 }
