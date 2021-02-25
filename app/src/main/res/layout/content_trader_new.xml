@@ -20,8 +20,8 @@
             android:layout_height="wrap_content"
             app:contentScrim="@color/appgreen"
             app:layout_scrollFlags="scroll|snap|enterAlwaysCollapsed"
-            app:title="@string/app_name">
-
+           >
+<!--            app:title="@string/app_name"-->
             <ImageView
                 android:id="@+id/farmimg"
                 android:layout_width="match_parent"

@@ -119,7 +119,7 @@ OtpTextView otp_view;
             @Override
             public void onOTPComplete(String otp) {
                 strotp = otp;
-                Log.d("otp",otp);
+              //  Log.d("otp",otp);
 //                if(validateMobileNo()){
 //                    InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
 //                    inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
@@ -134,7 +134,7 @@ OtpTextView otp_view;
             @Override
             public void onClick(View v) {
 
-                Log.d("otp",strotp);
+            //    Log.d("otp",strotp);
                 if(validateOTP()){
 
                     InputMethodManager imm = (InputMethodManager)getApplicationContext().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -146,9 +146,14 @@ OtpTextView otp_view;
                        // writeToLog("Software Keyboard was not shown");
                     }
                     dialog = new OTP.Alert().verifyingotp();
-                   callverifyapi("91"+strmobilenumber,strotp);
+                    if(strotp != null || !strotp.isEmpty()){
+                        callverifyapi("91"+strmobilenumber,strotp);
+                    }else{
+                        Toast.makeText(OTP.this,"wrong",Toast.LENGTH_SHORT).show();
+                    }
 
-Log.d("params","91"+strmobilenumber+" "+strotp);
+
+//Log.d("params","91"+strmobilenumber+" "+strotp);
                 }
             }
         });
@@ -236,7 +241,7 @@ Log.d("params","91"+strmobilenumber+" "+strotp);
             public void onResponse(Call<resendOTP> call,
                                    Response<resendOTP> response) {
                 dialog2.dismiss();
-                Log.d("resendotpres",response.toString());
+                //("resendotpres",response.toString());
                 if (response.isSuccessful()) {
                     Intent intent = new Intent(OTP.this,OTP.class);
                     intent.putExtra("mobilenumber",strmobilenumber);
@@ -272,7 +277,7 @@ Log.d("params","91"+strmobilenumber+" "+strotp);
 
         jsonParams.put("mobileNo", mobilenumber);
         jsonParams.put("otp",otp);
-        Log.d("params",mobilenumber+" "+otp);
+        //Log.d("params",mobilenumber+" "+otp);
 
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
 
@@ -285,14 +290,14 @@ Log.d("params","91"+strmobilenumber+" "+strotp);
             public void onResponse(Call<verfyOTP> call,
                                    Response<verfyOTP> response) {
 
-                Log.d("verifyOTP",response.toString());
+               // Log.d("verifyOTP",response.toString());
                 if (response.isSuccessful()) {
-                    Log.d("getresponse",response.body().getType());
+                   // Log.d("getresponse",response.body().getType());
  if(response.body().getType().equals("success")){
      checkphoneapi("91"+strmobilenumber);
 
 
-     Log.d("checkphone",strmobilenumber);
+   //  Log.d("checkphone",strmobilenumber);
  }else if(response.body().getType().equals("error")){
      dialog.dismiss();
      Toast.makeText(OTP.this,"You Entered wrong OTP.", Toast.LENGTH_SHORT).show();
@@ -330,13 +335,13 @@ Log.d("params","91"+strmobilenumber+" "+strotp);
             @Override
             public void onResponse(Call<CheckPhoneExits> call,
                                    Response<CheckPhoneExits> response) {
-                Log.d("checkphone",response.toString());
+               // Log.d("checkphone",response.toString());
 
                 if (response.isSuccessful()) {
 
-Log.d("responsecheck", String.valueOf(response.body().getExist()));
+//Log.d("responsecheck", String.valueOf(response.body().getExist()));
 String checkresponse =String.valueOf(response.body().getExist());
-Log.d("checkingexist",checkresponse);
+//Log.d("checkingexist",checkresponse);
                    if(checkresponse.equals("true")){
 
                        SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
@@ -437,7 +442,7 @@ Log.d("checkingexist",checkresponse);
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             responce = s;
-            Log.d("loginres",responce);
+           // Log.d("loginres",responce);
             dialog.dismiss();
 
             if(s!=null) {
@@ -511,7 +516,7 @@ Log.d("checkingexist",checkresponse);
             try {
                 str = POSTRequest.fetchUserData(strings[0],strings[1],OTP.this);
             } catch (Exception e) {
-                Log.d("exception",e.getMessage());
+            //    Log.d("exception",e.getMessage());
                 return "network";
             }
             return str;

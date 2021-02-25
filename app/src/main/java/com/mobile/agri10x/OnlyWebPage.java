@@ -9,27 +9,46 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.mobile.agri10x.Model.UserId;
 
 public class OnlyWebPage extends AppCompatActivity {
     private WebView webView = null;
     public boolean doubleBackToExitPressedOnce = false;
     Toolbar toolbar;
     ProgressDialog progressDialog;
+    String username;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_only_web_page);
 
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+
+           username = extras.getString("namefarmer");
+        }
+
         //toolbar
         toolbar = findViewById(R.id.toolbar_onlyweb);
         setSupportActionBar(toolbar);
+        TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        if(username.equals("undefined undefined")){
+             mTitle.setText("");
+        }else{
+          mTitle.setText(username);
+        }
         toolbar.setNavigationIcon(R.drawable.ic_action_name );
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,4 +119,7 @@ public class OnlyWebPage extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
+
+
 }

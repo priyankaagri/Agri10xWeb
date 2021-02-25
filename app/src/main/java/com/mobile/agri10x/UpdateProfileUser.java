@@ -40,6 +40,7 @@ public class UpdateProfileUser extends AppCompatActivity {
 String userid;
 ImageView img_arrow;
     AlertDialog dialog,dialog2;
+    String rople;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +70,22 @@ Log.d("Loguserid",userid);
         img_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+String first = first_name.getText().toString();
+String last = last_name.getText().toString();
+String wholename = first+" "+last;
+if(rople != null || !rople.isEmpty()){
+    Intent i = new Intent(UpdateProfileUser.this, SettingActivityNew.class);
+    i.putExtra("Userid", userid);
+    i.putExtra("role", rople);
+    i.putExtra("username",wholename);
+    startActivity(i);
+}else {
+    finish();
+}
+
+
+
+
             }
         });
         
@@ -204,7 +220,7 @@ dialog2.dismiss();
                     }else{
                         country.setHint("Country");
                     }
-
+                    rople=  response.body().getRole();
 
 
 

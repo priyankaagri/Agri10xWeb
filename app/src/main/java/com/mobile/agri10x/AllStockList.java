@@ -45,6 +45,7 @@ public class AllStockList extends AppCompatActivity {
     static StockList[] p;
     private UserId userId;
     Button addmorestock;
+    String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)  {
@@ -66,6 +67,8 @@ public class AllStockList extends AppCompatActivity {
         if (extras != null) {
             userId=new UserId();
             userId.setUserid(extras.getString("Userid"));
+
+            username = extras.getString("username");
         }
      //   Log.d("getuserid",extras.getString("Userid"));
 
@@ -85,6 +88,7 @@ public class AllStockList extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(AllStockList.this,AddStock.class);
                 intent.putExtra("Userid",userId.getUserid());
+                intent.putExtra("username",username);
                 startActivity(intent);
                 finish();
             }
@@ -108,7 +112,8 @@ public class AllStockList extends AppCompatActivity {
             p = StockList.extractFromJson(s);
             productList.addAll(Arrays.asList(p));
             if(productList.size()>0) {
-                adapter = new StockListAdapter(AllStockList.this, productList);
+                Log.d("takeusername",username);
+                adapter = new StockListAdapter(AllStockList.this, productList,username);
                 recyclerView.setAdapter(adapter);
                 recyclerView.setLayoutManager(new LinearLayoutManager(context));
             }

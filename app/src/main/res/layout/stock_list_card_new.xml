@@ -8,6 +8,7 @@
     app:ignore="NamespaceTypo">
 
     <RelativeLayout
+
         android:layout_width="match_parent"
         android:layout_marginVertical="10dp"
         android:layout_height="match_parent">
@@ -17,7 +18,7 @@
             android:layout_marginLeft="35dp"
             android:orientation="vertical"
             android:background="@drawable/ractangle_background"
-            android:layout_height="140dp">
+            android:layout_height="155dp">
         </LinearLayout>
 
         <RelativeLayout
@@ -60,17 +61,40 @@
             android:layout_width="match_parent"
             android:layout_height="140dp">
 
-            <TextView
-                android:id="@+id/commoditynamestocklist"
+            <LinearLayout
+                android:weightSum="2"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:textColor="@color/appgreen"
-                android:text="Orange"
-                android:textStyle="bold"
-                android:paddingTop="20dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="5dp"/>
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/commoditynamestocklist"
+                    android:layout_weight="1.5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:textColor="@color/appgreen"
+android:layout_marginBottom="15dp"
+
+                    android:textStyle="bold"
+                    android:paddingTop="20dp"
+                    android:layout_marginLeft="10dp"
+                   />
+
+                <TextView
+android:id="@+id/sell"
+                    android:background="@drawable/btn_round"
+                    android:text="SELL"
+                    android:gravity="center"
+                    android:layout_weight="0.5"
+                    android:layout_width="0dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+
+                    android:textColor="@color/white"
+                    android:layout_margin="15dp"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+
 
             <View
                 android:layout_width="match_parent"
@@ -79,6 +103,7 @@
                 android:layout_marginHorizontal="10dp"/>
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_marginHorizontal="15dp"
@@ -118,6 +143,7 @@
 
                 </LinearLayout>
                 <LinearLayout
+
                     android:layout_width="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
@@ -140,6 +166,7 @@
                         android:textColor="@color/textgrey"
                         android:layout_height="wrap_content"/>
                     <TextView
+
                         android:id="@+id/blockQuantity_stock_list"
                         android:layout_width="match_parent"
                         android:text="Unit"

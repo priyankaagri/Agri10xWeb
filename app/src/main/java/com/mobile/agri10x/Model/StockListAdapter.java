@@ -1,6 +1,7 @@
 package com.mobile.agri10x.Model;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -19,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.mobile.agri10x.Connection.LoadImage;
+import com.mobile.agri10x.Farmer;
+import com.mobile.agri10x.OnlyWebPage;
 import com.mobile.agri10x.R;
 import com.squareup.picasso.Picasso;
 
@@ -36,10 +39,13 @@ public class StockListAdapter extends RecyclerView.Adapter<StockListAdapter.Stoc
 
     boolean flag = false;
 
-    public StockListAdapter(Context mCtx, List<StockList> productList) {
+    String username;
+
+    public StockListAdapter(Context mCtx, List<StockList> productList, String username) {
         this.mCtx = mCtx;
         this.productList = productList;
         this.activityName = mCtx.getClass().getSimpleName();
+        this.username = username;
     }
 
     @Override
@@ -169,6 +175,14 @@ Main.addErrorReportRequest(errorLog,mCtx);*/
             holder.imageView.setImageDrawable(res);
         }
 
+        holder.sell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(mCtx, OnlyWebPage.class);
+                i.putExtra("namefarmer",username);
+                mCtx.startActivity(i);
+            }
+        });
 //        holder.Commodityname.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -243,7 +257,7 @@ Main.addErrorReportRequest(errorLog,mCtx);*/
 
     class StockListViewHolder extends RecyclerView.ViewHolder {
         LinearLayout hari;
-        TextView Unit, Quality, Quantity,Commodityname,Blockquantity,Perishable,ColdStorage,Entrytime;
+        TextView Unit, Quality, Quantity,Commodityname,Blockquantity,Perishable,ColdStorage,Entrytime,sell;
         ImageView imageView,arrowdown,arrowup;
         CardView cardview;
 
@@ -252,6 +266,7 @@ Main.addErrorReportRequest(errorLog,mCtx);*/
 
 
             //cardview = itemView.findViewById(R.id.cardview);
+            sell = itemView.findViewById(R.id.sell);
             arrowup = itemView.findViewById(R.id.arrowup);
             arrowdown = itemView.findViewById(R.id.arrowdown);
             Commodityname= itemView.findViewById(R.id.commoditynamestocklist);

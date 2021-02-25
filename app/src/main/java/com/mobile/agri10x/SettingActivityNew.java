@@ -22,15 +22,18 @@ import com.google.gson.Gson;
 import com.mobile.agri10x.Connection.POSTRequest;
 import com.mobile.agri10x.Model.LogOut;
 import com.mobile.agri10x.Model.Main;
+import com.mobile.agri10x.Model.User;
 import com.mobile.agri10x.SessionManagment.SessionManager;
+
+import org.json.JSONObject;
 
 public class SettingActivityNew extends AppCompatActivity {
     ImageView but_back;
     LinearLayout showintrest, EditProfile, logout,wallet,payment;
     TextView Shareapp, referfrnd, termscondition,version;
-    String Userid, role;
+    String Userid, role,username;
     String currentVersion;
-
+    private static String responce = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +41,9 @@ public class SettingActivityNew extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         Userid = extras.getString("Userid");
         role = extras.getString("role");
+        username = extras.getString("username");
 
-        Log.d("loguserid",Userid);
+        Log.d("loguserid",username);
         Findid();
         Clicklisner();
 
@@ -75,8 +79,41 @@ public class SettingActivityNew extends AppCompatActivity {
         but_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+
+                User u = new User();
+                try {
+
+                    u.setUsername(username);
+                    u.setRole(role);
+                    u.set_id(Userid);
+//                        u.setFirstname(json_session_data_form_server.getString("fn"));
+//                        u.setLastname(json_session_data_form_server.getString(""));
+                    //other data not required
+//                        if(!restorePref()){
+//                            savePrefsData();
+//                            savePrefs();
+//                        }
+                } catch (Exception e) {
+                    //didnt found the data in the json string
+                }
+
+                if(u.getRole().equals("Farmer") || u.getRole().equals("Admin") || u.getRole().equals("PFarmer")) {
+                    Intent i = new Intent(SettingActivityNew.this, Farmer.class);
+                    i.putExtra("User_data", u);
+//                            i.putExtra("notification data",notification_data);
+//                            Log.e("notification","Going to Notification");
+                    startActivity(i);
+                    finish();
+                } else if (u.getRole().equals("Trader") || u.getRole().equals("PTrader")) {
+                    Intent i = new Intent(SettingActivityNew.this, Trader.class);
+                    i.putExtra("User_data", u);
+//                            i.putExtra("notification data",notification_data);
+                    startActivity(i);
+                    finish();
+                }
+
             }
+
         });
         showintrest.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -67,6 +67,7 @@ public class AddStock extends AppCompatActivity {
     List<GetTradeVariety> getTradeVarietyArrayList = new ArrayList<>();
     ArrayList<String> Commoditycategory = new ArrayList<>();
     SimpleListAdapter mSimpleListAdapter;
+    String username;
     ArrayList<String> Varietycategory = new ArrayList<>();;
     private static final String[] Value = new String[]{
             "Yes", "No"
@@ -111,6 +112,10 @@ callapi();
         if (extras != null) {
             userId=new UserId();
             userId.setUserid(extras.getString("Userid"));
+
+            username = extras.getString("username");
+
+
         }
 
         back=findViewById(R.id.but_back_add);
@@ -620,6 +625,8 @@ Log.d("checkid",Ccomid);
             Intent intent = new Intent(AddStock.this,AllStockList.class);
 
                     intent.putExtra("Userid",userId.getUserid());
+                    intent.putExtra("username",username);
+
                     startActivity(intent);
                     finish();
                 }

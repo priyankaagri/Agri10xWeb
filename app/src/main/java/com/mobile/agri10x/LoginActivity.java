@@ -565,14 +565,14 @@ public class LoginActivity extends AppCompatActivity implements AdapterView.OnIt
                         //didnt found the data in the json string
                     }
                     Log.e("usersession",new Gson().toJson(u));
-                    if(u.getRole().equals("Farmer") || u.getRole().equals("Admin")) {
+                    if(u.getRole().equals("Farmer") || u.getRole().equals("Admin") || u.getRole().equals("PFarmer")) {
                         Intent i = new Intent(LoginActivity.this, Farmer.class);
                         i.putExtra("User_data", u);
 //                            i.putExtra("notification data",notification_data);
 //                            Log.e("notification","Going to Notification");
                         startActivity(i);
                         finish();
-                    } else if (u.getRole().equals("Trader")) {
+                    } else if (u.getRole().equals("Trader") || u.getRole().equals("PTrader")) {
                         Intent i = new Intent(LoginActivity.this, Trader.class);
                         i.putExtra("User_data", u);
 //                            i.putExtra("notification data",notification_data);

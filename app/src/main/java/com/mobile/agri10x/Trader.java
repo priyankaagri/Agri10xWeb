@@ -67,7 +67,7 @@ public class Trader extends AppCompatActivity
     View v;
     static User user_data_intent,profiletrader;
     ImageButton refresh_button;
-    ImageView farmimg;
+    ImageView farmimg,home;
     TextView nav_username,nav_wallet_balance;
   //  ImageView nav_image;
     DrawerLayout drawer;
@@ -81,8 +81,11 @@ public class Trader extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trader_new);//activity_trader
-       // Toolbar toolbar = findViewById(R.id.toolbar);
-      //  setSupportActionBar(toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        home = toolbar.findViewById(R.id.home);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_action_name );
+
         session = new SessionManager(Trader.this);
 
         drawer = findViewById(R.id.drawer_layout);
@@ -123,6 +126,7 @@ public class Trader extends AppCompatActivity
             public void onClick(View view) {
                 Intent i=new Intent(Trader.this,AllStockList.class);
                 i.putExtra("Userid",user_data_intent.get_id());
+                i.putExtra("username",user_data_intent.getUsername());
                 startActivity(i);
             }
         });
@@ -131,6 +135,7 @@ public class Trader extends AppCompatActivity
             public void onClick(View view) {
                 Intent i = new Intent(Trader.this,AddStock.class);
                 i.putExtra("Userid",user_data_intent.get_id());
+                i.putExtra("username",user_data_intent.getUsername());
                 startActivity(i);
             }
         });
@@ -166,7 +171,9 @@ public class Trader extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Trader.this,OnlyWebPage.class);
+                i.putExtra("namefarmer",myfirstname);
                 startActivity(i);
+
 
             }
         });
@@ -176,6 +183,7 @@ public class Trader extends AppCompatActivity
                 Intent i = new Intent(Trader.this, SettingActivityNew.class);
                 i.putExtra("Userid", user_data_intent.get_id());
                 i.putExtra("role", user_data_intent.getRole());
+                i.putExtra("username",user_data_intent.getUsername());
                 startActivity(i);
             }
         });
@@ -189,8 +197,31 @@ public class Trader extends AppCompatActivity
                 myrole = user_data_intent.getRole();
                 Log.d("checkmyrole",myrole);
 
-//        myfirstname = user_data_intent.getUsername();
+        myfirstname = user_data_intent.getUsername();
+        Log.d("getusername",myfirstname);
 
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent i = new Intent(Trader.this,OnlyWebPage.class);
+                        i.putExtra("namefarmer",myfirstname);
+                        startActivity(i);
+                    }
+                });
+            }
+        });
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Trader.this,OnlyWebPage.class);
+                i.putExtra("namefarmer",myfirstname);
+                startActivity(i);
+            }
+        });
 //        if(myfirstname != null  ){
 //            getSupportActionBar().setTitle(myfirstname);
 //        }
@@ -268,6 +299,7 @@ public class Trader extends AppCompatActivity
 //                else{
                     Intent i = new Intent(Trader.this,AddStock.class);
                     i.putExtra("Userid",user_data_intent.get_id());
+                i.putExtra("username",user_data_intent.getUsername());
                     startActivity(i);
              //   }
             }
@@ -701,6 +733,7 @@ public class Trader extends AppCompatActivity
                         SecurityData.setCommodity(Commodity);
                         Intent i = new Intent(Trader.this, AddStock.class);
                         i.putExtra("Userid",user_data_intent.get_id());
+                        i.putExtra("username",user_data_intent.getUsername());
                         startActivity(i);
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -861,6 +894,7 @@ public class Trader extends AppCompatActivity
         if (id == R.id.mystockfarmer) {
             Intent i=new Intent(Trader.this,AllStockList.class);
             i.putExtra("Userid",user_data_intent.get_id());
+            i.putExtra("username",user_data_intent.getUsername());
             startActivity(i);
 
         }
@@ -881,6 +915,7 @@ public class Trader extends AppCompatActivity
 //            else{
                 Intent i = new Intent(Trader.this,AddStock.class);
                 i.putExtra("Userid",user_data_intent.get_id());
+                i.putExtra("username",user_data_intent.getUsername());
                 startActivity(i);
            // }
         }

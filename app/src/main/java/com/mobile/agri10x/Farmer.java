@@ -88,7 +88,7 @@ public class Farmer extends AppCompatActivity
     SessionManager session;
     DrawerLayout drawer;
     Button tempactive;
-    ImageView famimg;
+    ImageView famimg,home;
     List<GetTradeCommodity> getTradeCommodityArrayList = new ArrayList<>();
     List<GetRequestedCommodity> getRequestedCommodityArrayList = new ArrayList<>();
     //Recycler View
@@ -111,8 +111,12 @@ public class Farmer extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_activity_farmer2);//activity_farmer2
-      //  Toolbar toolbar = findViewById(R.id.toolbarf);
-       // setSupportActionBar(toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbarf);
+        home = toolbar.findViewById(R.id.home);
+
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_action_name );
+
         session = new SessionManager(getApplicationContext());
         drawer = findViewById(R.id.drawer_layout);
 //        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -150,7 +154,25 @@ public class Farmer extends AppCompatActivity
         city_name = user_data_intent.getCity();
         userId = new UserId();
         userId.setUserid(user_data_intent.get_id());
-//myfirstname = user_data_intent.getUsername();
+        myfirstname = user_data_intent.getUsername();
+        Log.d("getusername",myfirstname);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Farmer.this,OnlyWebPage.class);
+                i.putExtra("namefarmer",myfirstname);
+                startActivity(i);
+            }
+        });
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Farmer.this,OnlyWebPage.class);
+                i.putExtra("namefarmer",myfirstname);
+                startActivity(i);
+            }
+        });
 //
 //        if(myfirstname.equals("undefined undefined")){
 //            getSupportActionBar().setTitle("");
@@ -191,6 +213,7 @@ public class Farmer extends AppCompatActivity
             public void onClick(View v) {
                 Intent i=new Intent(Farmer.this,AllStockList.class);
                 i.putExtra("Userid",user_data_intent.get_id());
+                i.putExtra("username",user_data_intent.getUsername());
                 startActivity(i);
             }
         });
@@ -199,6 +222,7 @@ public class Farmer extends AppCompatActivity
             public void onClick(View v) {
                 Intent i = new Intent(Farmer.this,AddStock.class);
                 i.putExtra("Userid",user_data_intent.get_id());
+                i.putExtra("username",user_data_intent.getUsername());
                 startActivity(i);
             }
         });
@@ -234,6 +258,7 @@ public class Farmer extends AppCompatActivity
                 Intent i = new Intent(Farmer.this, SettingActivityNew.class);
                 i.putExtra("Userid", user_data_intent.get_id());
                 i.putExtra("role", user_data_intent.getRole());
+                i.putExtra("username",user_data_intent.getUsername());
 
 
                 startActivity(i);
@@ -296,6 +321,7 @@ public class Farmer extends AppCompatActivity
             public void onClick(View v) {
                 Intent i=new Intent(Farmer.this,AllStockList.class);
                 i.putExtra("Userid",user_data_intent.get_id());
+                i.putExtra("username",user_data_intent.getUsername());
                 startActivity(i);
             }
         });
@@ -310,6 +336,7 @@ public class Farmer extends AppCompatActivity
 //                }else{
                     Intent i = new Intent(Farmer.this,AddStock.class);
                     i.putExtra("Userid",user_data_intent.get_id());
+                i.putExtra("username",user_data_intent.getUsername());
                     startActivity(i);
                // }
             }
@@ -381,6 +408,7 @@ public class Farmer extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Farmer.this,OnlyWebPage.class);
+                i.putExtra("namefarmer",myfirstname);
                 startActivity(i);
 
             }
@@ -925,6 +953,7 @@ public class Farmer extends AppCompatActivity
         if (id == R.id.mystockfarmer) {
             Intent i = new Intent(Farmer.this, AllStockList.class);
             i.putExtra("Userid",user_data_intent.get_id());
+            i.putExtra("username",user_data_intent.getUsername());
             startActivity(i);
 
         }
@@ -937,6 +966,7 @@ public class Farmer extends AppCompatActivity
 //            else{
                 Intent i = new Intent(Farmer.this,AddStock.class);
                 i.putExtra("Userid",user_data_intent.get_id());
+            i.putExtra("username",user_data_intent.getUsername());
                 startActivity(i);
            // }
         }
@@ -1136,6 +1166,7 @@ Log.d("getresponse", String.valueOf(getTradeCommodityArrayList.size()));
                         SecurityData.setCommodity(Commodity);
                         Intent i = new Intent(Farmer.this, AddStock.class);
                         i.putExtra("Userid",user_data_intent.get_id());
+                        i.putExtra("username",user_data_intent.getUsername());
                         startActivity(i);
                     } catch (JSONException e) {
                         e.printStackTrace();
