@@ -43,7 +43,8 @@
         <activity
             android:name=".OnlyWebPage"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".UpdateProfile_New" />
+        <activity android:name=".UpdateProfile_New"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".OTP"
             android:theme="@style/AppTheme.NoActionBar"
