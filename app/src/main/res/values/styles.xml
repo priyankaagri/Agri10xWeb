@@ -23,4 +23,12 @@
         <item name="android:fontFamily">@font/font_product_sans</item>
     </style>
 
+    <style name="BottomNavigationDrawerStyle">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12dp</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:fontFamily">@font/font_product_sans</item>
+    </style>
+
 </resources>

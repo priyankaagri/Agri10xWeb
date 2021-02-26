@@ -76,7 +76,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/first_name"
-
+android:singleLine="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="First Name"
@@ -90,7 +90,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_marginTop="10dp"
                         android:id="@+id/last_name"
-
+                        android:singleLine="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Last Name"
@@ -107,6 +107,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Email"
+                        android:singleLine="true"
                         android:maxLines="1"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
@@ -120,6 +121,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Address"
+                        android:singleLine="true"
                         android:maxLines="1"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
@@ -133,6 +135,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Address1"
+                        android:singleLine="true"
                         android:maxLines="1"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
@@ -146,6 +149,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Address2"
+                        android:singleLine="true"
                         android:maxLines="1"/>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
@@ -156,6 +160,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_marginTop="10dp"
                         android:id="@+id/city"
+                        android:singleLine="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="City"
@@ -173,6 +178,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Country"
+                        android:singleLine="true"
                         android:maxLines="1"/>
                 </com.google.android.material.textfield.TextInputLayout>
 

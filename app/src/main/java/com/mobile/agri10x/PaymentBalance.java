@@ -78,7 +78,7 @@ public class PaymentBalance extends AppCompatActivity implements PaymentResultWi
         if (extras != null) {
 
             userid = extras.getString("Userid");
-            Log.d("getuserid",Userid);
+            Log.d("getuserid",userid);
             benificary.setText("AGRI10"+userid);
         }
 

@@ -161,6 +161,7 @@ public class Farmer extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Farmer.this,OnlyWebPage.class);
+                i.putExtra("userid",user_data_intent.get_id());
                 i.putExtra("namefarmer",myfirstname);
                 startActivity(i);
             }
@@ -169,6 +170,7 @@ public class Farmer extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Farmer.this,OnlyWebPage.class);
+                i.putExtra("userid",user_data_intent.get_id());
                 i.putExtra("namefarmer",myfirstname);
                 startActivity(i);
             }
@@ -408,6 +410,7 @@ public class Farmer extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Farmer.this,OnlyWebPage.class);
+                i.putExtra("userid",user_data_intent.get_id());
                 i.putExtra("namefarmer",myfirstname);
                 startActivity(i);
 

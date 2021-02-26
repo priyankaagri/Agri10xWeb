@@ -1,5 +1,6 @@
 package com.mobile.agri10x;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -19,6 +20,7 @@ import android.webkit.WebViewClient;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mobile.agri10x.Model.UserId;
 
 public class OnlyWebPage extends AppCompatActivity {
@@ -27,6 +29,8 @@ public class OnlyWebPage extends AppCompatActivity {
     Toolbar toolbar;
     ProgressDialog progressDialog;
     String username;
+    public static BottomNavigationView bottomNavigation;
+    String userid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,7 @@ public class OnlyWebPage extends AppCompatActivity {
         if (extras != null) {
 
            username = extras.getString("namefarmer");
+           userid =  extras.getString("userid");
         }
 
         //toolbar
@@ -56,7 +61,9 @@ public class OnlyWebPage extends AppCompatActivity {
             }
         });
         this.webView = (WebView) findViewById(R.id.webview);
-
+        bottomNavigation = findViewById(R.id.nav_view);
+        bottomNavigation.setItemIconTintList(null);
+        bottomNavigation.getMenu().getItem(0).setChecked(true);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webView.setScrollBarStyle(View.SCROLLBARS_OUTSIDE_OVERLAY);
@@ -94,6 +101,46 @@ public class OnlyWebPage extends AppCompatActivity {
             }
         });
         webView.loadUrl("https://emarket.agri10x.com/");
+
+
+        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+                bottomNavigation.getMenu().getItem(0).setIcon(R.mipmap.home);
+                bottomNavigation.getMenu().getItem(1).setIcon(R.mipmap.payment);
+                bottomNavigation.getMenu().getItem(2).setIcon(R.mipmap.stockimg);
+                bottomNavigation.getMenu().getItem(3).setIcon(R.mipmap.offer);
+                switch (menuItem.getItemId()) {
+                    case R.id.navigation_home:
+                        menuItem.setIcon(R.mipmap.home_active);
+                        finish();
+
+                        break;
+                    case R.id.navigation_shop:
+                        menuItem.setIcon(R.mipmap.payment_active);
+                        Intent i = new Intent(OnlyWebPage.this, PaymentBalance.class);
+                        i.putExtra("Userid",userid);
+
+
+                        startActivity(i);
+
+                        break;
+                    case R.id.navigation_wallet:
+                        menuItem.setIcon(R.mipmap.stock_active);
+                        Intent intent = new Intent(OnlyWebPage.this, AllStockList.class);
+                        intent.putExtra("Userid",userid);
+                        intent.putExtra("username",username);
+                        startActivity(intent);
+                        break;
+                    case R.id.navigation_account:
+                        menuItem.setIcon(R.mipmap.discount_active);
+
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
 
