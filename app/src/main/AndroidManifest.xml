@@ -20,7 +20,6 @@
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <application
-
         android:allowBackup="true"
         android:extractNativeLibs="false"
         android:hardwareAccelerated="true"
@@ -32,8 +31,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PaymentGateway"
+        <activity android:name=".PaymentBalance"
             android:theme="@style/AppTheme.NoActionBar" ></activity>
+        <activity
+            android:name=".PaymentGateway"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Refer" />
         <activity
             android:name=".UpdateProfileUser"
@@ -44,7 +46,8 @@
         <activity
             android:name=".OnlyWebPage"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".UpdateProfile_New"
+        <activity
+            android:name=".UpdateProfile_New"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".OTP"
@@ -143,7 +146,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Trader"
-android:label="Agri10x"
+            android:label="Agri10x"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SplashScreen"
@@ -161,11 +164,10 @@ android:label="Agri10x"
         <activity
             android:name=".Farmer"
             android:label="Agri10x"
-      android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Father"
-            android:label="@string/title_activity_main"
-            />
+            android:label="@string/title_activity_main" />
         <activity
             android:name=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar"
@@ -180,11 +182,10 @@ android:label="Agri10x"
             android:name=".Employee"
             android:label="Employee"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <meta-data
             android:name="com.razorpay.ApiKey"
             android:value="rzp_live_zdqce1DCYfjD8s" />
-<!--        rzp_live_zdqce1DCYfjD8s-->
-<!--        rzp_test_0dorUbDNe71CBm-->
     </application>
 
 </manifest>

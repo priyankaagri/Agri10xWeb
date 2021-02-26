@@ -63,7 +63,7 @@ public class SettingActivityNew extends AppCompatActivity {
         payment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SettingActivityNew.this, PaymentGateway.class);
+                Intent i = new Intent(SettingActivityNew.this, PaymentBalance.class);
                 i.putExtra("Userid",Userid);
                 startActivity(i);
             }

@@ -126,7 +126,8 @@ UserId userIdo;
             }
             return str;
         }
-    } //okey
+    }
+    //okey
 //    class LoadWalletBalance extends AsyncTask<String, Integer, String> {
 //
 //        @Override
