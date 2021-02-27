@@ -31,8 +31,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PaymentBalance"
-            android:theme="@style/AppTheme.NoActionBar" ></activity>
+        <activity android:name=".MenuActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
+        <activity
+            android:name=".PaymentBalance"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".PaymentGateway"
             android:theme="@style/AppTheme.NoActionBar" />

@@ -1,5 +1,6 @@
 package com.mobile.agri10x.Model;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -7,13 +8,20 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,6 +37,8 @@ import com.squareup.picasso.Picasso;
 import java.io.InputStream;
 import java.util.List;
 
+import static android.content.Context.LAYOUT_INFLATER_SERVICE;
+
 public class StockListAdapter extends RecyclerView.Adapter<StockListAdapter.StockListViewHolder>  {
 
     private final Context mCtx;
@@ -40,6 +50,11 @@ public class StockListAdapter extends RecyclerView.Adapter<StockListAdapter.Stoc
     boolean flag = false;
 
     String username;
+
+    PopupWindow popupWindow;
+
+    EditText price;
+    TextView qty,commodityname;
 
     public StockListAdapter(Context mCtx, List<StockList> productList, String username) {
         this.mCtx = mCtx;
@@ -178,9 +193,8 @@ Main.addErrorReportRequest(errorLog,mCtx);*/
         holder.sell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(mCtx, OnlyWebPage.class);
-                i.putExtra("namefarmer",username);
-                mCtx.startActivity(i);
+
+                callPopup("Quantity: "+ product.getQuantity(),product.getCommodityname());
             }
         });
 //        holder.Commodityname.setOnClickListener(new View.OnClickListener() {
@@ -198,6 +212,49 @@ Main.addErrorReportRequest(errorLog,mCtx);*/
 //
 //            }
 //        });
+    }
+
+    private void callPopup(String strqty, String strcommodityname) {
+
+        LayoutInflater layoutInflater = (LayoutInflater)mCtx
+                .getSystemService(LAYOUT_INFLATER_SERVICE);
+
+        View popupView = layoutInflater.inflate(R.layout.popup, null);
+
+        popupWindow=new PopupWindow(popupView,
+               800, 550,
+                true);
+
+        popupWindow.setTouchable(true);
+        popupWindow.setFocusable(true);
+
+        popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+        price = (EditText) popupView.findViewById(R.id.price);
+        qty = (TextView) popupView.findViewById(R.id.qty);
+        commodityname = (TextView) popupView.findViewById(R.id.commodityname);
+
+        qty.setText(strqty);
+        commodityname.setText(strcommodityname);
+
+
+
+        ((TextView) popupView.findViewById(R.id.submit))
+                .setOnClickListener(new View.OnClickListener() {
+
+
+                    public void onClick(View arg0) {
+              callapi();
+
+                        popupWindow.dismiss();
+                    }
+                });
+
+
+    }
+
+    private void callapi() {
+
+
     }
 
 
@@ -260,6 +317,7 @@ Main.addErrorReportRequest(errorLog,mCtx);*/
         TextView Unit, Quality, Quantity,Commodityname,Blockquantity,Perishable,ColdStorage,Entrytime,sell;
         ImageView imageView,arrowdown,arrowup;
         CardView cardview;
+        RelativeLayout rel;
 
         public StockListViewHolder(View itemView) {
             super(itemView);
@@ -278,6 +336,7 @@ Main.addErrorReportRequest(errorLog,mCtx);*/
             ColdStorage = itemView.findViewById(R.id.coldStorage_stock_list);
             Entrytime = itemView.findViewById(R.id.entrytime_stock_list);
             imageView = itemView.findViewById(R.id.imageView);
+            rel = itemView.findViewById(R.id.rel);
 
         }
     }

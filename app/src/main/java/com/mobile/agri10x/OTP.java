@@ -465,43 +465,53 @@ String checkresponse =String.valueOf(response.body().getExist());
                         //didnt found the data in the json string
                     }
                     Log.e("usersession",new Gson().toJson(u));
-                    if(u.getRole().equals("PFarmer") || u.getRole().equals("Admin") || u.getRole().equals("Farmer") ) {
-                        Intent i = new Intent(OTP.this, Farmer.class);
-                        i.putExtra("User_data", u);
-//                            i.putExtra("notification data",notification_data);
-//                            Log.e("notification","Going to Notification");
-                        startActivity(i);
-                        finish();
-                    } else if (u.getRole().equals("PTrader") || u.getRole().equals("Trader") ) {
-                        Intent i = new Intent(OTP.this, Trader.class);
-                        i.putExtra("User_data", u);
-//                            i.putExtra("notification data",notification_data);
-                        startActivity(i);
-                        finish();
-                    } else if (u.getRole().equals("QC")) {
-//                        Intent i = new Intent(OTP.this, QualityCheck.class);
+                    Intent intent=new Intent(OTP.this,OnlyWebPage.class);
+                    intent.putExtra("User_data", u);
+                    startActivity(intent);
+
+
+//                    if(u.getRole().equals("PFarmer") || u.getRole().equals("Admin") || u.getRole().equals("Farmer") ) {
+//                        Intent i = new Intent(OTP.this, Farmer.class);
+//                        i.putExtra("User_data", u);
+//
+//
+////                            i.putExtra("notification data",notification_data);
+////                            Log.e("notification","Going to Notification");
+//                        startActivity(i);
+//                        finish();
+//                    } else if (u.getRole().equals("PTrader") || u.getRole().equals("Trader") ) {
+//                        Intent i = new Intent(OTP.this, Trader.class);
 //                        i.putExtra("User_data", u);
 ////                            i.putExtra("notification data",notification_data);
 //                        startActivity(i);
 //                        finish();
-                        Toast.makeText(OTP.this,"You are not currently registerd as Farmer or Trader",Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(OTP.this,LoginActivity.class);
-                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(i);
-                        finish();
-                    } else {
-                        Toast.makeText(OTP.this,"You are not currently registerd as Farmer or Trader",Toast.LENGTH_SHORT).show();
-                        Intent i = new Intent(OTP.this,LoginActivity.class);
-                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(i);
-                        finish();
-//                        if(u.getRole()!=null){
-//                            Intent i = new Intent(OTP.this,Unvrified.class);
-//                            i.putExtra("User_data", u);
-//                            startActivity(i);
-//                            finish();
-//                        }
-                    }
+//                    } else if (u.getRole().equals("QC")) {
+////                        Intent i = new Intent(OTP.this, QualityCheck.class);
+////                        i.putExtra("User_data", u);
+//////                            i.putExtra("notification data",notification_data);
+////                        startActivity(i);
+////                        finish();
+//                        Toast.makeText(OTP.this,"You are not currently registerd as Farmer or Trader",Toast.LENGTH_SHORT).show();
+//                        Intent i = new Intent(OTP.this,LoginActivity.class);
+//                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                        startActivity(i);
+//                        finish();
+//                    } else {
+//                        Toast.makeText(OTP.this,"You are not currently registerd as Farmer or Trader",Toast.LENGTH_SHORT).show();
+//                        Intent i = new Intent(OTP.this,LoginActivity.class);
+//                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                        startActivity(i);
+//                        finish();
+////                        if(u.getRole()!=null){
+////                            Intent i = new Intent(OTP.this,Unvrified.class);
+////                            i.putExtra("User_data", u);
+////                            startActivity(i);
+////                            finish();
+////                        }
+//                    }
+
+
+
                 }
                 else {
                 //    new OTP.Alert().SignUp("UnRegistered User!!","First Register Yourself For Our Service");

@@ -2,23 +2,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
-        android:icon="@mipmap/home"
-        android:title="Home" />
+        android:id="@+id/navigation_addstock"
+        android:icon="@mipmap/mystock"
+        android:title="Add Stock" />
+
+
 
     <item
-        android:id="@+id/navigation_shop"
-        android:icon="@mipmap/payment"
-        android:title="Payment" />
-
-    <item
-        android:id="@+id/navigation_wallet"
-        android:icon="@mipmap/stockimg"
+        android:id="@+id/navigation_mystock"
+        android:icon="@mipmap/mystock"
         android:title="My Stock"
         />
     <item
-        android:id="@+id/navigation_account"
-        android:icon="@mipmap/offer"
-        android:title="Offers" />
+        android:id="@+id/navigation_payment"
+        android:icon="@mipmap/payment"
+        android:title="Payment" />
+    <item
+        android:id="@+id/navigation_menu"
+        android:icon="@mipmap/menu"
+        android:title="Menu" />
 
 </menu>

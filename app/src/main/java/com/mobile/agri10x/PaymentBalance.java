@@ -347,4 +347,9 @@ public class PaymentBalance extends AppCompatActivity implements PaymentResultWi
             return dialog;
         }
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }

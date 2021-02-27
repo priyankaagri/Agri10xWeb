@@ -35,7 +35,7 @@ android:layout_marginTop="50dp"
                 android:id="@+id/toolbar_title"
                 android:layout_marginRight="10dp"
                 android:gravity="right"
-                android:text="jdvbjhcb"
+
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="@color/white"

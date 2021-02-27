@@ -35,11 +35,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UpdateProfileUser extends AppCompatActivity {
-    EditText first_name,last_name,emailaddress,address,address1,address2,city,country;
+    EditText first_name, last_name, emailaddress, address, address1, address2, city, country;
     Button btn_save;
-String userid;
-ImageView img_arrow;
-    AlertDialog dialog,dialog2;
+    String userid;
+    ImageView img_arrow;
+    AlertDialog dialog, dialog2;
     String rople;
 
     @Override
@@ -47,15 +47,15 @@ ImageView img_arrow;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile_user);
         img_arrow = findViewById(R.id.img_arrow);
-        first_name=findViewById(R.id.first_name);
-        last_name=findViewById(R.id.last_name);
-        emailaddress=findViewById(R.id.emailaddress);
-        address=findViewById(R.id.address);
-        address1=findViewById(R.id.address1);
-        address2=findViewById(R.id.address2);
-        city=findViewById(R.id.city);
-        country=findViewById(R.id.country);
-        btn_save=findViewById(R.id.btn_save);
+        first_name = findViewById(R.id.first_name);
+        last_name = findViewById(R.id.last_name);
+        emailaddress = findViewById(R.id.emailaddress);
+        address = findViewById(R.id.address);
+        address1 = findViewById(R.id.address1);
+        address2 = findViewById(R.id.address2);
+        city = findViewById(R.id.city);
+        country = findViewById(R.id.country);
+        btn_save = findViewById(R.id.btn_save);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -63,42 +63,44 @@ ImageView img_arrow;
             userid = extras.getString("Userid");
 
         }
-Log.d("Loguserid",userid);
+        Log.d("Loguserid", userid);
         dialog = new UpdateProfileUser.Alert().pleaseWait();
         callGetDAta();
 
         img_arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-String first = first_name.getText().toString();
-String last = last_name.getText().toString();
-String wholename = first+" "+last;
-if(rople != null || !rople.isEmpty()){
-    Intent i = new Intent(UpdateProfileUser.this, SettingActivityNew.class);
-    i.putExtra("Userid", userid);
-    i.putExtra("role", rople);
-    i.putExtra("username",wholename);
-    startActivity(i);
-}else {
-    finish();
-}
 
+                finish();
+
+               /* String first = first_name.getText().toString();
+                String last = last_name.getText().toString();
+                String wholename = first + " " + last;
+                if (rople != null || !rople.isEmpty()) {
+                    Intent i = new Intent(UpdateProfileUser.this, SettingActivityNew.class);
+                    i.putExtra("Userid", userid);
+                    i.putExtra("role", rople);
+                    i.putExtra("username", wholename);
+                    startActivity(i);
+                } else {
+                    finish();
+                }*/
 
 
 
             }
         });
-        
+
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              String  first_name_string= first_name.getText().toString().trim();
-               String last_name_string= last_name.getText().toString().trim();
-                if(first_name_string.length()>0 && last_name_string.length()>0){
+                String first_name_string = first_name.getText().toString().trim();
+                String last_name_string = last_name.getText().toString().trim();
+                if (first_name_string.length() > 0 && last_name_string.length() > 0) {
                     dialog2 = new UpdateProfileUser.Alert().pleaseWait();
                     callupdateapi();
-                }else{
-                    Toast.makeText(UpdateProfileUser.this,"Please Enter First Name and Last Name",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(UpdateProfileUser.this, "Please Enter First Name and Last Name", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -115,7 +117,7 @@ if(rople != null || !rople.isEmpty()){
         setAddressO.setCity(city.getText().toString());
         setAddressO.setCountry(country.getText().toString());
 
-        SetUserO setUserO=new SetUserO();
+        SetUserO setUserO = new SetUserO();
         setUserO.setAddress(setAddressO);
 // setUserO.getAddress().getAddress2();
 // setUserO.getAddress().getAddress3();
@@ -131,20 +133,19 @@ if(rople != null || !rople.isEmpty()){
 
         AgriInvestor apiService = ApiHandler.getApiService();
         final Call<GetUserInfo> loginCall = apiService.wssetuserinfo(
-                "123456",setUserO);
+                "123456", setUserO);
         loginCall.enqueue(new Callback<GetUserInfo>() {
             @SuppressLint("WrongConstant")
             @Override
             public void onResponse(Call<GetUserInfo> call,
                                    Response<GetUserInfo> response) {
-dialog2.dismiss();
-                Log.d("resendotpres",response.toString());
+                dialog2.dismiss();
+                Log.d("resendotpres", response.toString());
                 if (response.isSuccessful()) {
-                    String strupdate =response.body().getUpdate().toString();
-                  callGetDAta();
-                  Toast.makeText(UpdateProfileUser.this,"Data Updated Successfully",Toast.LENGTH_SHORT).show();
-                }
-                else {
+                    String strupdate = response.body().getUpdate().toString();
+                    callGetDAta();
+                    Toast.makeText(UpdateProfileUser.this, "Data Updated Successfully", Toast.LENGTH_SHORT).show();
+                } else {
                     dialog2.dismiss();
                 }
             }
@@ -165,69 +166,67 @@ dialog2.dismiss();
 
         jsonParams.put("userID", userid);
 
-        Log.d("params",userid);
+        Log.d("params", userid);
 
-        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"), (new JSONObject(jsonParams)).toString());
 
         AgriInvestor apiService = ApiHandler.getApiService();
         final Call<GetProfile> loginCall = apiService.wsGetProfileData(
-                "123456",body);
+                "123456", body);
         loginCall.enqueue(new Callback<GetProfile>() {
             @SuppressLint("WrongConstant")
             @Override
             public void onResponse(Call<GetProfile> call,
                                    Response<GetProfile> response) {
                 dialog.dismiss();
-                Log.d("verifyOTP",response.toString());
+                Log.d("verifyOTP", response.toString());
                 if (response.isSuccessful()) {
-                    if(!response.body().getFirstname().isEmpty() || response.body().getFirstname() != null){
+                    if (!response.body().getFirstname().isEmpty() || response.body().getFirstname() != null) {
                         first_name.setText(response.body().getFirstname());
-                    }else{
+                    } else {
                         first_name.setHint("First Name");
                     }
-                    if(!response.body().getLastname().isEmpty() || response.body().getLastname() != null){
+                    if (!response.body().getLastname().isEmpty() || response.body().getLastname() != null) {
                         last_name.setText(response.body().getLastname());
-                    }else{
+                    } else {
                         last_name.setHint("Last Name");
                     }
-                    if(!response.body().getEmail().isEmpty() || response.body().getEmail() != null){
+                    if (!response.body().getEmail().isEmpty() || response.body().getEmail() != null) {
                         emailaddress.setText(response.body().getEmail());
-                    }else{
+                    } else {
                         emailaddress.setHint("Email");
                     }
-                    if(!response.body().getAddress().getAddress1().isEmpty() || response.body().getAddress().getAddress1() != null){
+                    if (!response.body().getAddress().getAddress1().isEmpty() || response.body().getAddress().getAddress1() != null) {
                         address.setText(response.body().getAddress().getAddress1());
-                    }else{
+                    } else {
                         address.setHint("Address");
                     }
-                    if(!response.body().getAddress().getAddress2().isEmpty() || response.body().getAddress().getAddress2() != null){
+                    if (!response.body().getAddress().getAddress2().isEmpty() || response.body().getAddress().getAddress2() != null) {
                         address1.setText(response.body().getAddress().getAddress2());
-                    }else{
+                    } else {
                         address1.setHint("Address1");
                     }
-                    if(!response.body().getAddress().getAddress3().isEmpty() || response.body().getAddress().getAddress3() != null){
+                    if (!response.body().getAddress().getAddress3().isEmpty() || response.body().getAddress().getAddress3() != null) {
                         address2.setText(response.body().getAddress().getAddress3());
-                    }else{
+                    } else {
                         address2.setHint("Address2");
                     }
-                    if(!response.body().getAddress().getCity().isEmpty() || response.body().getAddress().getCity() != null){
+                    if (!response.body().getAddress().getCity().isEmpty() || response.body().getAddress().getCity() != null) {
                         city.setText(response.body().getAddress().getCity());
-                    }else{
+                    } else {
                         city.setHint("City");
                     }
-                    if(!response.body().getAddress().getCountry().isEmpty() || response.body().getAddress().getCountry() != null){
+                    if (!response.body().getAddress().getCountry().isEmpty() || response.body().getAddress().getCountry() != null) {
                         country.setText(response.body().getAddress().getCountry());
-                    }else{
+                    } else {
                         country.setHint("Country");
                     }
-                    rople=  response.body().getRole();
+                    rople = response.body().getRole();
 
 
-
-                }
-                else {
+                } else {
                     dialog.dismiss();
-                    Toast.makeText(UpdateProfileUser.this,"Something went wrong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateProfileUser.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -235,7 +234,7 @@ dialog2.dismiss();
             public void onFailure(Call<GetProfile> call,
                                   Throwable t) {
                 dialog.dismiss();
-                Toast.makeText(UpdateProfileUser.this,"Something went wrong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateProfileUser.this, "Something went wrong", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -247,7 +246,6 @@ dialog2.dismiss();
 
 
     public class Alert {
-
 
 
         public AlertDialog pleaseWait() {

@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.mobile.agri10x.Model.User;
 import com.mobile.agri10x.Model.UserId;
 
 public class OnlyWebPage extends AppCompatActivity {
@@ -29,6 +30,7 @@ public class OnlyWebPage extends AppCompatActivity {
     Toolbar toolbar;
     ProgressDialog progressDialog;
     String username;
+    static User user_data_intent;
     public static BottomNavigationView bottomNavigation;
     String userid;
     @Override
@@ -36,30 +38,33 @@ public class OnlyWebPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_only_web_page);
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-
-           username = extras.getString("namefarmer");
-           userid =  extras.getString("userid");
-        }
+//        Bundle extras = getIntent().getExtras();
+//        if (extras != null) {
+//
+//           username = extras.getString("namefarmer");
+//           userid =  extras.getString("userid");
+//        }
 
         //toolbar
         toolbar = findViewById(R.id.toolbar_onlyweb);
         setSupportActionBar(toolbar);
         TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        user_data_intent = (User) getIntent().getSerializableExtra("User_data");
+        userid= user_data_intent.get_id();
+        username= user_data_intent.getUsername();
         if(username.equals("undefined undefined")){
              mTitle.setText("");
         }else{
           mTitle.setText(username);
         }
-        toolbar.setNavigationIcon(R.drawable.ic_action_name );
-
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+//        toolbar.setNavigationIcon(R.drawable.ic_action_name );
+//
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
         this.webView = (WebView) findViewById(R.id.webview);
         bottomNavigation = findViewById(R.id.nav_view);
         bottomNavigation.setItemIconTintList(null);
@@ -107,35 +112,37 @@ public class OnlyWebPage extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                bottomNavigation.getMenu().getItem(0).setIcon(R.mipmap.home);
-                bottomNavigation.getMenu().getItem(1).setIcon(R.mipmap.payment);
-                bottomNavigation.getMenu().getItem(2).setIcon(R.mipmap.stockimg);
-                bottomNavigation.getMenu().getItem(3).setIcon(R.mipmap.offer);
+                bottomNavigation.getMenu().getItem(0).setIcon(R.mipmap.mystock);
+                bottomNavigation.getMenu().getItem(1).setIcon(R.mipmap.newpayment);
+                bottomNavigation.getMenu().getItem(2).setIcon(R.mipmap.offer);
+                bottomNavigation.getMenu().getItem(3).setIcon(R.mipmap.menu);
                 switch (menuItem.getItemId()) {
-                    case R.id.navigation_home:
-                        menuItem.setIcon(R.mipmap.home_active);
-                        finish();
-
-                        break;
-                    case R.id.navigation_shop:
-                        menuItem.setIcon(R.mipmap.payment_active);
-                        Intent i = new Intent(OnlyWebPage.this, PaymentBalance.class);
-                        i.putExtra("Userid",userid);
-
-
-                        startActivity(i);
-
-                        break;
-                    case R.id.navigation_wallet:
-                        menuItem.setIcon(R.mipmap.stock_active);
-                        Intent intent = new Intent(OnlyWebPage.this, AllStockList.class);
+                    case R.id.navigation_addstock:
+                        menuItem.setIcon(R.mipmap.mystock);
+                        Intent intent = new Intent(OnlyWebPage.this, AddStock.class);
                         intent.putExtra("Userid",userid);
                         intent.putExtra("username",username);
                         startActivity(intent);
                         break;
-                    case R.id.navigation_account:
-                        menuItem.setIcon(R.mipmap.discount_active);
-
+                    case R.id.navigation_mystock:
+                        menuItem.setIcon(R.mipmap.mystock);
+                        Intent imystock = new Intent(OnlyWebPage.this, AllStockList.class);
+                        imystock.putExtra("Userid",userid);
+                        imystock.putExtra("username",username);
+                        startActivity(imystock);
+                        break;
+                    case R.id.navigation_payment:
+                        menuItem.setIcon(R.mipmap.newpayment);
+                        Intent i = new Intent(OnlyWebPage.this, PaymentBalance.class);
+                        i.putExtra("Userid",userid);
+                        startActivity(i);
+                        break;
+                    case R.id.navigation_menu:
+                        menuItem.setIcon(R.mipmap.menu);
+                        Intent intent1 = new Intent(OnlyWebPage.this, MenuActivity.class);
+                        intent1.putExtra("Userid",userid);
+                        intent1.putExtra("username",username);
+                        startActivity(intent1);
                         break;
                 }
                 return true;

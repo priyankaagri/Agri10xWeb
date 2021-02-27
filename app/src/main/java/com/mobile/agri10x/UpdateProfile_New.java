@@ -7,6 +7,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -28,13 +29,17 @@ import android.widget.Toast;
 import com.google.android.material.radiobutton.MaterialRadioButton;
 import com.google.gson.Gson;
 import com.mobile.agri10x.Connection.POSTRequest;
+import com.mobile.agri10x.Model.LoginUser;
 import com.mobile.agri10x.Model.Main;
 import com.mobile.agri10x.Model.SignUpUser;
+import com.mobile.agri10x.Model.User;
+
+import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
 
 public class UpdateProfile_New extends AppCompatActivity {
-
+    public Gson gson = new Gson();
     EditText first_name,last_name;
     RadioButton radioButton,radioButton_farmer,radioButtontrader;
     RadioGroup radioGroup;
@@ -43,7 +48,7 @@ public class UpdateProfile_New extends AppCompatActivity {
     String first_name_string="",last_name_string="",strmobile;
     TextView callnumber;
     ImageView img_arrow;
-
+    private static String responce = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -195,7 +200,115 @@ public class UpdateProfile_New extends AppCompatActivity {
         }
 
     }
+    class networkLogin extends AsyncTask<String, Integer, String> {
+        AlertDialog dialog;
 
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            dialog = new UpdateProfile_New.Alert().pleaseWait();
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            responce = s;
+            // Log.d("loginres",responce);
+            dialog.dismiss();
+
+            if(s!=null) {
+                if (s.equals("network")) {
+                    new UpdateProfile_New.Alert().alert("Network !!!", getResources().getString(R.string.network_error_message));
+                }
+                else if (s.length()>6){
+                    User u = new User();
+                    try {
+                        JSONObject json_session_data_form_server = new JSONObject(s);
+                        u.setUsername(json_session_data_form_server.getString("username"));
+                        u.setRole(json_session_data_form_server.getString("role"));
+                        u.set_id(json_session_data_form_server.getString("Userid"));
+                        //other data not required
+//                        if(!restorePref()){
+//                            savePrefsData();
+//                            savePrefs();
+//                        }
+                    } catch (Exception e) {
+                        //didnt found the data in the json string
+                    }
+                    Log.e("usersession",new Gson().toJson(u));
+                    Intent intent=new Intent(UpdateProfile_New.this,OnlyWebPage.class);
+                    intent.putExtra("User_data", u);
+                    startActivity(intent);
+
+
+//                    if(u.getRole().equals("PFarmer") || u.getRole().equals("Admin") || u.getRole().equals("Farmer") ) {
+//                        Intent i = new Intent(OTP.this, Farmer.class);
+//                        i.putExtra("User_data", u);
+//
+//
+////                            i.putExtra("notification data",notification_data);
+////                            Log.e("notification","Going to Notification");
+//                        startActivity(i);
+//                        finish();
+//                    } else if (u.getRole().equals("PTrader") || u.getRole().equals("Trader") ) {
+//                        Intent i = new Intent(OTP.this, Trader.class);
+//                        i.putExtra("User_data", u);
+////                            i.putExtra("notification data",notification_data);
+//                        startActivity(i);
+//                        finish();
+//                    } else if (u.getRole().equals("QC")) {
+////                        Intent i = new Intent(OTP.this, QualityCheck.class);
+////                        i.putExtra("User_data", u);
+//////                            i.putExtra("notification data",notification_data);
+////                        startActivity(i);
+////                        finish();
+//                        Toast.makeText(OTP.this,"You are not currently registerd as Farmer or Trader",Toast.LENGTH_SHORT).show();
+//                        Intent i = new Intent(OTP.this,LoginActivity.class);
+//                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                        startActivity(i);
+//                        finish();
+//                    } else {
+//                        Toast.makeText(OTP.this,"You are not currently registerd as Farmer or Trader",Toast.LENGTH_SHORT).show();
+//                        Intent i = new Intent(OTP.this,LoginActivity.class);
+//                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                        startActivity(i);
+//                        finish();
+////                        if(u.getRole()!=null){
+////                            Intent i = new Intent(OTP.this,Unvrified.class);
+////                            i.putExtra("User_data", u);
+////                            startActivity(i);
+////                            finish();
+////                        }
+//                    }
+
+
+
+                }
+                else {
+
+                    //    new OTP.Alert().SignUp("UnRegistered User!!","First Register Yourself For Our Service");
+                }
+            }
+
+        }
+
+        @Override
+        protected String doInBackground(String... strings) {
+            String str;
+            try {
+                str = POSTRequest.fetchUserData(strings[0],strings[1],UpdateProfile_New.this);
+            } catch (Exception e) {
+                //    Log.d("exception",e.getMessage());
+                return "network";
+            }
+            return str;
+        }
+    }
     public class Alert {
 
         public void alert(String title, String body) {
@@ -222,8 +335,14 @@ public class UpdateProfile_New extends AppCompatActivity {
                 public void onClick(DialogInterface dialogInterface, int i) {
                     dialogInterface.cancel();
                     finish();
-                    Intent intent = new Intent(UpdateProfile_New.this, LoginActivity.class);
-                    startActivity(intent);
+                    SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
+                    String pu = pref.getString("username",strmobile);
+                    String pp = pref.getString("password","defaultValue");
+                    LoginUser user = new LoginUser();
+                    user.setUser(pu);
+                    new UpdateProfile_New.networkLogin().execute(Main.getIp()+"/login", gson.toJson(user));
+//                    Intent intent = new Intent(UpdateProfile_New.this, LoginActivity.class);
+//                    startActivity(intent);
                 }
             });
 

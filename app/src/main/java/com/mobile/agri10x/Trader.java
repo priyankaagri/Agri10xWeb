@@ -170,9 +170,12 @@ public class Trader extends AppCompatActivity
         farmimg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                User u=new User();
+                u.set_id(user_data_intent.get_id());
+                u.setUsername(user_data_intent.getUsername());
+                u.setRole(user_data_intent.getRole());
                 Intent i = new Intent(Trader.this,OnlyWebPage.class);
-                i.putExtra("userid",user_data_intent.get_id());
-                i.putExtra("namefarmer",myfirstname);
+                i.putExtra("User_data", u);
                 startActivity(i);
 
 
@@ -207,9 +210,12 @@ public class Trader extends AppCompatActivity
                 toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        User u=new User();
+                        u.set_id(user_data_intent.get_id());
+                        u.setUsername(user_data_intent.getUsername());
+                        u.setRole(user_data_intent.getRole());
                         Intent i = new Intent(Trader.this,OnlyWebPage.class);
-                        i.putExtra("userid",user_data_intent.get_id());
-                        i.putExtra("namefarmer",myfirstname);
+                        i.putExtra("User_data", u);
                         startActivity(i);
                     }
                 });
@@ -219,10 +225,15 @@ public class Trader extends AppCompatActivity
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                User u=new User();
+                u.set_id(user_data_intent.get_id());
+                u.setUsername(user_data_intent.getUsername());
+                u.setRole(user_data_intent.getRole());
                 Intent i = new Intent(Trader.this,OnlyWebPage.class);
-                i.putExtra("userid",user_data_intent.get_id());
-                i.putExtra("namefarmer",myfirstname);
+                i.putExtra("User_data", u);
                 startActivity(i);
+
+
             }
         });
 //        if(myfirstname != null  ){
