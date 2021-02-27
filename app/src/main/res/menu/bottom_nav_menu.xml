@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/navigation_addstock"
-        android:icon="@mipmap/mystock"
+        android:icon="@mipmap/addstockbn"
         android:title="Add Stock" />
 
 

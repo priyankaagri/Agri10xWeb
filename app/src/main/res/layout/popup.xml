@@ -13,7 +13,7 @@
         android:textStyle="bold"
         android:id="@+id/commodityname"
         android:layout_marginTop="30dp"
-        android:layout_marginLeft="50dp"
+        android:layout_marginLeft="20dp"
         android:textColor="@color/appgreen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -29,6 +29,8 @@
 
 
         <TextView
+            android:textSize="16sp"
+            android:textColor="@color/black"
             android:id="@+id/qty"
             android:layout_weight="1"
             android:layout_width="0dp"
@@ -37,7 +39,11 @@
         </TextView>
 
         <EditText
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:inputType="number"
             android:id="@+id/price"
+            android:hint="Enter Price"
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content">

@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 
 public class StockList {
 
+    private  String _id;
+    private String owner;
     private int quantity;//quantity
     private int unit;//unit
     private int Blockedquantity;//Blockedquantity
@@ -29,6 +31,22 @@ public class StockList {
         ProductImage = productImage;
         EntryTime = entryTime;
         this.quality = quality;
+    }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public int getQuantity() {

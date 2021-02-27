@@ -1,7 +1,9 @@
 package com.mobile.agri10x.Model;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,20 +11,23 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Build;
+import android.util.ArrayMap;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,17 +35,31 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 import com.mobile.agri10x.Connection.LoadImage;
 import com.mobile.agri10x.Farmer;
 import com.mobile.agri10x.OnlyWebPage;
+import com.mobile.agri10x.PaymentBalance;
+import com.mobile.agri10x.PaymentGateway;
 import com.mobile.agri10x.R;
+import com.mobile.agri10x.models.GetCheckOutHandle;
+import com.mobile.agri10x.models.GetPlaceRequest;
+import com.mobile.agri10x.retrofit.AgriInvestor;
+import com.mobile.agri10x.retrofit.ApiHandler;
 import com.squareup.picasso.Picasso;
 
 
+import org.json.JSONObject;
+
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
+
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 public class StockListAdapter extends RecyclerView.Adapter<StockListAdapter.StockListViewHolder>  {
-
+    AlertDialog dialog;
     private final Context mCtx;
 
     private final List<StockList> productList;
@@ -193,8 +212,7 @@ Main.addErrorReportRequest(errorLog,mCtx);*/
         holder.sell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                callPopup("Quantity: "+ product.getQuantity(),product.getCommodityname());
+                callPopup("Quantity: "+ product.getQuantity(),product.getCommodityname(),product.get_id(),product.getOwner());
             }
         });
 //        holder.Commodityname.setOnClickListener(new View.OnClickListener() {
@@ -214,7 +232,7 @@ Main.addErrorReportRequest(errorLog,mCtx);*/
 //        });
     }
 
-    private void callPopup(String strqty, String strcommodityname) {
+    private void callPopup(String strqty, String strcommodityname, String stckid, String owner) {
 
         LayoutInflater layoutInflater = (LayoutInflater)mCtx
                 .getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -229,6 +247,17 @@ Main.addErrorReportRequest(errorLog,mCtx);*/
         popupWindow.setFocusable(true);
 
         popupWindow.showAtLocation(popupView, Gravity.CENTER, 0, 0);
+
+        View container = popupWindow.getContentView().getRootView();
+        if(container != null) {
+            WindowManager wm = (WindowManager)mCtx.getSystemService(Context.WINDOW_SERVICE);
+            WindowManager.LayoutParams p = (WindowManager.LayoutParams)container.getLayoutParams();
+            p.flags = WindowManager.LayoutParams.FLAG_DIM_BEHIND;
+            p.dimAmount = 0.3f;
+            if(wm != null) {
+                wm.updateViewLayout(container, p);
+            }
+        }
         price = (EditText) popupView.findViewById(R.id.price);
         qty = (TextView) popupView.findViewById(R.id.qty);
         commodityname = (TextView) popupView.findViewById(R.id.commodityname);
@@ -243,16 +272,88 @@ Main.addErrorReportRequest(errorLog,mCtx);*/
 
 
                     public void onClick(View arg0) {
-              callapi();
 
-                        popupWindow.dismiss();
+                        Log.d("param",stckid);
+                        String getprice = price.getText().toString();
+                        if(getprice == null || getprice.isEmpty()){
+
+                            Toast.makeText(mCtx,"Please Enter Price",Toast.LENGTH_SHORT).show();
+
+                        }else{
+                            dialog = pleaseWait();
+                            callapi(stckid,owner,getprice);
+                            Log.d("param",stckid+" "+owner+" "+getprice);
+                            popupWindow.dismiss();
+                        }
+
+
+
                     }
                 });
 
 
     }
 
-    private void callapi() {
+
+
+        public AlertDialog pleaseWait() {
+            AlertDialog.Builder mBuilder = new AlertDialog.Builder(mCtx);
+            LayoutInflater inflater = LayoutInflater.from(mCtx);
+            View mView = inflater.inflate(R.layout.alert_progress_spinning, null);
+            ProgressBar pb = mView.findViewById(R.id.progressBar);
+            mBuilder.setView(mView);
+            mBuilder.setCancelable(false);
+            final AlertDialog dialog = mBuilder.create();
+            dialog.show();
+            return dialog;
+        }
+
+
+    private void callapi(String stckid, String usrid, String getprice) {
+
+
+        Map<String, Object> jsonParams = new ArrayMap<>();
+
+        jsonParams.put("stckid", stckid);
+        jsonParams.put("usrid",usrid);
+        jsonParams.put("price",getprice);
+
+
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+
+        AgriInvestor apiService = ApiHandler.getApiService();
+        final Call<GetPlaceRequest> loginCall = apiService.wsGetPlaceRequst(
+                "123456",body);
+        loginCall.enqueue(new Callback<GetPlaceRequest>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetPlaceRequest> call,
+                                   Response<GetPlaceRequest> response) {
+
+
+                if (response.isSuccessful()) {
+                    dialog.dismiss();
+;
+                    String checkresponse =String.valueOf(response.body());
+                    Log.d("checkingexist",checkresponse);
+
+                    Toast.makeText(mCtx,response.body().getMessage(),Toast.LENGTH_SHORT).show();
+
+                }
+                else {
+                    dialog.dismiss();
+                    //    new LoginActivity.Alert().SignUp("UnRegistered User!!","First Register Yourself For Our Service");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetPlaceRequest> call,
+                                  Throwable t) {
+                dialog.dismiss();
+                Toast.makeText(mCtx,"Something Went Wrong",Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
 
     }
@@ -317,7 +418,6 @@ Main.addErrorReportRequest(errorLog,mCtx);*/
         TextView Unit, Quality, Quantity,Commodityname,Blockquantity,Perishable,ColdStorage,Entrytime,sell;
         ImageView imageView,arrowdown,arrowup;
         CardView cardview;
-        RelativeLayout rel;
 
         public StockListViewHolder(View itemView) {
             super(itemView);
@@ -336,7 +436,6 @@ Main.addErrorReportRequest(errorLog,mCtx);*/
             ColdStorage = itemView.findViewById(R.id.coldStorage_stock_list);
             Entrytime = itemView.findViewById(R.id.entrytime_stock_list);
             imageView = itemView.findViewById(R.id.imageView);
-            rel = itemView.findViewById(R.id.rel);
 
         }
     }

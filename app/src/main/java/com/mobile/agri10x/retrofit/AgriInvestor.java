@@ -5,6 +5,7 @@ import com.mobile.agri10x.models.GetAddMoney;
 import com.mobile.agri10x.models.GetCheckOutHandle;
 import com.mobile.agri10x.models.GetLogin;
 import com.mobile.agri10x.models.GetOTP;
+import com.mobile.agri10x.models.GetPlaceRequest;
 import com.mobile.agri10x.models.GetProfile;
 import com.mobile.agri10x.models.GetRequestedCommodity;
 import com.mobile.agri10x.models.GetRequestedVariety;
@@ -70,4 +71,8 @@ public interface AgriInvestor {
 
     @POST("checkoutHandling")
     Call<GetCheckOutHandle> wsGetCheckoutHandle(@Header("x-auth-token") String token,@Body RequestBody params);
+
+
+    @POST("placerequest")
+    Call<GetPlaceRequest> wsGetPlaceRequst(@Header("x-auth-token") String token, @Body RequestBody params);
 }

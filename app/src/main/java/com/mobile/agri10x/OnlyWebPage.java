@@ -32,7 +32,7 @@ public class OnlyWebPage extends AppCompatActivity {
     String username;
     static User user_data_intent;
     public static BottomNavigationView bottomNavigation;
-    String userid;
+    String userid,getcity,getrole;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +52,8 @@ public class OnlyWebPage extends AppCompatActivity {
         user_data_intent = (User) getIntent().getSerializableExtra("User_data");
         userid= user_data_intent.get_id();
         username= user_data_intent.getUsername();
+        getcity = user_data_intent.getCity();
+        getrole = user_data_intent.getRole();
         if(username.equals("undefined undefined")){
              mTitle.setText("");
         }else{
@@ -112,13 +114,13 @@ public class OnlyWebPage extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-                bottomNavigation.getMenu().getItem(0).setIcon(R.mipmap.mystock);
-                bottomNavigation.getMenu().getItem(1).setIcon(R.mipmap.newpayment);
-                bottomNavigation.getMenu().getItem(2).setIcon(R.mipmap.offer);
+                bottomNavigation.getMenu().getItem(0).setIcon(R.mipmap.addstockbn);
+                bottomNavigation.getMenu().getItem(1).setIcon(R.mipmap.mystock);
+                bottomNavigation.getMenu().getItem(2).setIcon(R.mipmap.newpayment);
                 bottomNavigation.getMenu().getItem(3).setIcon(R.mipmap.menu);
                 switch (menuItem.getItemId()) {
                     case R.id.navigation_addstock:
-                        menuItem.setIcon(R.mipmap.mystock);
+                        menuItem.setIcon(R.mipmap.addstockbn);
                         Intent intent = new Intent(OnlyWebPage.this, AddStock.class);
                         intent.putExtra("Userid",userid);
                         intent.putExtra("username",username);
@@ -142,6 +144,10 @@ public class OnlyWebPage extends AppCompatActivity {
                         Intent intent1 = new Intent(OnlyWebPage.this, MenuActivity.class);
                         intent1.putExtra("Userid",userid);
                         intent1.putExtra("username",username);
+                        intent1.putExtra("city", getcity);
+                        intent1.putExtra("role",getrole);
+
+                      //  Log.d("params",userid+" "+username+" "+getcity+" "+getcity);
                         startActivity(intent1);
                         break;
                 }
