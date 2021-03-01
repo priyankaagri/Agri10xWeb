@@ -240,7 +240,7 @@ Main.addErrorReportRequest(errorLog,mCtx);*/
         View popupView = layoutInflater.inflate(R.layout.popup, null);
 
         popupWindow=new PopupWindow(popupView,
-               800, 550,
+               650, 550,
                 true);
 
         popupWindow.setTouchable(true);

@@ -64,12 +64,58 @@
                 android:paddingBottom="30dp"
                 android:orientation="vertical"
                 android:background="@drawable/profile_backgroubd"
-
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+
+                <LinearLayout
+                    android:weightSum="2"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_marginTop="25dp"
+                        android:layout_weight="1.6"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/mobilenumber"
+                            android:drawableRight="@drawable/asterisk"
+                            android:drawablePadding="8dp"
+                            android:singleLine="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Mobile Number"
+                            android:focusable="false"
+                            android:editable="false"
+                            android:maxLines="1"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/change"
+                        android:layout_marginTop="25dp"
+                        android:text="Change"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:layout_gravity="center"
+                        android:textColor="@color/appgreen"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.4"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+                </LinearLayout>
+
+
+
+
+
+
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_marginTop="25dp"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="10dp">
@@ -166,7 +212,6 @@ android:singleLine="true"
                         android:hint="City"
                         android:maxLines="1"/>
                 </com.google.android.material.textfield.TextInputLayout>
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

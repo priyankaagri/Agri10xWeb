@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mobile.agri10x.Model.Main;
@@ -35,17 +36,22 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UpdateProfileUser extends AppCompatActivity {
-    EditText first_name, last_name, emailaddress, address, address1, address2, city, country;
+    EditText mobilenumber,first_name, last_name, emailaddress, address, address1, address2, city, country;
     Button btn_save;
     String userid;
     ImageView img_arrow;
     AlertDialog dialog, dialog2;
     String rople;
+    TextView change;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_profile_user);
+
+
+        change = findViewById(R.id.change);
+        mobilenumber = findViewById(R.id.mobilenumber);
         img_arrow = findViewById(R.id.img_arrow);
         first_name = findViewById(R.id.first_name);
         last_name = findViewById(R.id.last_name);
@@ -102,6 +108,18 @@ public class UpdateProfileUser extends AppCompatActivity {
                 } else {
                     Toast.makeText(UpdateProfileUser.this, "Please Enter First Name and Last Name", Toast.LENGTH_SHORT).show();
                 }
+
+            }
+        });
+
+
+        change.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent updatenumber = new Intent(UpdateProfileUser.this,UpdateNumber.class);
+                 updatenumber.putExtra("Userid",userid);
+                startActivity(updatenumber);
 
             }
         });
@@ -181,6 +199,15 @@ public class UpdateProfileUser extends AppCompatActivity {
                 dialog.dismiss();
                 Log.d("verifyOTP", response.toString());
                 if (response.isSuccessful()) {
+
+                    if(!response.body().getTelephone().isEmpty() || response.body().getTelephone() != null){
+                        String strgetmob = response.body().getTelephone();
+                        strgetmob = strgetmob.substring(2);
+                        Log.d("getmob",strgetmob);
+                        mobilenumber.setText(strgetmob);
+                    }else{
+                        mobilenumber.setHint("Mobile Number");
+                    }
                     if (!response.body().getFirstname().isEmpty() || response.body().getFirstname() != null) {
                         first_name.setText(response.body().getFirstname());
                     } else {
