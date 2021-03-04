@@ -60,7 +60,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RequestStock extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class RequestStock extends AppCompatActivity  {
 
     private static final String[] Value = new String[] {
             "Yes", "No"
@@ -89,7 +89,7 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
     private DatePickerDialog.OnDateSetListener VelidTilDateListner;
     RadioGroup request_group,organic_group,residue_group;
 
-    private Spinner quality_spinner;
+    private MaterialBetterSpinner quality_spinner;
 
     private TextView velidFrom,velidTill;
     //Toolbar toolbar;
@@ -102,7 +102,7 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request_stock);
         commodityunit =(MaterialBetterSpinner) findViewById(R.id.CommodityUnit);
-        quality_spinner=(Spinner) findViewById(R.id.quality_spinner);
+        quality_spinner=(MaterialBetterSpinner) findViewById(R.id.quality_spinner);
         Variety = (MaterialBetterSpinner) findViewById(R.id.Variety);
         commodity =  findViewById(R.id.Commodity);
         quantity = (EditText) findViewById(R.id.comm_quantity);
@@ -128,12 +128,20 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
         type.add("Grade C");
         type.add("Grade D");
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,type);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        quality_spinner.setAdapter(dataAdapter);
-        quality_spinner.setOnItemSelectedListener(RequestStock.this);
+        ArrayAdapter<String> quality = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, type);
+        quality_spinner.setAdapter(quality);
+//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,type);
+//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        quality_spinner.setAdapter(dataAdapter);
+//        quality_spinner.setOnItemSelectedListener(RequestStock.this);
 
         callapi();
+
+        ArrayAdapter<String> comm_unit = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, Unit);
+
+        commodityunit.setAdapter(comm_unit);
         /*
         setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.ic_action_name         );
@@ -158,10 +166,7 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
 //        Variety.setAdapter(variety_adapter);
 
 
-        ArrayAdapter<String> comm_unit = new ArrayAdapter<String>(this,
-                android.R.layout.simple_dropdown_item_1line, Unit);
 
-        commodityunit.setAdapter(comm_unit);
 
 
         request_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -301,11 +306,12 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                qual = quality_spinner.getText().toString().trim();
                 unit = commodityunit.getText().toString().trim();
                 Comm = strcomname;
                 Quan = quantity.getText().toString().trim();
                // variety = varietyid;
-                if (unit.length()>0 && Quan.length()>0 && vlfrom.length()>0 && vlTill.length()>0 && role.length()>0 &&qual.length() > 0   && Organic.length()>0 && ResidueFree.length()>0) { //&& variety.length()>0
+                if (unit.length()>0 && Quan.length()>0 && vlfrom.length()>0 && vlTill.length()>0 && role.length()>0 && qual.length() > 0   && Organic.length()>0 && ResidueFree.length()>0) { //&& variety.length()>0
                     int quan = Integer.valueOf(Quan);
                     int unitInt = Integer.valueOf(unit);
                     if(unitInt>0 &&  quan>0) {
@@ -568,15 +574,7 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
 
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        qual = parent.getItemAtPosition(position).toString();
-    }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
 
     class AddStockPOST extends AsyncTask<String, Void, String> {
 
@@ -598,6 +596,7 @@ public class RequestStock extends AppCompatActivity implements AdapterView.OnIte
                     velidFrom.setText("");
                     velidTill.setText("");
                     Variety.setText("");
+                    quality_spinner.setText("");
 
 
                     new Alert().alert("Request Stock","Successfully Added");
