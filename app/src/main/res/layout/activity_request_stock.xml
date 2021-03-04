@@ -184,7 +184,7 @@
                             android:id="@+id/CommodityUnit"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Unit of bags in Kg"
+                            android:hint="Bag in Kg"
                             android:textColor="@color/black"
                             android:textColorHighlight="@color/black"
                             android:textColorHint="@color/black"
