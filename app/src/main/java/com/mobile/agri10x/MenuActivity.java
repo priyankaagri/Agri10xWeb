@@ -93,6 +93,7 @@ public class MenuActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MenuActivity.this, UploadDocument.class);
+                i.putExtra("Userid",Userid);
                 startActivity(i);
             }
         });
@@ -260,8 +261,5 @@ public class MenuActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
 
-    }
 }

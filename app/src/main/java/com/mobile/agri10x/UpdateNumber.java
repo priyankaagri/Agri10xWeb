@@ -125,7 +125,7 @@ EditText mobilenumberedt;
                 Log.d("checkphone",checkresponse);
                 if (checkresponse.equals("true")) {
 dialog.dismiss();
-                    Toast.makeText(UpdateNumber.this,"Number already exits",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateNumber.this,"Number already exists",Toast.LENGTH_SHORT).show();
 
 
 
