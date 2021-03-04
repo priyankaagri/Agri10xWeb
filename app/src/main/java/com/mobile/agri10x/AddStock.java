@@ -77,11 +77,11 @@ public class AddStock extends AppCompatActivity {
             "10","15","20","25","30","35","40","45","50","55","60","65","70","75","80","85","90","95","100"
     };
 
-    private Spinner quality_spinner;
+   // private Spinner quality_spinner;
     ImageView stock_image;
     EditText quantity;
     SearchableSpinner commodity;
-    MaterialBetterSpinner commodityunit, perishable, coldstorage,Variety;
+    MaterialBetterSpinner commodityunit, perishable, coldstorage,Variety,quality_spinner;
     String Quan, Cold, Comm, Peri, unit,qual;
     Bitmap stockbitmap;
     private Button back;
@@ -125,7 +125,7 @@ callapi();
                 AddStock.this.finish();
             }
         });
-        quality_spinner=(Spinner) findViewById(R.id.quality_spinner);
+        quality_spinner=(MaterialBetterSpinner) findViewById(R.id.quality_spinner);
         stock_image = findViewById(R.id.Stock_Image);
         Button button = findViewById(R.id.addStock_button);
 
@@ -187,21 +187,24 @@ for(int i= 0 ;i < getTradeCommodityArrayList.size() ; i++)
         type.add("Grade C");
         type.add("Grade D");
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,type);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        quality_spinner.setAdapter(dataAdapter);
-        quality_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                qual = parent.getItemAtPosition(position).toString();
-              //  Log.d("takequal",qual);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                qual = "B";
-            }
-        });
+        ArrayAdapter<String> quality = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, type);
+        quality_spinner.setAdapter(quality);
+//        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,type);
+//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        quality_spinner.setAdapter(dataAdapter);
+//        quality_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                qual = parent.getItemAtPosition(position).toString();
+//              //  Log.d("takequal",qual);
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//                qual = "B";
+//            }
+//        });
 //        commodity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 //            @Override
 //            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long id) {
@@ -330,9 +333,10 @@ for(int i= 0 ;i < getTradeCommodityArrayList.size() ; i++)
                 Comm = commid;
                 Peri = perishable.getText().toString().trim();
                 Quan = quantity.getText().toString().trim();
+                qual = quality_spinner.getText().toString().trim();
 
-Log.d("checkparms",unit+ " "+ Cold +" "+ Comm +" "+Peri+ ""+Quan);
-                if (unit.length() > 0 && Cold.length() > 0 && Comm.length() > 0 && Peri.length() > 0 && Quan.length() > 0 ) { //  && varietyid.length() > 0 && stockbitmap != null
+//Log.d("checkparms",unit+ " "+ Cold +" "+ Comm +" "+Peri+ ""+Quan);
+                if (unit.length() > 0 && Cold.length() > 0 && Comm.length() > 0 && Peri.length() > 0 && Quan.length() > 0  && qual.length() > 0 ) { //  && varietyid.length() > 0 && stockbitmap != null
                     int unitInt = Integer.valueOf(unit);
                     int quan = Integer.valueOf(Quan);
                     if (unitInt > 0 && quan > 0) {

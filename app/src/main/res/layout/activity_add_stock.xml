@@ -135,6 +135,25 @@ android:focusable="false"
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColorHint="@color/black">
+
+                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:id="@+id/CommodityUnit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Bag in Kg"
+                        android:textColor="@color/black"
+                        android:textColorHighlight="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textColorLink="@color/black"
+                        android:textCursorDrawable="@drawable/cursor"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:hint="Number of Bags"
                     android:textColorHint="@color/black"
                  >
@@ -181,25 +200,7 @@ android:focusable="false"
 
 
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="@color/black">
 
-                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginRight="15dp"
-                        android:id="@+id/CommodityUnit"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Bag in Kg"
-                        android:textColor="@color/black"
-                        android:textColorHighlight="@color/black"
-                        android:textColorHint="@color/black"
-                        android:textColorLink="@color/black"
-                        android:textCursorDrawable="@drawable/cursor"
-                        />
-                </com.google.android.material.textfield.TextInputLayout>
 
 
 
@@ -242,36 +243,56 @@ android:focusable="false"
                         android:textColorLink="@color/black"
                         android:textCursorDrawable="@drawable/cursor"
                          />
-                </com.google.android.material.textfield.TextInputLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_marginLeft="15dp"
-android:layout_marginTop="10dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="40sp">
 
-                    <TextView
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/black">
+
+                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:id="@+id/quality_spinner"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.7"
-                        android:gravity="start|center"
-                        android:text="Quality"
+                        android:layout_height="wrap_content"
+                        android:hint="Quality"
                         android:textColor="@color/black"
                         android:textColorHighlight="@color/black"
                         android:textColorHint="@color/black"
                         android:textColorLink="@color/black"
                         android:textCursorDrawable="@drawable/cursor"
-                        android:textSize="18sp" />
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+                <!--                <LinearLayout-->
+<!--                    android:orientation="horizontal"-->
+<!--                    android:layout_marginLeft="15dp"-->
+<!--android:layout_marginTop="10dp"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="40sp">-->
 
-                    <Spinner
-                        android:id="@+id/quality_spinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.4"
-                        android:outlineAmbientShadowColor="@color/quantum_white_text"
-                        android:outlineSpotShadowColor="@color/quantum_white_text"
-                        android:textSize="20sp" />
-                </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:layout_weight="0.7"-->
+<!--                        android:gravity="start|center"-->
+<!--                        android:text="Quality"-->
+<!--                        android:textColor="@color/black"-->
+<!--                        android:textColorHighlight="@color/black"-->
+<!--                        android:textColorHint="@color/black"-->
+<!--                        android:textColorLink="@color/black"-->
+<!--                        android:textCursorDrawable="@drawable/cursor"-->
+<!--                        android:textSize="18sp" />-->
+
+<!--                    <Spinner-->
+<!--                        android:id="@+id/quality_spinner"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="0.4"-->
+<!--                        android:outlineAmbientShadowColor="@color/quantum_white_text"-->
+<!--                        android:outlineSpotShadowColor="@color/quantum_white_text"-->
+<!--                        android:textSize="20sp" />-->
+<!--                </LinearLayout>-->
                 <Button
                     android:id="@+id/addStock_button"
                     android:layout_width="250dp"
