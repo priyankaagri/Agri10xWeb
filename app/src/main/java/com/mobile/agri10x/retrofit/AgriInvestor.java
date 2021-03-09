@@ -7,6 +7,7 @@ import com.mobile.agri10x.models.GetLogin;
 import com.mobile.agri10x.models.GetOTP;
 import com.mobile.agri10x.models.GetPlaceRequest;
 import com.mobile.agri10x.models.GetProfile;
+import com.mobile.agri10x.models.GetRef;
 import com.mobile.agri10x.models.GetRequestedCommodity;
 import com.mobile.agri10x.models.GetRequestedVariety;
 import com.mobile.agri10x.models.GetTradeCommodity;
@@ -80,4 +81,8 @@ public interface AgriInvestor {
 
     @POST("ChangeTel")
     Call<GetUpdateContact> wsGetUpdateContact(@Header("x-auth-token") String token, @Body RequestBody params);
+
+
+    @GET("GetRef")
+    Call<GetRef>  wsGetRef(@Header("x-auth-token") String token);
 }

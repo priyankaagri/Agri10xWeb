@@ -125,7 +125,7 @@ public class WebPage extends AppCompatActivity {
 
 
                 if (newVersion.equals(currentVersion)) {
-                    Intent i = new Intent(WebPage.this,LoginActivity.class);
+                    Intent i = new Intent(WebPage.this,LoginActivity.class);//LoginActivity
                     startActivity(i);
                 }
                 else {

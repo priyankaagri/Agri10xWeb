@@ -68,7 +68,7 @@ public class AddStock extends AppCompatActivity {
     ArrayList<String> Commoditycategory = new ArrayList<>();
     SimpleListAdapter mSimpleListAdapter;
     String username;
-    ArrayList<String> Varietycategory = new ArrayList<>();;
+    ArrayList<String> Varietycategory = new ArrayList<>();
     private static final String[] Value = new String[]{
             "Yes", "No"
     };

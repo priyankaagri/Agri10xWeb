@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,9 +15,12 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.ArrayMap;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -33,10 +37,24 @@ import com.mobile.agri10x.Model.LoginUser;
 import com.mobile.agri10x.Model.Main;
 import com.mobile.agri10x.Model.SignUpUser;
 import com.mobile.agri10x.Model.User;
+import com.mobile.agri10x.models.GetRef;
+import com.mobile.agri10x.models.GetRefData;
+import com.mobile.agri10x.models.GetTradeVariety;
+import com.mobile.agri10x.retrofit.AgriInvestor;
+import com.mobile.agri10x.retrofit.ApiHandler;
+import com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner;
 
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class UpdateProfile_New extends AppCompatActivity {
     public Gson gson = new Gson();
@@ -48,7 +66,11 @@ public class UpdateProfile_New extends AppCompatActivity {
     String first_name_string="",last_name_string="",strmobile;
     TextView callnumber;
     ImageView img_arrow;
+    MaterialBetterSpinner refer_spinner;
+    ArrayList<String> refercategory = new ArrayList<>();
+    List<GetRefData> getrefercatArrayList = new ArrayList<>();
     private static String responce = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +84,7 @@ public class UpdateProfile_New extends AppCompatActivity {
         }else{
 
         }
+        callapiforaboutus();
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -110,8 +133,52 @@ public class UpdateProfile_New extends AppCompatActivity {
 
     }
 
+    private void callapiforaboutus() {
+        refercategory.clear();
 
 
+      //  RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),(new JSONObject(jsonParams)).toString());
+
+        AgriInvestor apiService = ApiHandler.getApiService();
+        final Call<GetRef> loginCall = apiService.wsGetRef("123456");
+        loginCall.enqueue(new Callback<GetRef>() {
+            @SuppressLint("WrongConstant")
+            @Override
+            public void onResponse(Call<GetRef> call,
+                                   Response<GetRef> response) {
+                Log.d("GetTradeVariety",response.toString());
+                if (response.isSuccessful()) {
+                    getrefercatArrayList = response.body().getData();
+                    Log.d("getresponse", String.valueOf(getrefercatArrayList.size()));
+
+                    if(!getrefercatArrayList.isEmpty()){
+                        refer_spinner.setDropDownHeight(WindowManager.LayoutParams.WRAP_CONTENT);
+                        refer_spinner.setClickable(true);
+                        refer_spinner.setFocusable(true);
+                        for(int i=0; i < getrefercatArrayList.size();i++){
+                            refercategory.add(getrefercatArrayList.get(i).getReferenceName());
+                        }
+                        Log.d("Varietycategory", String.valueOf(refercategory.size()));
+
+                        refer_spinner.setAdapter(new ArrayAdapter<String>(UpdateProfile_New.this, android.R.layout.simple_dropdown_item_1line, refercategory));
+                    }else{
+                        refer_spinner.setDropDownHeight(0);
+
+                        refercategory.add("No Data");
+                        refer_spinner.setAdapter(new ArrayAdapter<String>(UpdateProfile_New.this, android.R.layout.simple_dropdown_item_1line, refercategory));
+                    }
+
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetRef> call,
+                                  Throwable t) {
+                Toast.makeText(UpdateProfile_New.this,"Something went wrong", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 
     private void Findid() {
@@ -125,6 +192,7 @@ public class UpdateProfile_New extends AppCompatActivity {
         UpdateProfile = findViewById(R.id.signin_signup_btn);
         callnumber= findViewById(R.id.callnumber);
         img_arrow= findViewById(R.id.img_arrow);
+        refer_spinner = findViewById(R.id.refer_spinner);
     }
 
 
