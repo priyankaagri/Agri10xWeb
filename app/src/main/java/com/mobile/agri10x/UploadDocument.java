@@ -63,7 +63,7 @@ import java.util.List;
 public class UploadDocument extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private Uri fileUri;
     long fileSizeInMB;
-    private String filePath,extension;
+    private String filePath,extension,someFilepath;
     private Button btnChooseFile, upload,preview_doc;
     ImageView back;
     private TextView filePathView,filename;
@@ -417,10 +417,11 @@ startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
                     fileSelected=true;
                     fileUri = data.getData();
                     String uriString1 = fileUri.toString();
+                    Log.d("uristring",uriString1);
                     pathofselected = getPDFPath(fileUri);
                     Log.d("pathofselected",pathofselected);
                     if(pathofselected.equals("File size should not exceed more than 1MB")){
-                        pathofselected = "File size should not exceed more than 1MB";
+                        pathofselected = "";
                     }else{
                         filename.setText(pathofselected.substring(pathofselected.lastIndexOf("/") + 1));
                         String someFilepath = pathofselected.substring(pathofselected.lastIndexOf("/") + 1);
@@ -435,21 +436,8 @@ startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
 
                         try {
                             InputStream iStream =   getApplicationContext().getContentResolver().openInputStream(fileUri);
-                            Bitmap bitmap = BitmapFactory.decodeStream(iStream);
-                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                            if(fileSizeInMB > 1){
-                                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
-                                Log.d("going jpeg gal","going jpeg gal");
-                            }else{
-                                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                                Log.d("going png gal","going png gal");
-                            }
-
-                            fileBytes = stream.toByteArray();
-                            Log.d("going gLLARY","going gLLARY");
-                            bitmap.recycle();
-//                            fileBytes = IOUtils.toByteArray(iStream);
-//                            iStream.close();
+                            fileBytes = IOUtils.toByteArray(iStream);
+                            iStream.close();
 //                            preview_doc.setOnClickListener(new View.OnClickListener() {
 //                                @Override
 //                                public void onClick(View v) {
@@ -523,7 +511,7 @@ startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
                 if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK)
                 {
                     Bitmap photo = (Bitmap) data.getExtras().get("data");
-                   // Bitmap bmp = intent.getExtras().get("data");
+                    // Bitmap bmp = intent.getExtras().get("data");
                     ByteArrayOutputStream stream = new ByteArrayOutputStream();
                     if(fileSizeInMB > 1){
                         photo.compress(Bitmap.CompressFormat.JPEG, 50, stream);
@@ -532,11 +520,11 @@ startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
                         photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
                         Log.d("going png cam","going png cam");
                     }
-                 //  photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                 //   photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
                     fileBytes = stream.toByteArray();
                     photo.recycle();
                     upload.setEnabled(true);
-                    Log.d("going camera","going camera");
+
                     count++;
                     //String file = dir+"Image"+count+".jpg";
                     filename.setText("IMG_0000"+count+"jpg");
@@ -561,6 +549,161 @@ startActivityForResult(cameraIntent, TAKE_PHOTO_CODE);*/
                 }*/
         }
     }
+
+//    @Override
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        switch (requestCode) {
+//            case PICKFILE_RESULT_CODE:
+//                if (resultCode == -1) {
+//                    fileSelected=true;
+//                    fileUri = data.getData();
+//                    String uriString1 = fileUri.toString();
+//                    Log.d("uristring",uriString1);
+//                    pathofselected = getPDFPath(fileUri);
+//                    Log.d("pathofselected",pathofselected);
+//                    if(pathofselected.equals("File size should not exceed more than 1MB")){
+//                        pathofselected = "File size should not exceed more than 1MB";
+//                    }else{
+//                        filename.setText(pathofselected.substring(pathofselected.lastIndexOf("/") + 1));
+//                        someFilepath = pathofselected.substring(pathofselected.lastIndexOf("/") + 1);
+//                        Log.d("strpath",someFilepath);
+//                        extension  = someFilepath.substring(someFilepath.lastIndexOf("."));
+//                        extension = extension.replaceAll("[-+.^:,]","");
+//                        Log.d("extention",extension);
+//                    }
+//
+//                    if( !someFilepath.contains(".pdf")){ //someFilepath.startsWith("content://")&&
+//                        String fp1 = fileUri.getPath();
+//
+//                        try {
+//                            InputStream iStream =   getApplicationContext().getContentResolver().openInputStream(fileUri);
+//                            Bitmap bitmap = BitmapFactory.decodeStream(iStream);
+//                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//                            if(fileSizeInMB > 1){
+//                                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, stream);
+//                                Log.d("going jpeg gal","going jpeg gal");
+//                            }else{
+//                                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//                                Log.d("going png gal","going png gal");
+//                            }
+//
+//                            fileBytes = stream.toByteArray();
+//                            Log.d("going gLLARY","going gLLARY");
+//                            bitmap.recycle();
+////                            fileBytes = IOUtils.toByteArray(iStream);
+////                            iStream.close();
+////                            preview_doc.setOnClickListener(new View.OnClickListener() {
+////                                @Override
+////                                public void onClick(View v) {
+////                                    Intent intent = new Intent(Intent.ACTION_VIEW);
+////                                    intent.setDataAndType(Uri.parse(fp1),"application/pdf");
+////                                    startActivity(intent);
+////
+////                                    Intent pdfOpenintent = new Intent(Intent.ACTION_VIEW);
+////                                    pdfOpenintent.setDataAndType(fileUri, "application/pdf");
+////                                    pdfOpenintent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+////
+////                                    try {
+////                                        startActivity(pdfOpenintent);
+////                                    }
+////                                    catch (ActivityNotFoundException e) {
+////
+////                                    }
+////                                }
+////                            });
+//                        } catch (FileNotFoundException e) {
+//                            e.printStackTrace();
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                    else if(someFilepath.contains(".pdf")){
+//                        Toast.makeText(this, filePath, Toast.LENGTH_SHORT).show();
+//                        filePath = fileUri.getPath();
+//                        File file = new File(filePath);
+//
+//                        file.setReadable(true);
+//                        final String[] split = file.getAbsolutePath().split(":");//split the path.
+//                        filePath = split[1];//
+//
+//                        file.setReadable(true);
+//                        filePath = "/mnt/sdcard/" + filePath;
+//                        file = new File(filePath);
+//                        file.setReadable(true);
+//                        FileInputStream fis = null;
+//                        try {
+//                            fis = new FileInputStream(filePath);
+//
+//                        } catch (FileNotFoundException e) {
+//                            e.printStackTrace();
+//                        }
+//                        fileBytes = new byte[(int) file.length()];
+//                        try {
+//                            fis.read(fileBytes);
+//                            Toast.makeText(this, "convert", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(this, "convert", Toast.LENGTH_SHORT).show();
+//
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                    getPermission();
+//                }
+//                if(mPermissionGranted&&fileSelected){
+//                    upload.setEnabled(true);
+//                }
+//                while(!mPermissionGranted){
+//                    getPermission();
+//                    if(mPermissionGranted&&fileSelected){
+//                        upload.setEnabled(true);
+//                        break;
+//                    }
+//                }
+//                break;
+//            case CAMERA_REQUEST:
+//
+//                if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK)
+//                {
+//                    Bitmap photo = (Bitmap) data.getExtras().get("data");
+//                   // Bitmap bmp = intent.getExtras().get("data");
+//                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//                    if(fileSizeInMB > 1){
+//                        photo.compress(Bitmap.CompressFormat.JPEG, 50, stream);
+//                        Log.d("going jpeg cam","going jpeg cam");
+//                    }else{
+//                        photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//                        Log.d("going png cam","going png cam");
+//                    }
+//                 //  photo.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//                    fileBytes = stream.toByteArray();
+//                    photo.recycle();
+//                    upload.setEnabled(true);
+//                    Log.d("going camera","going camera");
+//                    count++;
+//                    //String file = dir+"Image"+count+".jpg";
+//                    filename.setText("IMG_0000"+count+"jpg");
+//                    extension = "jpg";
+//                    String aaa="IMG_0000"+count+"jpg";
+//                    pathofselected="/data/user/0/com.mobile.agri10x/files/"+aaa;
+//                    // imageView.setImageBitmap(photo);
+//                }
+//                /*if (requestCode == TAKE_PHOTO_CODE && resultCode == RESULT_OK) {
+//                    final Uri imageUri = data.getData();
+//                    InputStream imageStream = null;
+//                    try {
+//                        imageStream = getContentResolver().openInputStream(imageUri);
+//                    } catch (FileNotFoundException e) {
+//                        e.printStackTrace();
+//                    }
+//                    final Bitmap selectedImage = BitmapFactory.decodeStream(imageStream);
+//                    String encodedImage = encodeImage(selectedImage);
+//
+//                    encoded=encodedImage;
+//                    Log.d("hwaitfor",encoded);
+//                }*/
+//        }
+//    }
 
     private String encodeImage(Bitmap bm)
     {
