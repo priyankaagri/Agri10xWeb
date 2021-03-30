@@ -39,16 +39,12 @@ import com.mobile.agri10x.Model.LoginUser;
 import com.mobile.agri10x.Model.Main;
 import com.mobile.agri10x.Model.User;
 import com.mobile.agri10x.models.CheckPhoneExits;
-import com.mobile.agri10x.models.GetLogin;
-import com.mobile.agri10x.models.GetOTP;
+
 import com.mobile.agri10x.models.resendOTP;
 import com.mobile.agri10x.models.verfyOTP;
 import com.mobile.agri10x.retrofit.AgriInvestor;
 import com.mobile.agri10x.retrofit.ApiHandler;
-import com.mukesh.OnOtpCompletionListener;
-import com.mukesh.OtpView;
-import com.stfalcon.smsverifycatcher.OnSmsCatchListener;
-import com.stfalcon.smsverifycatcher.SmsVerifyCatcher;
+
 
 
 import org.json.JSONObject;
@@ -74,7 +70,7 @@ OtpTextView otp_view;
     ImageView img_arrow;
     EditText enterotp;
     private static String responce = null;
-    SmsBroadcastReceiver smsBroadcastReceiver;
+  SmsBroadcastReceiver smsBroadcastReceiver;
     private static final int REQ_USER_CONSENT = 200;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -623,7 +619,7 @@ String checkresponse =String.valueOf(response.body().getExist());
 //That gives all message to us.
 // We need to get the code from inside with regex
                 String message = data.getStringExtra(SmsRetriever.EXTRA_SMS_MESSAGE);
-                if(message.contains("Agri10x E-Marketplace login")) {
+                if(message.contains("Agri10x E-Marketplace is")) {
                     String numberOnly = message.replaceAll("[^0-9]", "");
 //numberOnly 10886110
 

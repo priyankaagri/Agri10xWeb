@@ -92,7 +92,7 @@ public class WebPage extends AppCompatActivity {
 
                 }
             });
-            webView.loadUrl("https://emarket.agri10x.com/");
+            webView.loadUrl("https://agri10x.com/");
 
 
             try {
