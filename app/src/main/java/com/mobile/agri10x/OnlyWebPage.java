@@ -107,7 +107,7 @@ public class OnlyWebPage extends AppCompatActivity {
 
             }
         });
-        webView.loadUrl("https://emarket.agri10x.com/");
+        webView.loadUrl("https://agri10x.com/");
 
 
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
